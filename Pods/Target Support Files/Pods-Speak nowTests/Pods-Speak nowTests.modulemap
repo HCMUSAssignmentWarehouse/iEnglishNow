@@ -1,0 +1,6 @@
+framework module Pods_Speak_nowTests {
+  umbrella header "Pods-Speak nowTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
