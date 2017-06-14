@@ -40,46 +40,47 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     
     let deviceID = UIDevice.current.identifierForVendor?.uuidString
     
+    var currentID: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         skills.append(Listening())
         skills.append(Speaking())
         skills.append(Pronunciation())
-        
-        initAvatar()
+
         initShow()
-        setValueForView()
-        loadStatsNumber()
+
+        
+        if currentID == ""{
+            if let user = Auth.auth().currentUser{
+                initUsername(userid: ((user.uid) as? String)!)
+                loadStatsNumber(userid: ((user.uid) as? String)!)
+            }
+        }else{
+            imgLogout.isHidden = true
+            initUsername(userid: "")
+            loadStatsNumber(userid: "")
+        }
+        
+        
         //saveStatsNumber()
         // Do any additional setup after loading the view.
     }
 
     
-    func initAvatar(){
-        
-        let user = Auth.auth().currentUser
-        let imageRef = Storage.storage().reference().child("user_profiles/\(user?.uid)/profile_pic")
-        imageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
-            if error == nil {
-                
-                let image = UIImage(data: data!)
-                self.avatar.image = image
-                
-            }else {
-                
-                print("Error downloading image:" )
-                
-                
-            }
-        })
-    }
     
-    func loadStatsNumber(){
-        if let user = Auth.auth().currentUser{
+    func loadStatsNumber(userid: String){
+        
+        
+        if currentID == ""{
+            currentID = userid
+        }
+        
+        
+
             
-            
-            let queryRef = Database.database().reference().child("user_profile/\(user.uid)").observe(.value, with: { (snapshot) -> Void in
+            let queryRef = Database.database().reference().child("user_profile/\(currentID)").observe(.value, with: { (snapshot) -> Void in
                 
                 if let dictionary = snapshot.value as? [String:Any] {
                     let drinks = dictionary["drinks"] as? Int ?? 0
@@ -92,7 +93,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
                 }
             })
             
-            Database.database().reference().child("user_profile/\(user.uid)").child("skill").observe(.value, with: { (snapshot) -> Void in
+            Database.database().reference().child("user_profile/\(currentID)").child("skill").observe(.value, with: { (snapshot) -> Void in
             
                     let child = snapshot.value as! [String:Any]
                     let listening = child["listening skill"] as? Int ?? 0
@@ -116,20 +117,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
               
             })
             
-        }
-    }
-    
-    func saveStatsNumber(){
-        let user = Auth.auth().currentUser
-        var userRef = Database.database().reference().child("user_profile").child((user?.uid)!)
-        userRef.child("drinks").setValue(2)
-        userRef.child("conversations").setValue(2)
-        
-        userRef = userRef.child("skill")
-        for item in skills{
-            
-            userRef.child(item.name).setValue(3)
-        }
         
     }
     
@@ -164,20 +151,44 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         setOnAvatarTapped()
     }
     
-    func setValueForView(){
-        if let user = Auth.auth().currentUser{
-            
     
-                let queryRef = Database.database().reference().child("user_profile/\(user.uid)").observe(.value, with: { (snapshot) -> Void in
-                    
-                    if let dictionary = snapshot.value as? [String:Any] {
-                        let username = dictionary["username"] as? String ?? ""
-                        self.username.text = username
-                    }
-                })
-                
+    func initUsername(userid: String){
+        if currentID == ""{
+            let user = Auth.auth().currentUser
+            currentID = userid
         }
+        
+
+            
+            
+            let queryRef = Database.database().reference().child("user_profile/\(currentID)").observe(.value, with: { (snapshot) -> Void in
+                
+                if let dictionary = snapshot.value as? [String:Any] {
+                    let username = dictionary["username"] as? String ?? ""
+                    self.username.text = username
+                    
+                    if let url = dictionary["profile_pic"] {
+                        if let imgUrl =  URL(string: url as! String){
+                            let data = try? Data(contentsOf: imgUrl)
+                            
+                            if let imageData = data {
+                                let profilePic = UIImage(data: data!)
+                                self.avatar.image = profilePic
+                            }
+                            
+                        }
+                        
+                        
+                    }
+                    
+                    
+                }
+                
+            })
+        
+        
     }
+    
     
     func setOnAvatarTapped(){
         avatar.isUserInteractionEnabled = true

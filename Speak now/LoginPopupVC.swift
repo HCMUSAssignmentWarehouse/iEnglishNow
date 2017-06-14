@@ -63,16 +63,21 @@ class LoginPopupVC: UIViewController {
                     let username = dictionary["username"] as? String ?? ""
                     self.txtWelcomeName.text = username
                     
-                    let url = dictionary["profile_pic"]
+                    if let url = dictionary["profile_pic"] {
+                        if let imgUrl =  URL(string: url as! String){
+                            let data = try? Data(contentsOf: imgUrl)
+                            
+                            if let imageData = data {
+                                let profilePic = UIImage(data: data!)
+                                self.avatar.image = profilePic
+                            }
+                            
+                        }
                     
-                    let imgUrl =  URL(string: url as! String)
-                    print("profile_pic: \(imgUrl)")
-                    let data = try? Data(contentsOf: imgUrl!)
-                    
-                    if let imageData = data {
-                        let profilePic = UIImage(data: data!)
-                        self.avatar.image = profilePic
+                        
                     }
+                    
+                    
                 }
                 
             })
@@ -92,7 +97,6 @@ class LoginPopupVC: UIViewController {
         
         
     }
-    
     
     
     

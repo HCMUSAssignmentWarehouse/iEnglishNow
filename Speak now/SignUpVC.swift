@@ -45,6 +45,7 @@ class SignUpVC: UIViewController {
                 Auth.auth().createUser(withEmail: email,password:password,completion:{user,error in
                     if let firebaseError = error{
                         print(firebaseError.localizedDescription)
+                        self.txtError.text = firebaseError.localizedDescription
                         return
                     }
                     
@@ -52,10 +53,14 @@ class SignUpVC: UIViewController {
                     userRef.child("username").setValue(self.txtUsername.text)
                     userRef.child("email").setValue(self.txtEmail.text)
                     userRef.child("password").setValue(self.txtPassword.text)
+                    userRef.child("profile_pic").setValue("")
+                    self.saveStatsNumber()
+
                     print("Success!")
                     
                     self.dismiss(animated: true, completion: nil)
                 })
+                
             }
             else {
                 print("Email or password is invalid!")
@@ -66,8 +71,14 @@ class SignUpVC: UIViewController {
         
     }
     
+    var skills: [Skill] = [Skill]()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        skills.append(Listening())
+        skills.append(Speaking())
+        skills.append(Pronunciation())
         initShow()
         // Do any additional setup after loading the view.
     }
@@ -95,6 +106,21 @@ class SignUpVC: UIViewController {
     
     
     }
+    
+    func saveStatsNumber(){
+        let user = Auth.auth().currentUser
+        var userRef = Database.database().reference().child("user_profile").child((user?.uid)!)
+        userRef.child("drinks").setValue(0)
+        userRef.child("conversations").setValue(0)
+        
+        userRef = userRef.child("skill")
+        for item in skills{
+            
+            userRef.child(item.name).setValue(0)
+        }
+        
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -65,8 +65,6 @@ class ChatViewController: UITableViewController {
     
     func retrieveUser(id:String){
         var username:String = "no name"
-
-
         
        Database.database().reference().child("user_profile").observeSingleEvent(of: .value, with:{ (snapshot) in
         
@@ -79,28 +77,44 @@ class ChatViewController: UITableViewController {
                 let username = userDict["username"] as! String
                 let url = userDict["profile_pic"]
 
-                let imgUrl =  URL(string: url as! String)
-                print("profile_pic: \(imgUrl)")
-                let data = try? Data(contentsOf: imgUrl!)
-                
-                if let imageData = data {
-                    let profilePic = UIImage(data: data!)
-                    let avatar = profilePic
+                if let imgUrl =  URL(string: url as! String){
+
+                    let data = try? Data(contentsOf: imgUrl)
+                    
+                    if let imageData = data {
+                        let profilePic = UIImage(data: data!)
+                        let avatar = profilePic
+                        if self.checkExist(id: id) == false{
+                            self.contactList.append(Contact(name:username,id: uid,avatar: avatar!))
+                        }
+                        self.table.reloadData()
+                        //self.img = profilePic
+
+                        
+                    }else{
+                        let avatar = UIImage(named:"sample.jpg")
+                        if self.checkExist(id: id) == false{
+                            self.contactList.append(Contact(name:username,id: uid,avatar: avatar!))
+                        }
+                        self.table.reloadData()
+                        //self.img = profilePic
+                        
+                    }
+                    
+                    
+                }
+                else {
+                    let avatar = UIImage(named:"sample.jpg")
                     if self.checkExist(id: id) == false{
                         self.contactList.append(Contact(name:username,id: uid,avatar: avatar!))
                     }
                     self.table.reloadData()
-                    self.img = profilePic
+                    //self.img = profilePic
                 }
-                
-              
             }
-            
-            
         }
 
        })
-       
         
     }
     
@@ -116,27 +130,7 @@ class ChatViewController: UITableViewController {
     }
   
     
-    func initAvatar(){
-        
-        let user = Auth.auth().currentUser
-        let imageRef = Storage.storage().reference().child("user_profiles/2FCP2dR0oaY7Z6Avk0YNFHF1y4a2/profile_pic")
-        imageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
-            if error == nil {
-                
-                
-                let image = UIImage(data: data!)
-                self.img = image
-                
-            }else {
-                
-                print("Error downloading image:" )
-                
-                
-            }
-        })
-    }
-
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -153,7 +147,9 @@ class ChatViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ContactTableViewCell
 
-        
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
+
         cell.avatar.image = contactList[indexPath.row].avatar
         cell.txtName.text = contactList[indexPath.row].name
         

@@ -15,8 +15,7 @@ private let reuseIdentifier = "Cell"
 class CreateMessageController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
 
     var messages = [Message]()
-    
-    static var isTheFirstLoad: Bool = true
+    var avatar: UIImage?
     var id: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +26,24 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        
+        self.collectionView?.backgroundView = UIView(frame:(self.collectionView?.bounds)!)
+        self.collectionView?.backgroundView!.addGestureRecognizer(tapGestureRecognizer)
+        
         setupInputComponents()
         loadMessage()
+    }
+    
+    func handleTap(recognizer: UITapGestureRecognizer) {
+        // Handle the tap gesture
         
+        self.view.endEditing(true)
     }
     
     
+        
     func viewScrollButton() {
         let lastItem = collectionView(self.collectionView!, numberOfItemsInSection: 0) - 1
         if (lastItem >= 0){
@@ -72,6 +83,24 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
         
         let message = messages[indexPath.item]
+
+        if message.fromId != Auth.auth().currentUser?.uid{
+            cell.bubbleView.backgroundColor = UIColor.gray//(red:229, green: 232, blue:232, alpha: 1.0)
+            cell.textView.textColor = UIColor.black
+            cell.bubbleViewRightAnchor?.isActive = false
+            cell.bubbleViewLeftAnchor?.isActive = true
+            cell.profileImageView.isHidden = false
+            cell.profileImageView.image = avatar
+            
+        }
+        else {
+            cell.bubbleView.backgroundColor = UIColor.blue //(red:30, green: 136, blue: 229, alpha: 1.0)
+            cell.textView.textColor = UIColor.white
+            cell.bubbleViewRightAnchor?.isActive = true
+            cell.bubbleViewLeftAnchor?.isActive = false
+            cell.profileImageView.isHidden = true
+        }
+        
         if (message.text != nil){
             cell.textView.text = message.text
         }else{
@@ -193,6 +222,17 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
                     
                     let _username = userDict["username"] as! String
                     
+                    let url = userDict["profile_pic"]
+                    let imgUrl =  URL(string: url as! String)
+                    let data = try? Data(contentsOf: imgUrl!)
+                    
+                    if let imageData = data {
+                        let profilePic = UIImage(data: data!)
+                        self.avatar = profilePic
+                        
+                    }
+
+                    
                     if _username.caseInsensitiveCompare(self.inputNewContactTextField.text!) == ComparisonResult.orderedSame{
                         self.id = receiveUser.key as! String
                         self.saveMessage(receiceId: self.id)
@@ -303,14 +343,15 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         
         self.messages.removeAll()
         inputTextField.text = ""
-        if DetailChatViewController.isTheFirstLoad == true {
-            print("DetailChatViewController.isTheFirstLoad: true")
-        }else{
-            print("DetailChatViewController.isTheFirstLoad: false")
-            
-        }
+        
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.view.endEditing(true)
+
+    }
+    
+   
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

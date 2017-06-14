@@ -14,7 +14,7 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
     var currentContact: Contact?
     var messages = [Message]()
 
-    static var isTheFirstLoad: Bool = true
+    var isTheFirstLoad: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +27,15 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         
-        if DetailChatViewController.isTheFirstLoad == true {
-            print("***DetailChatViewController.isTheFirstLoad: true")
-        }else{
-            print("***DetailChatViewController.isTheFirstLoad: false")
-            
-        }
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         
-        if DetailChatViewController.isTheFirstLoad == true{
-            DetailChatViewController.isTheFirstLoad = false
+        self.collectionView?.backgroundView = UIView(frame:(self.collectionView?.bounds)!)
+        self.collectionView?.backgroundView!.addGestureRecognizer(tapGestureRecognizer)
+        
+        
+        
+        if isTheFirstLoad == true{
+            isTheFirstLoad = false
             loadMessage()
 
         }
@@ -45,6 +45,19 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         setupInputComponents()
         viewScrollButton()
     }
+    
+   
+    
+    
+    func handleTap(recognizer: UITapGestureRecognizer) {
+        // Handle the tap gesture
+        
+        self.view.endEditing(true)
+        
+        
+        
+    }
+    
     
     
     func viewScrollButton() {
@@ -75,8 +88,31 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
+    
         
         let message = messages[indexPath.item]
+        cell.bubbleWidthAnchor?.constant = estimateFrameForText(message.text!).width + 32
+
+        if message.fromId != Auth.auth().currentUser?.uid{
+            cell.bubbleView.backgroundColor = UIColor.lightGray//(red:229, green: 232, blue:232, alpha: 1.0)
+            cell.textView.textColor = UIColor.black
+            cell.bubbleViewRightAnchor?.isActive = false
+            cell.bubbleViewLeftAnchor?.isActive = true
+            cell.profileImageView.isHidden = false
+            cell.profileImageView.image = currentContact?.avatar
+            
+        }
+        else {
+            cell.bubbleView.backgroundColor = UIColor.blue //(red:30, green: 136, blue: 229, alpha: 1.0)
+            cell.textView.textColor = UIColor.white
+
+            cell.bubbleViewRightAnchor?.isActive = true
+            cell.bubbleViewLeftAnchor?.isActive = false
+            cell.profileImageView.isHidden = true
+        }
+        
+
+        
         if (message.text != nil){
         cell.textView.text = message.text
         }else{
@@ -84,9 +120,13 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         }
         //lets modify the bubbleView's width somehow???
         
-        cell.bubbleWidthAnchor?.constant = estimateFrameForText(message.text!).width + 32
         
         return cell
+    }
+    
+    func handleAvatarTap(gesture: UIGestureRecognizer){
+        print("tapped")
+        //self.performSegue(withIdentifier: "SegueProfile", sender: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -103,6 +143,11 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         }
         
         return CGSize(width: view.frame.width, height: height)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "SegueProfile", sender: nil)
+
     }
     
     fileprivate func estimateFrameForText(_ text: String) -> CGRect {
@@ -199,6 +244,8 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
                                     let time = userDict["time"] as! TimeInterval
                                     
                                     self.messages.append(Message(fromId: sender, text: text, timestamp: time))
+                                    
+                                    
                                     self.collectionView?.reloadData()
                                     self.viewScrollButton()
                                 }
@@ -244,25 +291,23 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         
         self.messages.removeAll()
         inputTextField.text = ""
-        if DetailChatViewController.isTheFirstLoad == true {
-        print("DetailChatViewController.isTheFirstLoad: true")
-        }else{
-            print("DetailChatViewController.isTheFirstLoad: false")
-
-        }
-    }
+            }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        self.collectionView?.endEditing(true)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueProfile"{
+            let des = segue.destination as! ProfileVC
+            des.currentID = (currentContact?.id)!
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

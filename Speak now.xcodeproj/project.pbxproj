@@ -72,6 +72,11 @@
 		FA1CD0611ECEBE21006AF4A6 /* iconUser.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1CD0601ECEBE21006AF4A6 /* iconUser.png */; };
 		FA1EA44B1EEF9032005357BF /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1EA44A1EEF9032005357BF /* ChatMessageCell.swift */; };
 		FA1EA44D1EEF90A8005357BF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1EA44C1EEF90A8005357BF /* Message.swift */; };
+		FA40BC711EF1261500C3EFA0 /* IconEdit.png in Resources */ = {isa = PBXBuildFile; fileRef = FA40BC701EF1261500C3EFA0 /* IconEdit.png */; };
+		FA40BC731EF1300200C3EFA0 /* iconPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = FA40BC721EF1300200C3EFA0 /* iconPhoto.png */; };
+		FA40BC751EF1370100C3EFA0 /* CreateNewPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40BC741EF1370100C3EFA0 /* CreateNewPostController.swift */; };
+		FA40BC781EF143BC00C3EFA0 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40BC771EF143BC00C3EFA0 /* Status.swift */; };
+		FA40BC7B1EF158FE00C3EFA0 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40BC7A1EF158FE00C3EFA0 /* FirebaseUtils.swift */; };
 		FA4BDBF71EED788200D7F03E /* chaticon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4BDBF61EED788200D7F03E /* chaticon.png */; };
 		FA4BDBFE1EED872500D7F03E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BDBFD1EED872500D7F03E /* ChatViewController.swift */; };
 		FA4BDC011EED937E00D7F03E /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BDC001EED937E00D7F03E /* Contact.swift */; };
@@ -174,6 +179,11 @@
 		FA1CD0601ECEBE21006AF4A6 /* iconUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconUser.png; sourceTree = "<group>"; };
 		FA1EA44A1EEF9032005357BF /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		FA1EA44C1EEF90A8005357BF /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		FA40BC701EF1261500C3EFA0 /* IconEdit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconEdit.png; sourceTree = "<group>"; };
+		FA40BC721EF1300200C3EFA0 /* iconPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconPhoto.png; sourceTree = "<group>"; };
+		FA40BC741EF1370100C3EFA0 /* CreateNewPostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewPostController.swift; sourceTree = "<group>"; };
+		FA40BC771EF143BC00C3EFA0 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		FA40BC7A1EF158FE00C3EFA0 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		FA4BDBF61EED788200D7F03E /* chaticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chaticon.png; sourceTree = "<group>"; };
 		FA4BDBFD1EED872500D7F03E /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FA4BDC001EED937E00D7F03E /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
@@ -276,8 +286,10 @@
 		FA161FBF1ED29E7200211D89 /* HomeTimeLine */ = {
 			isa = PBXGroup;
 			children = (
+				FA40BC761EF1439500C3EFA0 /* model */,
 				FA0757F41ED1C7CF006CE695 /* HomeTimeLineVC.swift */,
 				FA0757FA1ED1E21A006CE695 /* CellOfTimeLineVC.swift */,
+				FA40BC741EF1370100C3EFA0 /* CreateNewPostController.swift */,
 			);
 			name = HomeTimeLine;
 			sourceTree = "<group>";
@@ -312,6 +324,8 @@
 		FA1CD01E1ECE97AE006AF4A6 = {
 			isa = PBXGroup;
 			children = (
+				FA40BC721EF1300200C3EFA0 /* iconPhoto.png */,
+				FA40BC701EF1261500C3EFA0 /* IconEdit.png */,
 				FA4BDBF61EED788200D7F03E /* chaticon.png */,
 				FA0804691EEC63D800704749 /* logout.png */,
 				FA0757F81ED1DF3A006CE695 /* like.png */,
@@ -349,6 +363,7 @@
 		FA1CD0291ECE97AF006AF4A6 /* Speak now */ = {
 			isa = PBXGroup;
 			children = (
+				FA40BC791EF158EC00C3EFA0 /* Utils */,
 				FA0804671EEC1A1900704749 /* GoogleService-Info.plist */,
 				FA1AA5041ED3124F004972BF /* Plugins */,
 				FAF3DA1B1ED2FAB5007B767D /* VideoCall */,
@@ -392,6 +407,22 @@
 				FA0757F21ED1B931006CE695 /* MainScreen.storyboard */,
 			);
 			name = "Main Screen";
+			sourceTree = "<group>";
+		};
+		FA40BC761EF1439500C3EFA0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				FA40BC771EF143BC00C3EFA0 /* Status.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		FA40BC791EF158EC00C3EFA0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FA40BC7A1EF158FE00C3EFA0 /* FirebaseUtils.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		FA4BDBF81EED7ABD00D7F03E /* Chat */ = {
@@ -573,9 +604,11 @@
 				FA07574F1ED18C5D006CE695 /* Contents.json in Resources */,
 				FA0757651ED18C5D006CE695 /* Icon-Small-50x50@2x.png in Resources */,
 				FA0757ED1ED19B5D006CE695 /* conversation.png in Resources */,
+				FA40BC731EF1300200C3EFA0 /* iconPhoto.png in Resources */,
 				FA0757531ED18C5D006CE695 /* Icon-App-29x29@1x.png in Resources */,
 				FA0757F91ED1DF3A006CE695 /* like.png in Resources */,
 				FA0757F71ED1DF2F006CE695 /* liked.png in Resources */,
+				FA40BC711EF1261500C3EFA0 /* IconEdit.png in Resources */,
 				FA1CD0351ECE97AF006AF4A6 /* Assets.xcassets in Resources */,
 				FA07575F1ED18C5D006CE695 /* Icon-App-72x72@2x.png in Resources */,
 				FA0757521ED18C5D006CE695 /* Icon-App-20x20@3x.png in Resources */,
@@ -764,11 +797,14 @@
 				FA1EA44D1EEF90A8005357BF /* Message.swift in Sources */,
 				FA1B597A1EEF030800AA2173 /* ContactTableViewCell.swift in Sources */,
 				FA0BB7741ED09AFC00C6FA1F /* LoginPopupVC.swift in Sources */,
+				FA40BC751EF1370100C3EFA0 /* CreateNewPostController.swift in Sources */,
 				FA1B59721EEED09E00AA2173 /* Skill.swift in Sources */,
+				FA40BC781EF143BC00C3EFA0 /* Status.swift in Sources */,
 				FA1B59741EEED1B400AA2173 /* Listening.swift in Sources */,
 				FA0757F51ED1C7CF006CE695 /* HomeTimeLineVC.swift in Sources */,
 				FA0757FD1ED200BF006CE695 /* MyConversationVC.swift in Sources */,
 				FA1CD02B1ECE97AF006AF4A6 /* AppDelegate.swift in Sources */,
+				FA40BC7B1EF158FE00C3EFA0 /* FirebaseUtils.swift in Sources */,
 				FA161FC21ED2AD4500211D89 /* ProfileVC.swift in Sources */,
 				FA0757FB1ED1E21A006CE695 /* CellOfTimeLineVC.swift in Sources */,
 				FA1B59761EEED20700AA2173 /* Speaking.swift in Sources */,
