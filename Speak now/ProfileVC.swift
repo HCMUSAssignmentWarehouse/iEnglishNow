@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 
-class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate{
+class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate,  UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet var avatar: UIImageView!
     
@@ -31,6 +31,8 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
    
     @IBOutlet var txtConversationsNumber: UILabel!
     
+    @IBOutlet var tableStatus: UITableView!
+    
     
     @IBOutlet var btnStar: UIButton!
     
@@ -41,6 +43,9 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     let deviceID = UIDevice.current.identifierForVendor?.uuidString
     
     var currentID: String = ""
+    
+    var statusList:[Status] = [Status]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +62,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
                 initUsername(userid: ((user.uid) as? String)!)
                 loadStatsNumber(userid: ((user.uid) as? String)!)
             }
-        }else{
+        } else {
             imgLogout.isHidden = true
             initUsername(userid: "")
             loadStatsNumber(userid: "")
@@ -68,7 +73,54 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         // Do any additional setup after loading the view.
     }
 
-    
+    func loadStatus(userid: String,  username: String, avatar: UIImage){
+        
+        if currentID == ""{
+            currentID = userid
+        }
+        
+        
+        Database.database().reference().child("user_profile/\(currentID)").child("status").observe(.value, with: { (snapshot) -> Void in
+            for item in snapshot.children {
+                let status = (item as! DataSnapshot).value as! [String:AnyObject]
+                let content = status["content"] as! String
+                let time = status["time"] as! TimeInterval
+                let likeNumber = status["like_number"] as! Int
+                let isUserLiked = status["isUserLiked"] as! Bool
+                
+                var photo:UIImage?
+                
+                if let url = status["photo"] {
+                    if let imgUrl =  URL(string: url as! String){
+                        let data = try? Data(contentsOf: imgUrl)
+                        
+                        if let imageData = data {
+                            let profilePic = UIImage(data: data!)
+                            photo = profilePic
+                        }
+                        
+                    }
+                }
+                
+                
+                if photo == nil{
+                    self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: userid ,username: username, avatar: avatar, content: content, time: time, likeNumber: likeNumber , isUserLiked: isUserLiked))
+                } else {
+                    self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: userid , username: username, avatar: avatar , content: content, time: time, photo: photo!, likeNumber: likeNumber , isUserLiked: isUserLiked))
+                }
+                
+                
+                self.tableStatus.reloadData()
+                
+                
+                
+            }
+
+        
+        })
+        
+
+    }
     
     func loadStatsNumber(userid: String){
         
@@ -79,7 +131,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         
         
 
-            
+        
             let queryRef = Database.database().reference().child("user_profile/\(currentID)").observe(.value, with: { (snapshot) -> Void in
                 
                 if let dictionary = snapshot.value as? [String:Any] {
@@ -147,6 +199,10 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         yourRatingView.layer.shadowPath = UIBezierPath(rect: numberView.bounds).cgPath
         yourRatingView.layer.shouldRasterize = true
 
+        tableStatus.delegate = self
+        tableStatus.dataSource = self
+        
+        
         setOnLogoutTapped()
         setOnAvatarTapped()
     }
@@ -157,9 +213,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
             let user = Auth.auth().currentUser
             currentID = userid
         }
-        
-
-            
             
             let queryRef = Database.database().reference().child("user_profile/\(currentID)").observe(.value, with: { (snapshot) -> Void in
                 
@@ -180,6 +233,15 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
                         
                         
                     }
+                    
+                    if dictionary.count == FirebaseUtils.numberChildOfUser {
+                        
+                        self.statusList.removeAll()
+                        
+                        self.loadStatus(userid: userid,  username: username, avatar: self.avatar.image!)
+
+                    }
+                    
                     
                     
                 }
@@ -286,6 +348,50 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         print("cancel!")
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    //TABLE STATUS
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statusList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath ) as! CellOfTimeLineVC
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
+        cell.layer.cornerRadius = 15
+        
+        let status = statusList[indexPath.row]
+        let x = indexPath.row
+        print("content: \(status.content)")
+        
+        cell.txtContent.text = status.content
+        let number:Int = status.likeNumber!
+        cell.txtNumberOfLike.text = "\(number)"
+        cell.avatar.image = status.avatar
+        cell.txtName.text = status.username
+        
+        var milliseconds = status.time
+        
+        let date = NSDate(timeIntervalSince1970: TimeInterval(milliseconds!))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        formatter.locale = NSLocale(localeIdentifier: "en_US") as Locale!
+        cell.txtTime.text = formatter.string(from: date as Date)
+        
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180
+    }
+    
     
 
     /*

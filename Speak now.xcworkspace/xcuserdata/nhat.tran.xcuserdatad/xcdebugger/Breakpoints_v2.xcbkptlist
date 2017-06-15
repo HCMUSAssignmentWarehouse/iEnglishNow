@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Speak now/ProfileVC.swift"
-            timestampString = "519142586.748342"
+            timestampString = "519230328.924133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "setOnLogoutTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Speak now/ProfileVC.swift"
-            timestampString = "519142586.748342"
+            timestampString = "519230328.924133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Speak now/ProfileVC.swift"
-            timestampString = "519142586.748342"
+            timestampString = "519230328.924133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "tappedAvatarImage(gestureRecognizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Speak now/ProfileVC.swift"
-            timestampString = "519142586.748342"
+            timestampString = "519230328.924133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Speak now/ProfileVC.swift"
-            timestampString = "519142586.748342"
+            timestampString = "519230328.924133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Speak now/SignUpVC.swift"
-            timestampString = "519137120.363289"
+            timestampString = "519215395.806083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Speak now/ProfileVC.swift"
-            timestampString = "519142349.386309"
+            timestampString = "519230328.924133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "loadStatsNumber(userid:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,13 +298,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Speak now/ProfileVC.swift"
-            timestampString = "519142361.72773"
+            timestampString = "519230328.924133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "loadStatsNumber(userid:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Speak now/CreateNewPostController.swift"
+            timestampString = "519217323.309138"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "btnPost(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Speak now/CellOfTimeLineVC.swift"
+            timestampString = "519228614.946802"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "actionLike(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Speak_now.CellOfTimeLineVC.actionLike (Any) -&gt; ()"
+                  moduleName = "Speak now"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nhat.tran/Downloads/SpeakNow/Speak%20now/CellOfTimeLineVC.swift"
+                  timestampString = "519228615.67135"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "4356">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Speak_now.CellOfTimeLineVC.actionLike (Any) -&gt; ()"
+                  moduleName = "Speak now"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nhat.tran/Downloads/SpeakNow/Speak%20now/CellOfTimeLineVC.swift"
+                  timestampString = "519228615.702248"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "8435">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

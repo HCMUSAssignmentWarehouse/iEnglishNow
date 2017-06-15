@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class CellOfTimeLineVC: UITableViewCell {
 
@@ -16,18 +18,49 @@ class CellOfTimeLineVC: UITableViewCell {
     @IBOutlet weak var txtContent: UILabel!
     @IBOutlet weak var txtNumberOfLike: UILabel!
     @IBOutlet weak var btnLike: UIButton!
+    
+    var status: Status?
+    
     @IBAction func actionLike(_ sender: Any) {
-        if (numberClick == 1){
+        if (status?.isUserLiked == false){
+            
+            Database.database().reference().child("status").child((status?.statusId)!).child("isUserLiked").setValue(true)
+           
+            var likeNumber = (status?.likeNumber)! + 1
+            Database.database().reference().child("status").child((status?.statusId)!).child("like_number").setValue(likeNumber)
+        
+            txtNumberOfLike.text = "\(likeNumber)"
+            //Database.database().reference().child("user_profile").child((status?.user)!).child("status").child("isUserLiked").setValue(true)
+            status?.isUserLiked = true
+            status?.likeNumber = likeNumber
             
             btnLike.setBackgroundImage(UIImage(named: "liked.png"), for: UIControlState.normal)
             numberClick = 0
         }
-        else if (numberClick == 0){
+        else {
+            
+            Database.database().reference().child("status").child((status?.statusId)!).child("isUserLiked").setValue(false)
+            
+            var likeNumber = (status?.likeNumber)! - 1
+
+            Database.database().reference().child("status").child((status?.statusId)!).child("like_number").setValue(likeNumber)
+            
+            txtNumberOfLike.text = "\(likeNumber)"
+
+        
+        //Database.database().reference().child("user_profile").child((status?.user)!).child("status").child("isUserLiked").setValue(false)
+            
+            status?.isUserLiked = false
+            status?.likeNumber = likeNumber
+
+            
             btnLike.setBackgroundImage(UIImage(named: "like.png"), for: UIControlState.normal)
             numberClick = 1
         }
         
     }
+    
+    
     var numberClick = 1
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +71,8 @@ class CellOfTimeLineVC: UITableViewCell {
     func initShow(){
         avatar.layer.masksToBounds = true
         avatar.layer.cornerRadius = 10
+        
+        
         
     }
     

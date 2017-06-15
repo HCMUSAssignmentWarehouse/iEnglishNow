@@ -54,6 +54,7 @@ class SignUpVC: UIViewController {
                     userRef.child("email").setValue(self.txtEmail.text)
                     userRef.child("password").setValue(self.txtPassword.text)
                     userRef.child("profile_pic").setValue("")
+
                     self.saveStatsNumber()
 
                     print("Success!")
@@ -96,7 +97,6 @@ class SignUpVC: UIViewController {
         txtUsername.layer.cornerRadius = 5
         txtUsername.layer.borderWidth = 1
         txtUsername.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
-        txtUsername.isSecureTextEntry = true
         
         txtConfirmPassword.layer.cornerRadius = 5
         txtConfirmPassword.layer.borderWidth = 1

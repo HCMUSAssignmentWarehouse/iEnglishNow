@@ -14,7 +14,8 @@ import FirebaseStorage
 class FirebaseUtils{
     
     static var currentUser = Auth.auth().currentUser
-    
+    static var numberChildOfUser = 8
+    static var numberChildStatus = 8
     
     
 }

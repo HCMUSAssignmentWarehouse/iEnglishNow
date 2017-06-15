@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class CreateNewPostController: UIViewController {
+class CreateNewPostController: UIViewController , UIImagePickerControllerDelegate , UINavigationControllerDelegate {
 
     
     @IBOutlet var avatar: UIImageView!
@@ -26,6 +26,87 @@ class CreateNewPostController: UIViewController {
     
     @IBOutlet var choosenImage: UIImageView!
     
+    @IBOutlet var viewInput: UIView!
+    
+    var selectedImageFromPicker: UIImage?
+
+    var avatarUrl: String?
+    
+    @IBAction func btnPost(_ sender: UIBarButtonItem) {
+        
+        if txtContent.text != ""{
+            let userRef = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid)
+            
+            var databaseRef = Database.database().reference()
+            var storageRef = Storage.storage().reference()
+            var currentUser = Auth.auth().currentUser
+            
+            if selectedImageFromPicker != nil {
+                if let imageData:NSData = UIImagePNGRepresentation(selectedImageFromPicker!)! as NSData?{
+                    let profilePicStorageRef = storageRef.child("user_profiles/\(currentUser?.uid)/profile_pic")
+                    let uploadTask = profilePicStorageRef.putData(imageData as Data, metadata:nil){metadata, error in
+                        if (error == nil){
+                            let downloadUrl = metadata?.downloadURL()
+                            
+                            //save to status root
+                            let statusRef = databaseRef.child("status").childByAutoId()
+                            
+                            statusRef.child("photo").setValue(downloadUrl?.absoluteString)
+                            statusRef.child("user").setValue(currentUser?.uid)
+                            statusRef.child("content").setValue(self.txtContent.text)
+                            statusRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
+                            statusRef.child("like_number").setValue(0)
+                            statusRef.child("isUserLiked").setValue(false)
+                            
+                            //save to user_root
+                            let userRef = databaseRef.child("user_profile").child((currentUser?.uid)!).child("status").childByAutoId()
+                            userRef.child("photo").setValue(downloadUrl?.absoluteString)
+                            userRef.child("content").setValue(self.txtContent.text)
+                            userRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
+                            userRef.child("like_number").setValue(0)
+                            userRef.child("isUserLiked").setValue(false)
+
+                            self.performSegue(withIdentifier: "SegueAfterPost", sender: nil)
+                            print("post success!")
+                        }else{
+                            print(error?.localizedDescription)
+                        }
+                    }
+                }
+
+            }else{
+                let statusRef = databaseRef.child("status").childByAutoId()
+                
+                statusRef.child("photo").setValue("")
+                statusRef.child("user").setValue(currentUser?.uid)
+                statusRef.child("content").setValue(self.txtContent.text)
+                statusRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
+                statusRef.child("like_number").setValue(0)
+                statusRef.child("isUserLiked").setValue(false)
+                statusRef.child("username").setValue(username.text)
+                statusRef.child("avatar").setValue(avatarUrl)
+                
+                
+                let userRef = databaseRef.child("user_profile").child((currentUser?.uid)!).child("status").childByAutoId()
+                userRef.child("photo").setValue("")
+                userRef.child("content").setValue(self.txtContent.text)
+                userRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
+                userRef.child("like_number").setValue(0)
+                userRef.child("isUserLiked").setValue(false)
+                
+                self.performSegue(withIdentifier: "SegueAfterPost", sender: nil)
+
+                print("post success!")
+
+            }
+            
+            
+        }
+        
+        
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +117,8 @@ class CreateNewPostController: UIViewController {
 
     func initShow(){
                 
-        txtContent.layer.borderWidth = 1
-        txtContent.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
+        viewInput.layer.borderWidth = 1
+        viewInput.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
         
         viewAddPhoto.layer.borderWidth = 1
         viewAddPhoto.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
@@ -54,6 +135,7 @@ class CreateNewPostController: UIViewController {
                 
             let _username = userDict["username"] as! String
             let url = userDict["profile_pic"]
+            self.avatarUrl = url as! String?
             let imgUrl =  URL(string: url as! String)
             let data = try? Data(contentsOf: imgUrl!)
                     
@@ -70,6 +152,33 @@ class CreateNewPostController: UIViewController {
         
     }
 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        
+        if let editedimage = info["UIImagePickerControllerEditedImage"]{
+            selectedImageFromPicker = editedimage as! UIImage
+            print("edited!")
+        } else if let originalImage = info["UIImagePickerControllerOriginalImage"]{
+            selectedImageFromPicker = originalImage as! UIImage
+            print("original!")
+        }
+        
+        if (selectedImageFromPicker != nil) {
+            
+            self.choosenImage.image = selectedImageFromPicker
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("cancel!")
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
