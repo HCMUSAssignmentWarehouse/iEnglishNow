@@ -10,8 +10,6 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-private let reuseIdentifier = "Cell"
-
 class CreateMessageController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
 
     var messages = [Message]()
@@ -27,8 +25,8 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         
         
+        //handle event click on anywhere in collectionview to disappear keyboard
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        
         self.collectionView?.backgroundView = UIView(frame:(self.collectionView?.bounds)!)
         self.collectionView?.backgroundView!.addGestureRecognizer(tapGestureRecognizer)
         
@@ -37,13 +35,11 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
     }
     
     func handleTap(recognizer: UITapGestureRecognizer) {
-        // Handle the tap gesture
-        
         self.view.endEditing(true)
     }
     
     
-        
+    //handle event scroll to show from the last item up
     func viewScrollButton() {
         let lastItem = collectionView(self.collectionView!, numberOfItemsInSection: 0) - 1
         if (lastItem >= 0){
@@ -84,6 +80,8 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         
         let message = messages[indexPath.item]
 
+        
+        //if the message is of other user
         if message.fromId != Auth.auth().currentUser?.uid{
             cell.bubbleView.backgroundColor = UIColor.gray//(red:229, green: 232, blue:232, alpha: 1.0)
             cell.textView.textColor = UIColor.black
@@ -93,6 +91,7 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
             cell.profileImageView.image = avatar
             
         }
+            //if the message is of current user
         else {
             cell.bubbleView.backgroundColor = UIColor.blue //(red:30, green: 136, blue: 229, alpha: 1.0)
             cell.textView.textColor = UIColor.white
@@ -100,14 +99,11 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
             cell.bubbleViewLeftAnchor?.isActive = false
             cell.profileImageView.isHidden = true
         }
+
+        cell.textView.text = message.text
+
         
-        if (message.text != nil){
-            cell.textView.text = message.text
-        }else{
-            cell.textView.text = "error"
-        }
-        //lets modify the bubbleView's width somehow???
-        
+        //edit width of message to fit the content
         cell.bubbleWidthAnchor?.constant = estimateFrameForText(message.text!).width + 32
         
         return cell
@@ -215,27 +211,40 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
                 
                 var done:Int = 0
                 
+                //go to each user
                 for item in snapshot.children {
                     let receiveUser = item as! DataSnapshot
                     let userDict = receiveUser.value as! [String:AnyObject]
                     
                     
                     let _username = userDict["username"] as! String
-                    
                     let url = userDict["profile_pic"]
-                    let imgUrl =  URL(string: url as! String)
-                    let data = try? Data(contentsOf: imgUrl!)
                     
-                    if let imageData = data {
-                        let profilePic = UIImage(data: data!)
-                        self.avatar = profilePic
+                    if let url = userDict["profile_pic"] {
+                        if let imgUrl =  URL(string: url as! String){
+                            let data = try? Data(contentsOf: imgUrl)
+                            
+                            if let imageData = data {
+                                let profilePic = UIImage(data: data!)
+                                self.avatar = profilePic
+                            }
+                            
+                        }
+                        
                         
                     }
 
-                    
+
+                    //find user whose username is the input username
                     if _username.caseInsensitiveCompare(self.inputNewContactTextField.text!) == ComparisonResult.orderedSame{
+                        
+                        //get id of this user
                         self.id = receiveUser.key as! String
+                        
+                        //send message
                         self.saveMessage(receiceId: self.id)
+                        
+                        //reload collectionview
                         self.collectionView?.reloadData()
                         done = 1
                     }
@@ -243,7 +252,10 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
                 }
                 
                 if done == 0{
-                    let alert = UIAlertController(title: "Error", message: "Username \(self.inputNewContactTextField.text) is not exist!", preferredStyle: .actionSheet)
+                    
+                    var username:String = self.inputNewContactTextField.text!
+                    
+                    let alert = UIAlertController(title: "Error", message: "Username: \(username) is not exist!", preferredStyle: .actionSheet)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
                         alert.dismiss(animated: true, completion: nil)
                     })
@@ -272,18 +284,22 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
     
     func loadMessage(){
         
-        
         if let user = Auth.auth().currentUser{
             
             let queryRef = Database.database().reference().child("message/private").observe(.value, with: { (snapshot) -> Void in
+                
+                //got to each message
                 for item in snapshot.children {
                     let receiveUser = item as! DataSnapshot
                     let uid = receiveUser.key
                     
+                    //if key has id of user
                     if uid.range(of:user.uid) != nil{
                         
+                        //separate into user's id and other user's id
                         let listId = uid.components(separatedBy: " ")
                         
+                        //if other user is the user whose username is input username
                         if listId[0] == self.id || listId[1] == self.id{
                             
                             self.messages.removeAll()
@@ -324,6 +340,7 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         
         let user = Auth.auth().currentUser
         
+        //create key of message
         var child : String?
         if (user?.uid)! > receiceId{
             child = (user?.uid)! + " " +  receiceId
@@ -331,14 +348,18 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
             child = receiceId + " " + (user?.uid)!
         }
         
+        //save message
         let userRef = Database.database().reference().child("message").child("private").child(child!)
+        
+        //save the lastest message
+        userRef.child("lastest_text").setValue(inputTextField.text)
+        
         let childRef = userRef.childByAutoId()
         if (user?.uid)! != nil && inputTextField.text != nil && Date.timeIntervalBetween1970AndReferenceDate != nil{
             childRef.child("sender").setValue((user?.uid)!)
             childRef.child("text").setValue(inputTextField.text)
             childRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
-            
-            //messages.append(Message(fromId: user!.uid, text: inputTextField.text!, timestamp: Date.timeIntervalBetween1970AndReferenceDate))
+          
         }
         
         self.messages.removeAll()
@@ -357,13 +378,5 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         self.view.endEditing(true)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
 }

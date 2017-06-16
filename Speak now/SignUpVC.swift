@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+
 class SignUpVC: UIViewController {
 
     
@@ -21,9 +22,7 @@ class SignUpVC: UIViewController {
     
     @IBOutlet weak var txtEmail: UITextField!
     
-    
     @IBOutlet weak var txtPassword: UITextField!
-    
     
     @IBOutlet weak var txtConfirmPassword: UITextField!
     
@@ -31,9 +30,7 @@ class SignUpVC: UIViewController {
     
     @IBOutlet var txtError: UILabel!
     
-    
     @IBOutlet var btnSignUp: UIButton!
-    
     
     @IBAction func btnSignUp(_ sender: Any) {
         
@@ -55,8 +52,16 @@ class SignUpVC: UIViewController {
                     userRef.child("password").setValue(self.txtPassword.text)
                     userRef.child("profile_pic").setValue("")
 
-                    self.saveStatsNumber()
-
+                    
+                    //save stats numbers
+                    userRef.child("drinks").setValue(0)
+                    userRef.child("conversations").setValue(0)
+                    
+                    for item in self.skills{
+                        
+                        userRef.child("skill").child(item.name).setValue(0)
+                    }
+                    
                     print("Success!")
                     
                     self.dismiss(animated: true, completion: nil)
@@ -85,10 +90,12 @@ class SignUpVC: UIViewController {
     }
 
     func initShow(){
+        
         registerView.layer.cornerRadius = 5
         txtEmail.layer.cornerRadius = 5
         txtEmail.layer.borderWidth = 1
         txtEmail.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
+        
         txtPassword.layer.cornerRadius = 5
         txtPassword.layer.borderWidth = 1
         txtPassword.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
@@ -102,25 +109,10 @@ class SignUpVC: UIViewController {
         txtConfirmPassword.layer.borderWidth = 1
         txtConfirmPassword.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
         txtConfirmPassword.isSecureTextEntry = true
-
-    
     
     }
     
-    func saveStatsNumber(){
-        let user = Auth.auth().currentUser
-        var userRef = Database.database().reference().child("user_profile").child((user?.uid)!)
-        userRef.child("drinks").setValue(0)
-        userRef.child("conversations").setValue(0)
-        
-        userRef = userRef.child("skill")
-        for item in skills{
-            
-            userRef.child(item.name).setValue(0)
-        }
-        
-    }
-    
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -128,18 +120,9 @@ class SignUpVC: UIViewController {
     }
     
 
+    //disappear keyboard when click on anywhere in screen
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
+   }

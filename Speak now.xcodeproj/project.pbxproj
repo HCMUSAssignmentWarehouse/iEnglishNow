@@ -59,9 +59,9 @@
 		FA1B59741EEED1B400AA2173 /* Listening.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B59731EEED1B400AA2173 /* Listening.swift */; };
 		FA1B59761EEED20700AA2173 /* Speaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B59751EEED20700AA2173 /* Speaking.swift */; };
 		FA1B59781EEED22B00AA2173 /* Pronunciation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B59771EEED22B00AA2173 /* Pronunciation.swift */; };
-		FA1B597A1EEF030800AA2173 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B59791EEF030800AA2173 /* ContactTableViewCell.swift */; };
+		FA1B597A1EEF030800AA2173 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B59791EEF030800AA2173 /* ContactCell.swift */; };
 		FA1CD02B1ECE97AF006AF4A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CD02A1ECE97AF006AF4A6 /* AppDelegate.swift */; };
-		FA1CD02D1ECE97AF006AF4A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CD02C1ECE97AF006AF4A6 /* ViewController.swift */; };
+		FA1CD02D1ECE97AF006AF4A6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CD02C1ECE97AF006AF4A6 /* LoginVC.swift */; };
 		FA1CD0301ECE97AF006AF4A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1CD02E1ECE97AF006AF4A6 /* Main.storyboard */; };
 		FA1CD0331ECE97AF006AF4A6 /* Speak_now.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA1CD0311ECE97AF006AF4A6 /* Speak_now.xcdatamodeld */; };
 		FA1CD0351ECE97AF006AF4A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA1CD0341ECE97AF006AF4A6 /* Assets.xcassets */; };
@@ -160,10 +160,10 @@
 		FA1B59731EEED1B400AA2173 /* Listening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listening.swift; sourceTree = "<group>"; };
 		FA1B59751EEED20700AA2173 /* Speaking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaking.swift; sourceTree = "<group>"; };
 		FA1B59771EEED22B00AA2173 /* Pronunciation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pronunciation.swift; sourceTree = "<group>"; };
-		FA1B59791EEF030800AA2173 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		FA1B59791EEF030800AA2173 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		FA1CD0271ECE97AF006AF4A6 /* Speak now.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Speak now.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1CD02A1ECE97AF006AF4A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA1CD02C1ECE97AF006AF4A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA1CD02C1ECE97AF006AF4A6 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		FA1CD02F1ECE97AF006AF4A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA1CD0321ECE97AF006AF4A6 /* Speak_now.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Speak_now.xcdatamodel; sourceTree = "<group>"; };
 		FA1CD0341ECE97AF006AF4A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 				FA1CD02E1ECE97AF006AF4A6 /* Main.storyboard */,
 				FA0BB7711ED067A800C6FA1F /* SignUpVC.swift */,
 				FA0BB7731ED09AFC00C6FA1F /* LoginPopupVC.swift */,
-				FA1CD02C1ECE97AF006AF4A6 /* ViewController.swift */,
+				FA1CD02C1ECE97AF006AF4A6 /* LoginVC.swift */,
 			);
 			name = "Prepare Screen";
 			sourceTree = "<group>";
@@ -433,7 +433,7 @@
 				FA4BDBFF1EED937000D7F03E /* model */,
 				FA4BDBFD1EED872500D7F03E /* ChatViewController.swift */,
 				FA4BDC021EED97AF00D7F03E /* DetailChatViewController.swift */,
-				FA1B59791EEF030800AA2173 /* ContactTableViewCell.swift */,
+				FA1B59791EEF030800AA2173 /* ContactCell.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -792,10 +792,10 @@
 				FA1EA44B1EEF9032005357BF /* ChatMessageCell.swift in Sources */,
 				FA0BB7721ED067A800C6FA1F /* SignUpVC.swift in Sources */,
 				FA1CD0331ECE97AF006AF4A6 /* Speak_now.xcdatamodeld in Sources */,
-				FA1CD02D1ECE97AF006AF4A6 /* ViewController.swift in Sources */,
+				FA1CD02D1ECE97AF006AF4A6 /* LoginVC.swift in Sources */,
 				FA161FBE1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift in Sources */,
 				FA1EA44D1EEF90A8005357BF /* Message.swift in Sources */,
-				FA1B597A1EEF030800AA2173 /* ContactTableViewCell.swift in Sources */,
+				FA1B597A1EEF030800AA2173 /* ContactCell.swift in Sources */,
 				FA0BB7741ED09AFC00C6FA1F /* LoginPopupVC.swift in Sources */,
 				FA40BC751EF1370100C3EFA0 /* CreateNewPostController.swift in Sources */,
 				FA1B59721EEED09E00AA2173 /* Skill.swift in Sources */,

@@ -33,7 +33,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     
     @IBOutlet var tableStatus: UITableView!
     
-    
     @IBOutlet var btnStar: UIButton!
     
     @IBOutlet var btnStars: [UIButton]!
@@ -58,19 +57,16 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
 
         
         if currentID == ""{
+            
+            //to make sure user is loaded before show
             if let user = Auth.auth().currentUser{
-                initUsername(userid: ((user.uid) as? String)!)
-                loadStatsNumber(userid: ((user.uid) as? String)!)
+                loadProfile(userid: ((user.uid) as? String)!)
             }
         } else {
             imgLogout.isHidden = true
-            initUsername(userid: "")
-            loadStatsNumber(userid: "")
+            loadProfile(userid: "")
         }
         
-        
-        //saveStatsNumber()
-        // Do any additional setup after loading the view.
     }
 
     func loadStatus(userid: String,  username: String, avatar: UIImage){
@@ -79,8 +75,9 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
             currentID = userid
         }
         
-        
         Database.database().reference().child("user_profile/\(currentID)").child("status").observe(.value, with: { (snapshot) -> Void in
+            
+            //go  to each status
             for item in snapshot.children {
                 let status = (item as! DataSnapshot).value as! [String:AnyObject]
                 let content = status["content"] as! String
@@ -104,14 +101,17 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
                 
                 
                 if photo == nil{
+                    //if photo is nil -> call constructure has photo failed -->
+                    //call constructure without photo
                     self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: userid ,username: username, avatar: avatar, content: content, time: time, likeNumber: likeNumber , isUserLiked: isUserLiked))
                 } else {
+                    
+                    //call constructure has photo
                     self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: userid , username: username, avatar: avatar , content: content, time: time, photo: photo!, likeNumber: likeNumber , isUserLiked: isUserLiked))
                 }
                 
                 
                 self.tableStatus.reloadData()
-                
                 
                 
             }
@@ -122,53 +122,72 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
 
     }
     
-    func loadStatsNumber(userid: String){
+    func loadProfile(userid: String){
         
         
         if currentID == ""{
             currentID = userid
         }
-        
-        
-
-        
-            let queryRef = Database.database().reference().child("user_profile/\(currentID)").observe(.value, with: { (snapshot) -> Void in
+        let queryRef = Database.database().reference().child("user_profile/\(currentID)").observe(.value, with: { (snapshot) -> Void in
                 
-                if let dictionary = snapshot.value as? [String:Any] {
-                    let drinks = dictionary["drinks"] as? Int ?? 0
-                    let conversations = dictionary["conversations"] as? Int ?? 0
+            if let dictionary = snapshot.value as? [String:Any] {
+                let drinks = dictionary["drinks"] as? Int ?? 0
+                let conversations = dictionary["conversations"] as? Int ?? 0
 
-                    self.txtDrinksNumber.text = "\(drinks)"
-                    self.txtConversationsNumber.text = "\(conversations)"
+                self.txtDrinksNumber.text = "\(drinks)"
+                self.txtConversationsNumber.text = "\(conversations)"
+                
+                let username = dictionary["username"] as? String ?? ""
+                self.username.text = username
+                
+                if let url = dictionary["profile_pic"] {
+                    if let imgUrl =  URL(string: url as! String){
+                        let data = try? Data(contentsOf: imgUrl)
+                        
+                        if let imageData = data {
+                            let profilePic = UIImage(data: data!)
+                            self.avatar.image = profilePic
+                        }
+                        
+                    }
                     
                     
                 }
-            })
-            
-            Database.database().reference().child("user_profile/\(currentID)").child("skill").observe(.value, with: { (snapshot) -> Void in
-            
-                    let child = snapshot.value as! [String:Any]
-                    let listening = child["listening skill"] as? Int ?? 0
-                    let speaking = child["speaking skill"] as? Int ?? 0
-                    let pronunciation = child["pronunciation skill"] as? Int ?? 0
+                
+                if dictionary.count == FirebaseUtils.numberChildOfUser {
                     
-                    for button in self.btnStars{
-                        if (button.tag <= 5 && (button.tag - 1) % 5 < listening){
-                            //selected
-                            button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
-                        }else  if (button.tag <= 10 && button.tag > 5 && (button.tag - 1) % 5 < speaking){
-                            button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
-                        }else if (button.tag <= 15 && button.tag > 10 && (button.tag - 1) % 5 < pronunciation){
-                            button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
-                        }else{
-                            //not selected
-                            button.setTitleColor(UIColor.lightGray, for: .normal)
-                        }
-                    }
-                   
-              
-            })
+                    self.statusList.removeAll()
+                    
+                    self.loadStatus(userid: userid,  username: username, avatar: self.avatar.image!)
+                    
+                }
+
+            }
+        })
+        
+        //load data of level
+        Database.database().reference().child("user_profile/\(currentID)").child("skill").observe(.value, with: { (snapshot) -> Void in
             
+            let child = snapshot.value as! [String:Any]
+            let listening = child["listening skill"] as? Int ?? 0
+            let speaking = child["speaking skill"] as? Int ?? 0
+            let pronunciation = child["pronunciation skill"] as? Int ?? 0
+                    
+            for button in self.btnStars{
+                if (button.tag <= 5 && (button.tag - 1) % 5 < listening){
+                    //selected
+                    button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
+                }else  if (button.tag <= 10 && button.tag > 5 && (button.tag - 1) % 5 < speaking){
+                    button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
+                }else if (button.tag <= 15 && button.tag > 10 && (button.tag - 1) % 5 < pronunciation){
+                    button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
+                }else{
+                    //not selected
+                    button.setTitleColor(UIColor.lightGray, for: .normal)
+                }
+            }
+              
+        })
         
     }
     
@@ -205,50 +224,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         
         setOnLogoutTapped()
         setOnAvatarTapped()
-    }
-    
-    
-    func initUsername(userid: String){
-        if currentID == ""{
-            let user = Auth.auth().currentUser
-            currentID = userid
-        }
-            
-            let queryRef = Database.database().reference().child("user_profile/\(currentID)").observe(.value, with: { (snapshot) -> Void in
-                
-                if let dictionary = snapshot.value as? [String:Any] {
-                    let username = dictionary["username"] as? String ?? ""
-                    self.username.text = username
-                    
-                    if let url = dictionary["profile_pic"] {
-                        if let imgUrl =  URL(string: url as! String){
-                            let data = try? Data(contentsOf: imgUrl)
-                            
-                            if let imageData = data {
-                                let profilePic = UIImage(data: data!)
-                                self.avatar.image = profilePic
-                            }
-                            
-                        }
-                        
-                        
-                    }
-                    
-                    if dictionary.count == FirebaseUtils.numberChildOfUser {
-                        
-                        self.statusList.removeAll()
-                        
-                        self.loadStatus(userid: userid,  username: username, avatar: self.avatar.image!)
-
-                    }
-                    
-                    
-                    
-                }
-                
-            })
-        
-        
     }
     
     
@@ -295,9 +270,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print(info)
@@ -366,7 +339,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         cell.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
         cell.layer.cornerRadius = 15
         
-        let status = statusList[indexPath.row]
+        let status = statusList[statusList.count - 1 - indexPath.row]
         let x = indexPath.row
         print("content: \(status.content)")
         
@@ -393,15 +366,4 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     }
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

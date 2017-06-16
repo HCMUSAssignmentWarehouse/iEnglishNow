@@ -31,63 +31,70 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func loadData(){
             
-            let queryRef = Database.database().reference().child("status").observe(.value, with: { (snapshot) -> Void in
-                for item in snapshot.children {
-                    let status = (item as! DataSnapshot).value as! [String:AnyObject]
-                    
-                    if status.count == FirebaseUtils.numberChildStatus{
-                        let user = status["user"] as! String
-                        let content = status["content"] as! String
-                        let time = status["time"] as! TimeInterval
-                        let likeNumber = status["like_number"] as! Int
-                        let isUserLiked = status["isUserLiked"] as! Bool
-                        let username = status["username"] as! String
+        let queryRef = Database.database().reference().child("status").observe(.value, with: { (snapshot) -> Void in
+                
+            self.statusList.removeAll()
+            
+            //go to each status
+            for item in snapshot.children {
+            let status = (item as! DataSnapshot).value as! [String:AnyObject]
+                
+            // if status have enough child (it means no error appear)
+            if status.count == FirebaseUtils.numberChildStatus{
+                let user = status["user"] as! String
+                let content = status["content"] as! String
+                let time = status["time"] as! TimeInterval
+                let likeNumber = status["like_number"] as! Int
+                let isUserLiked = status["isUserLiked"] as! Bool
+                let username = status["username"] as! String
                         
-                        var avatar: UIImage?
-                        var photo:UIImage?
+                var avatar: UIImage?
+                var photo:UIImage?
                         
-                        if let url = status["photo"] {
-                            if let imgUrl =  URL(string: url as! String){
-                                let data = try? Data(contentsOf: imgUrl)
+                if let url = status["photo"] {
+                    if let imgUrl =  URL(string: url as! String){
+                        let data = try? Data(contentsOf: imgUrl)
                                 
-                                if let imageData = data {
-                                    let profilePic = UIImage(data: data!)
-                                    photo = profilePic
-                                }
+                        if let imageData = data {
+                            let profilePic = UIImage(data: data!)
+                            photo = profilePic
+                        }
                                 
-                            }
-                        }
-                        
-                        if let url = status["avatar"] {
-                            if let imgUrl =  URL(string: url as! String){
-                                let data = try? Data(contentsOf: imgUrl)
-                                
-                                if let imageData = data {
-                                    let profilePic = UIImage(data: data!)
-                                    avatar = profilePic
-                                }
-                                
-                            }
-                        }
-                        
-                        if avatar == nil{
-                            avatar = UIImage(named: "sample.jpg")
-                        }
-                        
-                        if photo == nil{
-                            self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: user ,username: username, avatar: avatar!, content: content, time: time, likeNumber: likeNumber , isUserLiked: isUserLiked))
-                        } else {
-                            self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: user , username: username, avatar: avatar! , content: content, time: time, photo: photo!, likeNumber: likeNumber , isUserLiked: isUserLiked))
-                        }
-                        
-                        self.table.reloadData()
-                        
-                        
-
                     }
-                    
-                    
                 }
+                        
+                if let url = status["avatar"] {
+                    if let imgUrl =  URL(string: url as! String){
+                        let data = try? Data(contentsOf: imgUrl)
+                                
+                        if let imageData = data {
+                            let profilePic = UIImage(data: data!)
+                            avatar = profilePic
+                        }
+                                
+                    }
+                }
+                
+                //if no avatar -> set default avatar
+                if avatar == nil{
+                    avatar = UIImage(named: "sample.jpg")
+                }
+                        
+                if photo == nil{
+                    
+                    //if photo is nil -> can't constructure with a nil param -> call constructure without photo
+                    self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: user ,username: username, avatar: avatar!, content: content, time: time, likeNumber: likeNumber , isUserLiked: isUserLiked))
+                } else {
+                    
+                    //call constructure with photo
+                    self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: user , username: username, avatar: avatar! , content: content, time: time, photo: photo!, likeNumber: likeNumber , isUserLiked: isUserLiked))
+                }
+                        
+                self.table.reloadData()
+                        
+            }
+                    
+            }
         })
     }
     
@@ -107,7 +114,7 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
         cell.layer.cornerRadius = 15
         
-        let status = statusList[indexPath.row]
+        let status = statusList[statusList.count - 1 - indexPath.row]
         
         cell.status = status
         
@@ -129,6 +136,8 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if status.isUserLiked == true {
             cell.btnLike.setBackgroundImage(UIImage(named: "liked.png"), for: UIControlState.normal)
+        } else {
+            cell.btnLike.setBackgroundImage(UIImage(named: "like.png"), for: UIControlState.normal)
         }
         
         return cell
@@ -144,14 +153,5 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
         return 1
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

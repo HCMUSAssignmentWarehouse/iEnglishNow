@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController {
+class LoginVC: UIViewController {
 
     @IBOutlet weak var txtPassword: UITextField!
     
@@ -20,24 +20,24 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var btnLogin: UIButton!
     
+    @IBOutlet var txtError: UILabel!
+    
     
     @IBAction func Login(_ sender: UIButton) {
         //self.performSegue(withIdentifier: "LoginSuccessSegue", sender: self)
-                if let email = txtName.text , let password = txtPassword.text{
+        if let email = txtName.text , let password = txtPassword.text{
             Auth.auth().signIn(withEmail: email,password:password,completion:{uer,error in
-                if let firebaseError = error{
-                    print(firebaseError.localizedDescription)
+            if let firebaseError = error{
+                    self.txtError.text = firebaseError.localizedDescription
                     return
                 }
                 print("Login Success!")
-                self.performSegue(withIdentifier: "LoginSuccessSegue", sender: self)
-
-                
+                self.performSegue(withIdentifier: "LoginSuccessSegue", sender: self)                
 
             })
         }
         else {
-            print("Email or password is invalid!")
+            txtError.text = "Email or password is invalid!"
         }
 
       
@@ -57,14 +57,9 @@ class ViewController: UIViewController {
         passwordView.layer.cornerRadius = 5
         passwordView.layer.borderWidth = 1
         passwordView.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
-        // Do any additional setup after loading the view, typically from a nib.
+
     }
 
-    func showModal() {
-        let modalViewController = LoginPopupVC()
-        modalViewController.modalPresentationStyle = .overCurrentContext
-        present(modalViewController, animated: true, completion: nil)
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

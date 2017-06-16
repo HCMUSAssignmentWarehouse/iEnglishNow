@@ -67,14 +67,16 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
                             userRef.child("isUserLiked").setValue(false)
 
                             self.performSegue(withIdentifier: "SegueAfterPost", sender: nil)
-                            print("post success!")
+                        
+                            
                         }else{
                             print(error?.localizedDescription)
                         }
                     }
                 }
 
-            }else{
+            } else {
+                
                 let statusRef = databaseRef.child("status").childByAutoId()
                 
                 statusRef.child("photo").setValue("")
@@ -96,11 +98,15 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
                 
                 self.performSegue(withIdentifier: "SegueAfterPost", sender: nil)
 
-                print("post success!")
-
             }
             
-            
+        }else {
+            let alert = UIAlertController(title: "Error", message: "Content is empty, post failed!", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                alert.dismiss(animated: true, completion: nil)
+            })
+            present(alert, animated: true, completion: nil)
+            print("post success!")
         }
         
         
@@ -136,14 +142,22 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
             let _username = userDict["username"] as! String
             let url = userDict["profile_pic"]
             self.avatarUrl = url as! String?
-            let imgUrl =  URL(string: url as! String)
-            let data = try? Data(contentsOf: imgUrl!)
+            
+            if let url = userDict["profile_pic"] {
+                if let imgUrl =  URL(string: url as! String){
+                    let data = try? Data(contentsOf: imgUrl)
                     
-            if let imageData = data {
-                let profilePic = UIImage(data: data!)
-                self.avatar.image = profilePic
-                        
+                    if let imageData = data {
+                        let profilePic = UIImage(data: data!)
+                        self.avatar.image = profilePic
+                    }
+                    
+                }
+                
+                
             }
+            
+            
             self.username.text = _username
                     
             

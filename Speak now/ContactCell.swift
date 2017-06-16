@@ -8,15 +8,14 @@
 
 import UIKit
 
-class ContactTableViewCell: UITableViewCell {
+class ContactCell: UITableViewCell {
 
     
     @IBOutlet var avatar: UIImageView!
     
     @IBOutlet var txtName: UILabel!
     
-    @IBOutlet var txtContent: UILabel!
-    
+    @IBOutlet var txtContent: UILabel!    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -27,12 +27,10 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         
+        //to handle event click on anywhere on screen to disappear keyboard
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        
         self.collectionView?.backgroundView = UIView(frame:(self.collectionView?.bounds)!)
         self.collectionView?.backgroundView!.addGestureRecognizer(tapGestureRecognizer)
-        
-        
         
         if isTheFirstLoad == true{
             isTheFirstLoad = false
@@ -40,26 +38,17 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
 
         }
         
-        
-        
         setupInputComponents()
         viewScrollButton()
     }
     
-   
-    
     
     func handleTap(recognizer: UITapGestureRecognizer) {
-        // Handle the tap gesture
-        
         self.view.endEditing(true)
-        
-        
-        
     }
     
     
-    
+    //to handle event scroll the last item up to
     func viewScrollButton() {
         let lastItem = collectionView(self.collectionView!, numberOfItemsInSection: 0) - 1
         if (lastItem >= 0){
@@ -93,6 +82,7 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         let message = messages[indexPath.item]
         cell.bubbleWidthAnchor?.constant = estimateFrameForText(message.text!).width + 32
 
+        //if the message is of other user
         if message.fromId != Auth.auth().currentUser?.uid{
             cell.bubbleView.backgroundColor = UIColor.lightGray//(red:229, green: 232, blue:232, alpha: 1.0)
             cell.textView.textColor = UIColor.black
@@ -102,32 +92,20 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
             cell.profileImageView.image = currentContact?.avatar
             
         }
+            //if the message is of current user
         else {
             cell.bubbleView.backgroundColor = UIColor.blue //(red:30, green: 136, blue: 229, alpha: 1.0)
             cell.textView.textColor = UIColor.white
-
             cell.bubbleViewRightAnchor?.isActive = true
             cell.bubbleViewLeftAnchor?.isActive = false
             cell.profileImageView.isHidden = true
         }
         
-
-        
-        if (message.text != nil){
         cell.textView.text = message.text
-        }else{
-            cell.textView.text = "error"
-        }
-        //lets modify the bubbleView's width somehow???
-        
         
         return cell
     }
     
-    func handleAvatarTap(gesture: UIGestureRecognizer){
-        print("tapped")
-        //self.performSegue(withIdentifier: "SegueProfile", sender: nil)
-    }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView?.collectionViewLayout.invalidateLayout()
@@ -201,7 +179,7 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
     }
     
     func handleSend() {
-            saveMessage(receiceId: (currentContact?.id)!)
+        saveMessage(receiceId: (currentContact?.id)!)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -222,43 +200,54 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         if let user = Auth.auth().currentUser{
             
             let queryRef = Database.database().reference().child("message/private").observe(.value, with: { (snapshot) -> Void in
+                
+                
+                //go to each message in private tree
                 for item in snapshot.children {
-                    let receiveUser = item as! DataSnapshot
-                    let uid = receiveUser.key
+                    let message = item as! DataSnapshot
+                    let uid = message.key
                     
+                    //if the message is betweent user and other
                     if uid.range(of:user.uid) != nil{
                         
                         let listId = uid.components(separatedBy: " ")
                         
+                        //if the message is between user and current user
                         if listId[0] == self.currentContact?.id || listId[1] == self.currentContact?.id{
                             
                             self.messages.removeAll()
 
-                            for msg in receiveUser.children{
+                            let temp = message.value as! [String:AnyObject]                            
+                            
+                            let numberMessage = temp.count
+
+                            var count = 1
+                            //get all message betweent user nad current user
+                            for msg in message.children{
                                 
-                                let userDict = (msg as! DataSnapshot).value as! [String:AnyObject]
+                                if count < numberMessage {
                                 
-                                if userDict.count >= 3{
-                                    let sender = userDict["sender"] as! String
-                                    let text = userDict["text"] as! String
-                                    let time = userDict["time"] as! TimeInterval
+                                    let userDict = (msg as! DataSnapshot).value as! [String:AnyObject]
+                                
+                                    if userDict.count >= 3{
+                                        let sender = userDict["sender"] as! String
+                                        let text = userDict["text"] as! String
+                                        let time = userDict["time"] as! TimeInterval
                                     
-                                    self.messages.append(Message(fromId: sender, text: text, timestamp: time))
+                                        self.messages.append(Message(fromId: sender, text: text, timestamp: time))
                                     
-                                    
-                                    self.collectionView?.reloadData()
-                                    self.viewScrollButton()
+                                        //reload collectionview
+                                        self.collectionView?.reloadData()
+                                        self.viewScrollButton()
+                                    }
+                                    count += 1
                                 }
                                 
-                                
                             }
-                            
-                            
                             
                         }
                         
                     }
-                    
                     
                 }
             })
@@ -272,6 +261,8 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         
         let user = Auth.auth().currentUser
         
+        
+        //create message'id
         var child : String?
         if (user?.uid)! > receiceId{
             child = (user?.uid)! + " " +  receiceId
@@ -280,6 +271,12 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         }
         
         let userRef = Database.database().reference().child("message").child("private").child(child!)
+        
+        //save the lastest message
+        userRef.child("lastest_text").setValue(inputTextField.text)
+        
+        
+        
         let childRef = userRef.childByAutoId()
         if (user?.uid)! != nil && inputTextField.text != nil && Date.timeIntervalBetween1970AndReferenceDate != nil{
             childRef.child("sender").setValue((user?.uid)!)
@@ -291,7 +288,9 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         
         self.messages.removeAll()
         inputTextField.text = ""
-            }
+    }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.collectionView?.endEditing(true)
     }
@@ -305,8 +304,7 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
             let des = segue.destination as! ProfileVC
             des.currentID = (currentContact?.id)!
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+      
     }
     
 
