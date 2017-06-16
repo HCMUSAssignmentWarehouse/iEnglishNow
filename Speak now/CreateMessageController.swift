@@ -290,8 +290,8 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
                 
                 //got to each message
                 for item in snapshot.children {
-                    let receiveUser = item as! DataSnapshot
-                    let uid = receiveUser.key
+                    let message = item as! DataSnapshot
+                    let uid = message.key
                     
                     //if key has id of user
                     if uid.range(of:user.uid) != nil{
@@ -304,21 +304,31 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
                             
                             self.messages.removeAll()
                             
-                            for msg in receiveUser.children{
+                            let temp = message.value as! [String:AnyObject]
+                            
+                            let numberMessage = temp.count
+                            
+                            var count = 1
+                            
+                            for msg in message.children{
                                 
-                                let userDict = (msg as! DataSnapshot).value as! [String:AnyObject]
+                                if count < numberMessage{
                                 
-                                if userDict.count >= 3{
-                                    let sender = userDict["sender"] as! String
-                                    let text = userDict["text"] as! String
-                                    let time = userDict["time"] as! TimeInterval
+                                    let userDict = (msg as! DataSnapshot).value as! [String:AnyObject]
+                                
+                                    if userDict.count >= 3{
+                                        let sender = userDict["sender"] as! String
+                                        let text = userDict["text"] as! String
+                                        let time = userDict["time"] as! TimeInterval
                                     
-                                    self.messages.append(Message(fromId: sender, text: text, timestamp: time))
-                                    self.collectionView?.reloadData()
-                                    self.viewScrollButton()
+                                        self.messages.append(Message(fromId: sender, text: text, timestamp: time))
+                                        self.collectionView?.reloadData()
+                                        self.viewScrollButton()
+                                    }
+                                    
+                                    count += 1
+                                
                                 }
-                                
-                                
                             }
                             
                             
