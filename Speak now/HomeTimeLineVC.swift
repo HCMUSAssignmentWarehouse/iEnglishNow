@@ -40,12 +40,11 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
             let status = (item as! DataSnapshot).value as! [String:AnyObject]
                 
             // if status have enough child (it means no error appear)
-            if status.count == FirebaseUtils.numberChildStatus{
+            if status.count >= FirebaseUtils.numberChildStatus - 1{
                 let user = status["user"] as! String
                 let content = status["content"] as! String
                 let time = status["time"] as! TimeInterval
                 let likeNumber = status["like_number"] as! Int
-                let isUserLiked = status["isUserLiked"] as! Bool
                 let username = status["username"] as! String
                         
                 var avatar: UIImage?
@@ -79,7 +78,23 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
                 if avatar == nil{
                     avatar = UIImage(named: "sample.jpg")
                 }
-                        
+                
+                var isUserLiked: Bool = false
+                
+                if status.count == FirebaseUtils.numberChildStatus {
+                    let likes = ((item as! DataSnapshot).childSnapshot(forPath: "like") as! DataSnapshot).value as! [String:AnyObject]
+                    
+                    if let user = Auth.auth().currentUser{
+                        if (likes.index(forKey: user.uid) != nil) {
+                            let isLiked = likes[user.uid]as! Bool
+                            if isLiked == true {
+                                isUserLiked = true
+                            }
+                        }
+                    }
+
+                }
+                
                 if photo == nil{
                     
                     //if photo is nil -> can't constructure with a nil param -> call constructure without photo

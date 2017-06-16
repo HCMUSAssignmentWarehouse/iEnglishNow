@@ -56,7 +56,6 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
                             statusRef.child("content").setValue(self.txtContent.text)
                             statusRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
                             statusRef.child("like_number").setValue(0)
-                            statusRef.child("isUserLiked").setValue(false)
                             
                             //save to user_root
                             let userRef = databaseRef.child("user_profile").child((currentUser?.uid)!).child("status").childByAutoId()
@@ -64,7 +63,6 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
                             userRef.child("content").setValue(self.txtContent.text)
                             userRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
                             userRef.child("like_number").setValue(0)
-                            userRef.child("isUserLiked").setValue(false)
 
                             self.performSegue(withIdentifier: "SegueAfterPost", sender: nil)
                         
@@ -84,17 +82,16 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
                 statusRef.child("content").setValue(self.txtContent.text)
                 statusRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
                 statusRef.child("like_number").setValue(0)
-                statusRef.child("isUserLiked").setValue(false)
                 statusRef.child("username").setValue(username.text)
                 statusRef.child("avatar").setValue(avatarUrl)
                 
+                let x = statusRef.key
                 
-                let userRef = databaseRef.child("user_profile").child((currentUser?.uid)!).child("status").childByAutoId()
+                let userRef = databaseRef.child("user_profile").child((currentUser?.uid)!).child("status").child(x)
                 userRef.child("photo").setValue("")
                 userRef.child("content").setValue(self.txtContent.text)
                 userRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
                 userRef.child("like_number").setValue(0)
-                userRef.child("isUserLiked").setValue(false)
                 
                 self.performSegue(withIdentifier: "SegueAfterPost", sender: nil)
 

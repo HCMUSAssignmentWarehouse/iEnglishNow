@@ -71,47 +71,73 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
 
     func loadStatus(userid: String,  username: String, avatar: UIImage){
         
+        
         if currentID == ""{
             currentID = userid
         }
         
         Database.database().reference().child("user_profile/\(currentID)").child("status").observe(.value, with: { (snapshot) -> Void in
             
+            self.statusList.removeAll()
+            
             //go  to each status
             for item in snapshot.children {
+                
                 let status = (item as! DataSnapshot).value as! [String:AnyObject]
-                let content = status["content"] as! String
-                let time = status["time"] as! TimeInterval
-                let likeNumber = status["like_number"] as! Int
-                let isUserLiked = status["isUserLiked"] as! Bool
                 
-                var photo:UIImage?
-                
-                if let url = status["photo"] {
-                    if let imgUrl =  URL(string: url as! String){
-                        let data = try? Data(contentsOf: imgUrl)
+                if status.count >= FirebaseUtils.numberChildUserStatus - 1{
+                    let content = status["content"] as! String
+                    let time = status["time"] as! TimeInterval
+                    let likeNumber = status["like_number"] as! Int
+                    
+                    var photo:UIImage?
+                    
+                    if let url = status["photo"] {
+                        if let imgUrl =  URL(string: url as! String){
+                            let data = try? Data(contentsOf: imgUrl)
+                            
+                            if let imageData = data {
+                                let profilePic = UIImage(data: data!)
+                                photo = profilePic
+                            }
+                            
+                        }
+                    }
+                    
+                    
+                    var isUserLiked: Bool = false
+                    
+                    if status.count == FirebaseUtils.numberChildUserStatus {
+                        let likes = ((item as! DataSnapshot).childSnapshot(forPath: "like") as! DataSnapshot).value as! [String:AnyObject]
                         
-                        if let imageData = data {
-                            let profilePic = UIImage(data: data!)
-                            photo = profilePic
+                        if let user = Auth.auth().currentUser{
+                            if (likes.index(forKey: user.uid) != nil) {
+                                let isLiked = likes[user.uid]as! Bool
+                                if isLiked == true {
+                                    isUserLiked = true
+                                }
+                            }
                         }
                         
                     }
-                }
-                
-                
-                if photo == nil{
-                    //if photo is nil -> call constructure has photo failed -->
-                    //call constructure without photo
-                    self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: userid ,username: username, avatar: avatar, content: content, time: time, likeNumber: likeNumber , isUserLiked: isUserLiked))
-                } else {
                     
-                    //call constructure has photo
-                    self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: userid , username: username, avatar: avatar , content: content, time: time, photo: photo!, likeNumber: likeNumber , isUserLiked: isUserLiked))
+                
+                    
+                    if photo == nil{
+                        //if photo is nil -> call constructure has photo failed -->
+                        //call constructure without photo
+                        self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: self.currentID ,username: username, avatar: avatar, content: content, time: time, likeNumber: likeNumber , isUserLiked: isUserLiked))
+                    } else {
+                        
+                        //call constructure has photo
+                        self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: self.currentID , username: username, avatar: avatar , content: content, time: time, photo: photo!, likeNumber: likeNumber , isUserLiked: isUserLiked))
+                    }
+                    
+                    
+                    self.tableStatus.reloadData()
+
                 }
                 
-                
-                self.tableStatus.reloadData()
                 
                 
             }
@@ -339,23 +365,35 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         cell.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
         cell.layer.cornerRadius = 15
         
-        let status = statusList[statusList.count - 1 - indexPath.row]
-        let x = indexPath.row
-        print("content: \(status.content)")
-        
-        cell.txtContent.text = status.content
-        let number:Int = status.likeNumber!
-        cell.txtNumberOfLike.text = "\(number)"
-        cell.avatar.image = status.avatar
-        cell.txtName.text = status.username
-        
-        var milliseconds = status.time
-        
-        let date = NSDate(timeIntervalSince1970: TimeInterval(milliseconds!))
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        formatter.locale = NSLocale(localeIdentifier: "en_US") as Locale!
-        cell.txtTime.text = formatter.string(from: date as Date)
+        if statusList.count > 0 {
+            let status = statusList[statusList.count - 1 - indexPath.row]
+            
+            
+            cell.status = status
+            
+            
+            cell.txtContent.text = status.content
+            let number:Int = status.likeNumber!
+            cell.txtNumberOfLike.text = "\(number)"
+            cell.avatar.image = status.avatar
+            cell.txtName.text = status.username
+            
+            var milliseconds = status.time
+            
+            let date = NSDate(timeIntervalSince1970: TimeInterval(milliseconds!))
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+            formatter.locale = NSLocale(localeIdentifier: "en_US") as Locale!
+            cell.txtTime.text = formatter.string(from: date as Date)
+            
+            if status.isUserLiked == true {
+                cell.btnLike.setBackgroundImage(UIImage(named: "liked.png"), for: UIControlState.normal)
+            } else {
+                cell.btnLike.setBackgroundImage(UIImage(named: "like.png"), for: UIControlState.normal)
+            }
+            
+
+        }
         
         return cell
         
