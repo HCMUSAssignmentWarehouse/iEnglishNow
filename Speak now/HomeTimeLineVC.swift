@@ -13,6 +13,7 @@ import FirebaseDatabase
 class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     
+        
     @IBOutlet weak var table: UITableView!
     
     var statusList: [Status] = [Status]()
@@ -147,7 +148,16 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
         formatter.locale = NSLocale(localeIdentifier: "en_US") as Locale!
         cell.txtTime.text = formatter.string(from: date as Date)
         
-        
+        if status.photo != nil {
+            cell.photo.isHidden = false
+            cell.photoBigHeightAnchor?.isActive = true
+            cell.photoSmallHeightAnchor?.isActive = false
+            cell.photo.image = status.photo
+        }else {
+            cell.photo.isHidden = true
+            cell.photoSmallHeightAnchor?.isActive = true
+            cell.photoBigHeightAnchor?.isActive = false
+        }
         
         if status.isUserLiked == true {
             cell.btnLike.setBackgroundImage(UIImage(named: "liked.png"), for: UIControlState.normal)
@@ -155,18 +165,28 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.btnLike.setBackgroundImage(UIImage(named: "like.png"), for: UIControlState.normal)
         }
         
+        
         return cell
 
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
-    }
     
+   /* func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //tableView.cellForRow(at: indexPath)?.sizeToFit()
+        return 180
+    }*/
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.table.estimatedRowHeight = 200
+        self.table.rowHeight = UITableViewAutomaticDimension
+    }
 
 }

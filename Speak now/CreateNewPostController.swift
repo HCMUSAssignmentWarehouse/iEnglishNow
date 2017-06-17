@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseStorage
 
 class CreateNewPostController: UIViewController , UIImagePickerControllerDelegate , UINavigationControllerDelegate {
 
@@ -38,7 +39,7 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
             let userRef = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid)
             
             var databaseRef = Database.database().reference()
-            var storageRef = Storage.storage().reference()
+            let storageRef = Storage.storage().reference()
             var currentUser = Auth.auth().currentUser
             
             if selectedImageFromPicker != nil {
@@ -56,7 +57,8 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
                             statusRef.child("content").setValue(self.txtContent.text)
                             statusRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
                             statusRef.child("like_number").setValue(0)
-                            
+                            statusRef.child("username").setValue(self.username.text)
+                            statusRef.child("avatar").setValue(self.avatarUrl)
                             //save to user_root
                             let userRef = databaseRef.child("user_profile").child((currentUser?.uid)!).child("status").childByAutoId()
                             userRef.child("photo").setValue(downloadUrl?.absoluteString)
@@ -125,8 +127,28 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
         
         viewAddPhoto.layer.borderWidth = 1
         viewAddPhoto.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
+        setOnAddPhotoTapped()
+
+    }
+    
+    
+    func setOnAddPhotoTapped(){
+        btnAddPhoto.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target:self, action: #selector(tappedAddPhotoImage))
+        btnAddPhoto.addGestureRecognizer(tapRecognizer)
+    }
+    
+    
+    func tappedAddPhotoImage(gestureRecognizer: UIGestureRecognizer){
+        print("tapped")
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker,animated: true,completion:nil)
+        
         
     }
+
     
     func initUser(){
         
@@ -164,7 +186,6 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         
         if let editedimage = info["UIImagePickerControllerEditedImage"]{
             selectedImageFromPicker = editedimage as! UIImage

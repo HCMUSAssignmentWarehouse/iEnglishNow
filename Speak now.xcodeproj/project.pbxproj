@@ -286,10 +286,8 @@
 		FA161FBF1ED29E7200211D89 /* HomeTimeLine */ = {
 			isa = PBXGroup;
 			children = (
+				FA189FD21EF4D8FF009DABDE /* controller */,
 				FA40BC761EF1439500C3EFA0 /* model */,
-				FA0757F41ED1C7CF006CE695 /* HomeTimeLineVC.swift */,
-				FA0757FA1ED1E21A006CE695 /* CellOfTimeLineVC.swift */,
-				FA40BC741EF1370100C3EFA0 /* CreateNewPostController.swift */,
 			);
 			name = HomeTimeLine;
 			sourceTree = "<group>";
@@ -303,11 +301,34 @@
 			name = Conversation;
 			sourceTree = "<group>";
 		};
-		FA1AA5041ED3124F004972BF /* Plugins */ = {
+		FA189FD01EF4D8BE009DABDE /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				FA4BDBFD1EED872500D7F03E /* ChatViewController.swift */,
+				FA4BDC021EED97AF00D7F03E /* DetailChatViewController.swift */,
+				FA1B59791EEF030800AA2173 /* ContactCell.swift */,
+				FA06EE0E1EF01FDC002674BC /* CreateMessageController.swift */,
+				FA1EA44A1EEF9032005357BF /* ChatMessageCell.swift */,
 			);
-			name = Plugins;
+			name = controller;
+			sourceTree = "<group>";
+		};
+		FA189FD11EF4D8E4009DABDE /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA161FC11ED2AD4500211D89 /* ProfileVC.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		FA189FD21EF4D8FF009DABDE /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA0757F41ED1C7CF006CE695 /* HomeTimeLineVC.swift */,
+				FA0757FA1ED1E21A006CE695 /* CellOfTimeLineVC.swift */,
+				FA40BC741EF1370100C3EFA0 /* CreateNewPostController.swift */,
+			);
+			name = controller;
 			sourceTree = "<group>";
 		};
 		FA1B59701EEECF8C00AA2173 /* model */ = {
@@ -365,7 +386,6 @@
 			children = (
 				FA40BC791EF158EC00C3EFA0 /* Utils */,
 				FA0804671EEC1A1900704749 /* GoogleService-Info.plist */,
-				FA1AA5041ED3124F004972BF /* Plugins */,
 				FAF3DA1B1ED2FAB5007B767D /* VideoCall */,
 				FA12D58C1ED168EB009D1B02 /* Prepare Screen */,
 				FA1CD05B1ECE97BE006AF4A6 /* Main Screen */,
@@ -400,11 +420,11 @@
 		FA1CD05B1ECE97BE006AF4A6 /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
+				FA0757F21ED1B931006CE695 /* MainScreen.storyboard */,
 				FA4BDBF81EED7ABD00D7F03E /* Chat */,
 				FAF3DA1E1ED2FB23007B767D /* Profile */,
 				FA161FC01ED29E8000211D89 /* Conversation */,
 				FA161FBF1ED29E7200211D89 /* HomeTimeLine */,
-				FA0757F21ED1B931006CE695 /* MainScreen.storyboard */,
 			);
 			name = "Main Screen";
 			sourceTree = "<group>";
@@ -428,12 +448,8 @@
 		FA4BDBF81EED7ABD00D7F03E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				FA06EE0E1EF01FDC002674BC /* CreateMessageController.swift */,
-				FA1EA44A1EEF9032005357BF /* ChatMessageCell.swift */,
+				FA189FD01EF4D8BE009DABDE /* controller */,
 				FA4BDBFF1EED937000D7F03E /* model */,
-				FA4BDBFD1EED872500D7F03E /* ChatViewController.swift */,
-				FA4BDC021EED97AF00D7F03E /* DetailChatViewController.swift */,
-				FA1B59791EEF030800AA2173 /* ContactCell.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -458,8 +474,8 @@
 		FAF3DA1E1ED2FB23007B767D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				FA189FD11EF4D8E4009DABDE /* controller */,
 				FA1B59701EEECF8C00AA2173 /* model */,
-				FA161FC11ED2AD4500211D89 /* ProfileVC.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";

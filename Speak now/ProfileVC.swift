@@ -386,6 +386,19 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
             formatter.locale = NSLocale(localeIdentifier: "en_US") as Locale!
             cell.txtTime.text = formatter.string(from: date as Date)
             
+            if status.photo != nil {
+                cell.photo.isHidden = false
+                cell.photoBigHeightAnchor?.isActive = true
+                cell.photoSmallHeightAnchor?.isActive = false
+                cell.photo.image = status.photo
+            }else {
+                cell.photo.isHidden = true
+                cell.photoSmallHeightAnchor?.isActive = true
+                cell.photoBigHeightAnchor?.isActive = false
+            }
+            
+            
+            
             if status.isUserLiked == true {
                 cell.btnLike.setBackgroundImage(UIImage(named: "liked.png"), for: UIControlState.normal)
             } else {
