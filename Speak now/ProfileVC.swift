@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 
+
 class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate,  UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet var avatar: UIImageView!
@@ -412,9 +413,9 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableStatus.estimatedRowHeight = 200
+        self.tableStatus.rowHeight = UITableViewAutomaticDimension
     }
-    
     
 }
