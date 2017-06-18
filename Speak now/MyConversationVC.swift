@@ -11,11 +11,20 @@ import UIKit
 class MyConversationVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var table: UITableView!
     
+    @IBOutlet var btnMenu: UIBarButtonItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initShow()
+        
+        if  revealViewController() != nil {
+            btnMenu.target = self.revealViewController()
+            btnMenu.action = "revealToggle:"
+            
+            self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
+        }
+        
         // Do any additional setup after loading the view.
     }
     

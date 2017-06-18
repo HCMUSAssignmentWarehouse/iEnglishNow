@@ -10,9 +10,11 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+
 class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     
+    @IBOutlet var btnMenu: UIBarButtonItem!
         
     @IBOutlet weak var table: UITableView!
     
@@ -20,11 +22,27 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    
         initShow()
         loadData()
+        
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if  revealViewController() != nil {
+            btnMenu.target = self.revealViewController()
+            btnMenu.action = "revealToggle:"
+            
+            self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
+        }
+        
+        
+    }
+    
+  
     func initShow(){
         table.delegate = self
         table.dataSource = self

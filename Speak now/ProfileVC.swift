@@ -14,6 +14,11 @@ import FirebaseStorage
 
 class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate,  UITableViewDelegate, UITableViewDataSource{
 
+    @IBAction func btnBack(_ sender: Any) {
+            }
+    
+    @IBOutlet var btnBack: UIBarButtonItem!
+    
     @IBOutlet var avatar: UIImageView!
     
     @IBOutlet var numberView: UIView!

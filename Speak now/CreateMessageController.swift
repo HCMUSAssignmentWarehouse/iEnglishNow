@@ -83,7 +83,7 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         
         //if the message is of other user
         if message.fromId != Auth.auth().currentUser?.uid{
-            cell.bubbleView.backgroundColor = UIColor.gray//(red:229, green: 232, blue:232, alpha: 1.0)
+            cell.bubbleView.backgroundColor = UIColor(red:229/255, green: 232/255, blue:232/255, alpha: 1.0)
             cell.textView.textColor = UIColor.black
             cell.bubbleViewRightAnchor?.isActive = false
             cell.bubbleViewLeftAnchor?.isActive = true
@@ -93,7 +93,7 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         }
             //if the message is of current user
         else {
-            cell.bubbleView.backgroundColor = UIColor.blue //(red:30, green: 136, blue: 229, alpha: 1.0)
+            cell.bubbleView.backgroundColor = UIColor(red:30/255, green: 136/255, blue: 229/255, alpha: 1.0)
             cell.textView.textColor = UIColor.white
             cell.bubbleViewRightAnchor?.isActive = true
             cell.bubbleViewLeftAnchor?.isActive = false

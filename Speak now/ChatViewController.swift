@@ -13,6 +13,7 @@ import FirebaseStorage
 
 class ChatViewController: UITableViewController {
 
+    @IBOutlet var btnMenu: UIBarButtonItem!
     
     @IBOutlet var table: UITableView!
     
@@ -23,7 +24,12 @@ class ChatViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadMessage()
-        //self.initAvatar()
+        if  revealViewController() != nil {
+            btnMenu.target = self.revealViewController()
+            btnMenu.action = "revealToggle:"
+            
+            self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
+        }
     }
 
     override func didReceiveMemoryWarning() {

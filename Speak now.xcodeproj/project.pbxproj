@@ -10,6 +10,7 @@
 		10B458342B5A9E407E1A5886 /* Pods_Speak_nowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20E8225934024983D42C115 /* Pods_Speak_nowTests.framework */; };
 		E59F95D7DACA5D4B8698C4AC /* Pods_Speak_nowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0B7CC1A86265A1F7C575DF /* Pods_Speak_nowUITests.framework */; };
 		E6A006EF797FC5F21ECF7412 /* Pods_Speak_now.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CAC7EEF0D8B2A1E3C5AB16 /* Pods_Speak_now.framework */; };
+		FA040CA41EF624AA00C6DD99 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA040CA31EF624AA00C6DD99 /* SlideMenuViewController.swift */; };
 		FA06EE0F1EF01FDC002674BC /* CreateMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06EE0E1EF01FDC002674BC /* CreateMessageController.swift */; };
 		FA07574F1ED18C5D006CE695 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = FA0757381ED18C5D006CE695 /* Contents.json */; };
 		FA0757501ED18C5D006CE695 /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0757391ED18C5D006CE695 /* Icon-App-20x20@1x.png */; };
@@ -55,6 +56,8 @@
 		FA12D58E1ED16AF3009D1B02 /* launchIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA12D58D1ED16AF3009D1B02 /* launchIcon.jpg */; };
 		FA161FBE1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA161FBD1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift */; };
 		FA161FC21ED2AD4500211D89 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA161FC11ED2AD4500211D89 /* ProfileVC.swift */; };
+		FA189FDB1EF5797E009DABDE /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA189FDA1EF5797E009DABDE /* SWRevealViewController.m */; };
+		FA18A0201EF58BE3009DABDE /* hamburger.png in Resources */ = {isa = PBXBuildFile; fileRef = FA18A01F1EF58BE3009DABDE /* hamburger.png */; };
 		FA1B59721EEED09E00AA2173 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B59711EEED09E00AA2173 /* Skill.swift */; };
 		FA1B59741EEED1B400AA2173 /* Listening.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B59731EEED1B400AA2173 /* Listening.swift */; };
 		FA1B59761EEED20700AA2173 /* Speaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B59751EEED20700AA2173 /* Speaking.swift */; };
@@ -111,6 +114,7 @@
 		AB1C924DD8B5FDA7E3A6E930 /* Pods-Speak nowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Speak nowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Speak nowUITests/Pods-Speak nowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D20E8225934024983D42C115 /* Pods_Speak_nowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Speak_nowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21CD69DDEC40D86C002731F /* Pods-Speak nowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Speak nowTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Speak nowTests/Pods-Speak nowTests.release.xcconfig"; sourceTree = "<group>"; };
+		FA040CA31EF624AA00C6DD99 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
 		FA06EE0E1EF01FDC002674BC /* CreateMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageController.swift; sourceTree = "<group>"; };
 		FA0757381ED18C5D006CE695 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		FA0757391ED18C5D006CE695 /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
@@ -156,6 +160,10 @@
 		FA12D58D1ED16AF3009D1B02 /* launchIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launchIcon.jpg; sourceTree = "<group>"; };
 		FA161FBD1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCellVCTableViewCell.swift; sourceTree = "<group>"; };
 		FA161FC11ED2AD4500211D89 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		FA189FD31EF53FF6009DABDE /* Speak now-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Speak now-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA189FD91EF5797E009DABDE /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		FA189FDA1EF5797E009DABDE /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		FA18A01F1EF58BE3009DABDE /* hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburger.png; sourceTree = "<group>"; };
 		FA1B59711EEED09E00AA2173 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		FA1B59731EEED1B400AA2173 /* Listening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listening.swift; sourceTree = "<group>"; };
 		FA1B59751EEED20700AA2173 /* Speaking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaking.swift; sourceTree = "<group>"; };
@@ -345,6 +353,7 @@
 		FA1CD01E1ECE97AE006AF4A6 = {
 			isa = PBXGroup;
 			children = (
+				FA18A01F1EF58BE3009DABDE /* hamburger.png */,
 				FA40BC721EF1300200C3EFA0 /* iconPhoto.png */,
 				FA40BC701EF1261500C3EFA0 /* IconEdit.png */,
 				FA4BDBF61EED788200D7F03E /* chaticon.png */,
@@ -384,6 +393,8 @@
 		FA1CD0291ECE97AF006AF4A6 /* Speak now */ = {
 			isa = PBXGroup;
 			children = (
+				FA189FD91EF5797E009DABDE /* SWRevealViewController.h */,
+				FA189FDA1EF5797E009DABDE /* SWRevealViewController.m */,
 				FA40BC791EF158EC00C3EFA0 /* Utils */,
 				FA0804671EEC1A1900704749 /* GoogleService-Info.plist */,
 				FAF3DA1B1ED2FAB5007B767D /* VideoCall */,
@@ -395,6 +406,7 @@
 				FA1CD0391ECE97AF006AF4A6 /* Info.plist */,
 				FA1CD0311ECE97AF006AF4A6 /* Speak_now.xcdatamodeld */,
 				FA12D58A1ED147C7009D1B02 /* FindVC.swift */,
+				FA189FD31EF53FF6009DABDE /* Speak now-Bridging-Header.h */,
 			);
 			path = "Speak now";
 			sourceTree = "<group>";
@@ -425,6 +437,7 @@
 				FAF3DA1E1ED2FB23007B767D /* Profile */,
 				FA161FC01ED29E8000211D89 /* Conversation */,
 				FA161FBF1ED29E7200211D89 /* HomeTimeLine */,
+				FA040CA31EF624AA00C6DD99 /* SlideMenuViewController.swift */,
 			);
 			name = "Main Screen";
 			sourceTree = "<group>";
@@ -558,6 +571,7 @@
 					FA1CD0261ECE97AF006AF4A6 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = HLL98QJQM3;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					FA1CD03D1ECE97B0006AF4A6 = {
@@ -622,6 +636,7 @@
 				FA0757ED1ED19B5D006CE695 /* conversation.png in Resources */,
 				FA40BC731EF1300200C3EFA0 /* iconPhoto.png in Resources */,
 				FA0757531ED18C5D006CE695 /* Icon-App-29x29@1x.png in Resources */,
+				FA18A0201EF58BE3009DABDE /* hamburger.png in Resources */,
 				FA0757F91ED1DF3A006CE695 /* like.png in Resources */,
 				FA0757F71ED1DF2F006CE695 /* liked.png in Resources */,
 				FA40BC711EF1261500C3EFA0 /* IconEdit.png in Resources */,
@@ -809,6 +824,7 @@
 				FA0BB7721ED067A800C6FA1F /* SignUpVC.swift in Sources */,
 				FA1CD0331ECE97AF006AF4A6 /* Speak_now.xcdatamodeld in Sources */,
 				FA1CD02D1ECE97AF006AF4A6 /* LoginVC.swift in Sources */,
+				FA189FDB1EF5797E009DABDE /* SWRevealViewController.m in Sources */,
 				FA161FBE1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift in Sources */,
 				FA1EA44D1EEF90A8005357BF /* Message.swift in Sources */,
 				FA1B597A1EEF030800AA2173 /* ContactCell.swift in Sources */,
@@ -816,6 +832,7 @@
 				FA40BC751EF1370100C3EFA0 /* CreateNewPostController.swift in Sources */,
 				FA1B59721EEED09E00AA2173 /* Skill.swift in Sources */,
 				FA40BC781EF143BC00C3EFA0 /* Status.swift in Sources */,
+				FA040CA41EF624AA00C6DD99 /* SlideMenuViewController.swift in Sources */,
 				FA1B59741EEED1B400AA2173 /* Listening.swift in Sources */,
 				FA0757F51ED1C7CF006CE695 /* HomeTimeLineVC.swift in Sources */,
 				FA0757FD1ED200BF006CE695 /* MyConversationVC.swift in Sources */,
@@ -981,12 +998,15 @@
 			baseConfigurationReference = 0CC9A355D455F5EA6010B749 /* Pods-Speak now.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = HLL98QJQM3;
 				INFOPLIST_FILE = "Speak now/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Nha-T.Tran.Speak-now";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Speak now/Speak now-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -996,12 +1016,14 @@
 			baseConfigurationReference = 6F4ED61515C9C53E9D7212F0 /* Pods-Speak now.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = HLL98QJQM3;
 				INFOPLIST_FILE = "Speak now/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Nha-T.Tran.Speak-now";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Speak now/Speak now-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
