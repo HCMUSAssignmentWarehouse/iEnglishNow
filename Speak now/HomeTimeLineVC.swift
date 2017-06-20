@@ -58,6 +58,7 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
             for item in snapshot.children {
             let status = (item as! DataSnapshot).value as! [String:AnyObject]
                 
+                
             // if status have enough child (it means no error appear)
             if status.count >= FirebaseUtils.numberChildStatus - 1{
                 let user = status["user"] as! String
@@ -65,7 +66,7 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
                 let time = status["time"] as! TimeInterval
                 let likeNumber = status["like_number"] as! Int
                 let username = status["username"] as! String
-                        
+                
                 var avatar: UIImage?
                 var photo:UIImage?
                         
@@ -100,7 +101,7 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 var isUserLiked: Bool = false
                 
-                if status.count == FirebaseUtils.numberChildStatus {
+                if (status.index(forKey: "like") != nil) {
                     let likes = ((item as! DataSnapshot).childSnapshot(forPath: "like") as! DataSnapshot).value as! [String:AnyObject]
                     
                     if let user = Auth.auth().currentUser{
@@ -189,10 +190,12 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
-   /* func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //tableView.cellForRow(at: indexPath)?.sizeToFit()
-        return 180
-    }*/
+    var selectedIndex: Int = 0
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = statusList.count - 1 - indexPath.row
+        performSegue(withIdentifier: "SegueDetailStatus", sender: self)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -207,4 +210,11 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
         self.table.rowHeight = UITableViewAutomaticDimension
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueDetailStatus" {
+            let des = segue.destination as! DetailStatusVC
+            des.status = statusList[selectedIndex]
+        }
+    }
+    
 }

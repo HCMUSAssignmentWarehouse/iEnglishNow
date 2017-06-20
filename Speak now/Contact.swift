@@ -21,6 +21,15 @@ class Contact {
         self._avatar = avatar
         self._lastestText = lastestText
     }
+
+    
+    public init(name: String, id:String, avatar: UIImage){
+        self._id = id;
+        self._name = name;
+        self._avatar = avatar
+    }
+
+    
     
     var lastestText: String{
         return _lastestText!

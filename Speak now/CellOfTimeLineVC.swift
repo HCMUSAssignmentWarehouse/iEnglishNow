@@ -161,7 +161,6 @@ class CellOfTimeLineVC: UITableViewCell {
     
     func onClick(btn: UIButton) {
         
-        print("tapped")
         
         if (status?.isUserLiked == false){
             

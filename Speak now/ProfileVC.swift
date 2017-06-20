@@ -15,7 +15,18 @@ import FirebaseStorage
 class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate,  UITableViewDelegate, UITableViewDataSource{
 
     @IBAction func btnBack(_ sender: Any) {
-            }
+        var storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "MainScreenVC") as UIViewController
+        self.present(controller, animated: true, completion: nil)        
+    }
+    
+    
+    @IBOutlet var btnSendMessage: UIBarButtonItem!
+    
+    
+    @IBAction func actionSendMessage(_ sender: Any) {
+        performSegue(withIdentifier: "SegueSendMessage", sender: nil)
+    }
     
     @IBOutlet var btnBack: UIBarButtonItem!
     
@@ -51,6 +62,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     
     var statusList:[Status] = [Status]()
     
+    var contact: Contact?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +80,9 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
             if let user = Auth.auth().currentUser{
                 loadProfile(userid: ((user.uid) as? String)!)
             }
+            btnSendMessage.isEnabled = false
+            
+            
         } else {
             imgLogout.isHidden = true
             loadProfile(userid: "")
@@ -172,6 +187,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
                 let username = dictionary["username"] as? String ?? ""
                 self.username.text = username
                 
+                
                 if let url = dictionary["profile_pic"] {
                     if let imgUrl =  URL(string: url as! String){
                         let data = try? Data(contentsOf: imgUrl)
@@ -185,11 +201,12 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
                     
                     
                 }
+                self.contact = Contact(name: username, id: self.currentID, avatar: self.avatar.image!)
+                
                 
                 if dictionary.count == FirebaseUtils.numberChildOfUser {
                     
                     self.statusList.removeAll()
-                    
                     self.loadStatus(userid: userid,  username: username, avatar: self.avatar.image!)
                     
                 }
@@ -294,7 +311,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
             
         } catch {
                 print("there was an rror when logout!")
-            }
+        }
         
     }
     
@@ -418,9 +435,29 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         
     }
     
+    var selectedIndex = 0;
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = statusList.count - 1 - indexPath.row
+        performSegue(withIdentifier: "SegueUserDetailStatus", sender: self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.tableStatus.estimatedRowHeight = 200
         self.tableStatus.rowHeight = UITableViewAutomaticDimension
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueSendMessage" {
+            let des = segue.destination as! DetailChatViewController
+            des.currentContact = contact
+        }
+        
+        else if segue.identifier == "SegueUserDetailStatus" {
+            let des = segue.destination as! DetailStatusVC
+            des.status = statusList[selectedIndex]
+        }
+    }
+    
     
 }
