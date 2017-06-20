@@ -936,7 +936,7 @@
                     <connections>
                         <outlet property="btnMenu" destination="wC1-fz-Gno" id="Ofe-DY-cGg"/>
                         <outlet property="table" destination="LD8-bd-1LS" id="DON-Kk-wtO"/>
-                        <segue destination="M7B-vi-xR2" kind="show" identifier="SegueUserDetailStatus" id="jCh-0p-EZx"/>
+                        <segue destination="M7B-vi-xR2" kind="show" identifier="SegueDetailStatus" id="jCh-0p-EZx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugS-wy-cyE" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -529,12 +529,10 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
         _txtUsername.textAlignment = NSTextAlignment.left
         _txtUsername.font = UIFont(name:"Georgia-Bold", size: 18.0)
         _txtUsername.text = commentList[indexPath.row].username
-
         
         let _txtComment = UILabel()
         _txtComment.text = ""
         _txtComment.textAlignment = NSTextAlignment.left
-        _txtComment.textColor = UIColor.lightGray
         _txtComment.sizeToFit()
         _txtComment.frame = CGRect(x: 48, y: 32, width: cell.frame.width - 56 ,  height: cell.frame.height - 40)
         _txtComment.font = UIFont(name: "Georgia" , size: 16)

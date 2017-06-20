@@ -58,6 +58,7 @@ class LoginVC: UIViewController {
         passwordView.layer.borderWidth = 1
         passwordView.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
 
+        txtName.becomeFirstResponder()
     }
 
     
