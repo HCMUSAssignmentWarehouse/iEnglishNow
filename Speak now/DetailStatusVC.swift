@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
 
+    //MARK: -declare
     var commentList: [Comment] = [Comment]()
     var status: Status?
     
@@ -19,7 +20,7 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     
     
-    
+    //MARK: -setup view
     let avatar: UIImageView = {
         let imageview = UIImageView()
         imageview.image = UIImage(named:"sample.jpg")
@@ -184,6 +185,8 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
         // Initialization code
     }
     
+    
+    //MARK: -init to show
     func initShow(){
         
         
@@ -342,15 +345,89 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         txtComment.isUserInteractionEnabled = true
         txtComment.addGestureRecognizer(commentTapRecognizer)
+        
+        avatar.isUserInteractionEnabled = true
+        let avatarTapRecognizer = UITapGestureRecognizer(target:self, action: #selector(tappedAvatarImage))
+        avatar.addGestureRecognizer(avatarTapRecognizer)
+
+        
         loadComment()
         
         onClickBtnLike()
+    }
+    
+    
+    //MARK: -tap event
+    func tappedAvatarImage(gestureRecognizer: UIGestureRecognizer){
+        performSegue(withIdentifier: "SegueProfile", sender: self)
     }
     
     func onClickBtnLike (){
         btnPostComment.addTarget(self, action: #selector(onPost), for: .touchUpInside)
     }
     
+    func tappedCommentImage(gestureRecognizer: UIGestureRecognizer){
+        
+        txtInputComment.becomeFirstResponder()
+    }
+    
+    func tappedLikeImage(gestureRecognizer: UIGestureRecognizer){
+        
+        if (status?.isUserLiked == false){
+            
+            if let user = Auth.auth().currentUser{
+                Database.database().reference().child("status").child((status?.statusId)!).child("like").child(user.uid).setValue(true)
+                
+                var likeNumber = (status?.likeNumber)! + 1
+                Database.database().reference().child("status").child((status?.statusId)!).child("like_number").setValue(likeNumber)
+                
+                txtLikeNumber.text = "\(likeNumber)" + " LIKES"
+                
+                print("status?.user: \(status?.user)")
+                print("status?.statusId: \(status?.statusId)")
+                print("user.uid: \(user.uid)")
+                Database.database().reference().child("user_profile").child((status?.user)!).child("status").child((status?.statusId)!).child("like").child(user.uid).setValue(true)
+                Database.database().reference().child("user_profile").child((status?.user)!).child("status").child((status?.statusId)!).child("like_number").setValue(likeNumber)
+                status?.isUserLiked = true
+                status?.likeNumber = likeNumber
+                
+                btnLike.image =  UIImage(named: "liked.png") //, for: UIControlState.normal)
+            }
+            
+            
+        }
+        else {
+            
+            if let user = Auth.auth().currentUser{
+                Database.database().reference().child("status").child((status?.statusId)!).child("like").child(user.uid).setValue(false)
+                
+                var likeNumber = (status?.likeNumber)! - 1
+                
+                Database.database().reference().child("status").child((status?.statusId)!).child("like_number").setValue(likeNumber)
+                
+                txtLikeNumber.text = "\(likeNumber)" + " LIKES"
+                
+                
+                Database.database().reference().child("user_profile").child((status?.user)!).child("status").child((status?.statusId)!).child("like").child(user.uid).setValue(false)
+                Database.database().reference().child("user_profile").child((status?.user)!).child("status").child((status?.statusId)!).child("like_number").setValue(likeNumber)
+                
+                
+                status?.isUserLiked = false
+                status?.likeNumber = likeNumber
+                
+                
+                btnLike.image =  UIImage(named: "like.png") //, for: UIControlState.normal)
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    
+
+    //MARK: -post event
     func onPost(btn: UIButton) {
         if (txtInputComment.text != ""){
             
@@ -407,68 +484,13 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
 
     }
     
-    
-        func tappedCommentImage(gestureRecognizer: UIGestureRecognizer){
-        
-        txtInputComment.becomeFirstResponder()
-    }
-
-        func tappedLikeImage(gestureRecognizer: UIGestureRecognizer){
-        
-            if (status?.isUserLiked == false){
-                
-                if let user = Auth.auth().currentUser{
-                    Database.database().reference().child("status").child((status?.statusId)!).child("like").child(user.uid).setValue(true)
-                    
-                    var likeNumber = (status?.likeNumber)! + 1
-                    Database.database().reference().child("status").child((status?.statusId)!).child("like_number").setValue(likeNumber)
-                    
-                    txtLikeNumber.text = "\(likeNumber)" + " LIKES"
-                    
-                    print("status?.user: \(status?.user)")
-                    print("status?.statusId: \(status?.statusId)")
-                    print("user.uid: \(user.uid)")
-                    Database.database().reference().child("user_profile").child((status?.user)!).child("status").child((status?.statusId)!).child("like").child(user.uid).setValue(true)
-                    Database.database().reference().child("user_profile").child((status?.user)!).child("status").child((status?.statusId)!).child("like_number").setValue(likeNumber)
-                    status?.isUserLiked = true
-                    status?.likeNumber = likeNumber
-                    
-                    btnLike.image =  UIImage(named: "liked.png") //, for: UIControlState.normal)
-                }
-                
-                
-            }
-            else {
-                
-                if let user = Auth.auth().currentUser{
-                    Database.database().reference().child("status").child((status?.statusId)!).child("like").child(user.uid).setValue(false)
-                    
-                    var likeNumber = (status?.likeNumber)! - 1
-                    
-                    Database.database().reference().child("status").child((status?.statusId)!).child("like_number").setValue(likeNumber)
-                    
-                    txtLikeNumber.text = "\(likeNumber)" + " LIKES"
-
-                    
-                    Database.database().reference().child("user_profile").child((status?.user)!).child("status").child((status?.statusId)!).child("like").child(user.uid).setValue(false)
-                    Database.database().reference().child("user_profile").child((status?.user)!).child("status").child((status?.statusId)!).child("like_number").setValue(likeNumber)
-                    
-                    
-                    status?.isUserLiked = false
-                    status?.likeNumber = likeNumber
-                    
-                    
-                    btnLike.image =  UIImage(named: "like.png") //, for: UIControlState.normal)
-                }
-                
-                
-            }
-        
-        
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.mainView.endEditing(true)
     }
     
-
-    func loadComment(){
+    
+    //MARK: -load data
+        func loadComment(){
         let ref = Database.database().reference().child("status").child((self.status?.statusId)!).observe(.value, with: { (snapshot) -> Void in
             
             let status = (snapshot as! DataSnapshot).value as! [String:AnyObject]
@@ -506,6 +528,8 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
 
     }
    
+    
+    //MARK: -table datasource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -551,6 +575,12 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
         return 100
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueProfile" {
+            let des = segue.destination as! ProfileVC
+            des.currentID = (status?.user)!
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

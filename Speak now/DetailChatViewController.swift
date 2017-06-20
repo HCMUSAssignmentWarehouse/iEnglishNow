@@ -11,6 +11,9 @@ import Firebase
 import FirebaseDatabase
 
 class DetailChatViewController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
+    
+    
+    // MARK: -declare
     var currentContact: Contact?
     var messages = [Message]()
 
@@ -48,29 +51,7 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
     }
     
     
-    //to handle event scroll the last item up to
-    func viewScrollButton() {
-        let lastItem = collectionView(self.collectionView!, numberOfItemsInSection: 0) - 1
-        if (lastItem >= 0){
-            let indexPath: IndexPath = IndexPath.init(item: lastItem, section: 0) as IndexPath
-            print("lastItem: \(indexPath.row)")
-            self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: false)
-        }
-    }
-
-    
-    lazy var inputTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Enter message..."
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = UIColor.white
-        textField.delegate = self
-        return textField
-    }()
-    
-    let cellId = "cellId"
-   
-    
+   // MARK: -collectionview datasource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
@@ -127,6 +108,32 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
         self.performSegue(withIdentifier: "SegueProfile", sender: nil)
 
     }
+    
+    // MARK: -setup view
+    
+    //to handle event scroll the last item up to
+    func viewScrollButton() {
+        let lastItem = collectionView(self.collectionView!, numberOfItemsInSection: 0) - 1
+        if (lastItem >= 0){
+            let indexPath: IndexPath = IndexPath.init(item: lastItem, section: 0) as IndexPath
+            print("lastItem: \(indexPath.row)")
+            self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: false)
+        }
+    }
+    
+    
+    lazy var inputTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Enter message..."
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = UIColor.white
+        textField.delegate = self
+        return textField
+    }()
+    
+    let cellId = "cellId"
+
+
     
     fileprivate func estimateFrameForText(_ text: String) -> CGRect {
         let size = CGSize(width: 200, height: 1000)
@@ -194,6 +201,7 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
     }
     
     
+    // MARK: -load data from firebase to show on screen
     func loadMessage(){
         
         
@@ -257,6 +265,8 @@ class DetailChatViewController: UICollectionViewController, UITextFieldDelegate,
     }
     
     
+    
+    // MARK: -handle send message event
     func saveMessage(receiceId: String){
         
         let user = Auth.auth().currentUser

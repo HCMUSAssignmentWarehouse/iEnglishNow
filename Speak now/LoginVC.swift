@@ -11,6 +11,8 @@ import Firebase
 
 class LoginVC: UIViewController {
 
+    
+    // MARK: -declare and hanlde click event
     @IBOutlet weak var txtPassword: UITextField!
     
     @IBOutlet weak var loginview: UIView!

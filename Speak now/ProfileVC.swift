@@ -14,6 +14,8 @@ import FirebaseStorage
 
 class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate,  UITableViewDelegate, UITableViewDataSource{
 
+    
+    // MARK: -declare and hanlde click event
     @IBAction func btnBack(_ sender: Any) {
         var storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "MainScreenVC") as UIViewController
@@ -23,10 +25,10 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     
     @IBOutlet var btnSendMessage: UIBarButtonItem!
     
-    
     @IBAction func actionSendMessage(_ sender: Any) {
-        performSegue(withIdentifier: "SegueSendMessage", sender: nil)
+    performSegue(withIdentifier: "SegueSendMessage", sender: nil)
     }
+    
     
     @IBOutlet var btnBack: UIBarButtonItem!
     
@@ -90,6 +92,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         
     }
 
+    // MARK: -load data
     func loadStatus(userid: String,  username: String, avatar: UIImage){
         
         
@@ -241,6 +244,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     }
     
     
+    // MARK: -init to show
     func initShow(){
        avatar.layer.masksToBounds = true
       avatar.layer.cornerRadius = 68
@@ -276,6 +280,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     }
     
     
+    // MARK: -tap event
     func setOnAvatarTapped(){
         avatar.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target:self, action: #selector(tappedAvatarImage))
@@ -320,6 +325,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: -imagePickerController datasource
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print(info)
@@ -372,8 +378,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     }
     
     
-    //TABLE STATUS
-    
+    //MARK: -status table datasource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -442,6 +447,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         performSegue(withIdentifier: "SegueUserDetailStatus", sender: self)
     }
     
+    //auto cell size to fit content
     override func viewWillAppear(_ animated: Bool) {
         self.tableStatus.estimatedRowHeight = 200
         self.tableStatus.rowHeight = UITableViewAutomaticDimension

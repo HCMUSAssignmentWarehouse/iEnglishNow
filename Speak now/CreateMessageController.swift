@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 class CreateMessageController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
 
+    // MARK: -declare
     var messages = [Message]()
     var avatar: UIImage?
     var id: String = ""
@@ -39,38 +40,7 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
     }
     
     
-    //handle event scroll to show from the last item up
-    func viewScrollButton() {
-        let lastItem = collectionView(self.collectionView!, numberOfItemsInSection: 0) - 1
-        if (lastItem >= 0){
-            let indexPath: IndexPath = IndexPath.init(item: lastItem, section: 0) as IndexPath
-            print("lastItem: \(indexPath.row)")
-            self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: false)
-        }
-    }
-    
-    
-    lazy var inputTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Enter message..."
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = UIColor.white
-        textField.delegate = self
-        return textField
-    }()
-    
-    lazy var inputNewContactTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "To: Enter username..."
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = UIColor.white
-        textField.delegate = self
-        return textField
-    }()
-    
-    let cellId = "cellId"
-    
-    
+    // MARK: -Collectionview datasource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
@@ -125,6 +95,48 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         return CGSize(width: view.frame.width, height: height)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.view.endEditing(true)
+        
+    }
+    
+    
+    
+    
+    // MARK: -setup view
+    
+    //handle event scroll to show from the last item up
+    func viewScrollButton() {
+        let lastItem = collectionView(self.collectionView!, numberOfItemsInSection: 0) - 1
+        if (lastItem >= 0){
+            let indexPath: IndexPath = IndexPath.init(item: lastItem, section: 0) as IndexPath
+            print("lastItem: \(indexPath.row)")
+            self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: false)
+        }
+    }
+    
+    
+    lazy var inputTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Enter message..."
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = UIColor.white
+        textField.delegate = self
+        return textField
+    }()
+    
+    lazy var inputNewContactTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "To: Enter username..."
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = UIColor.white
+        textField.delegate = self
+        return textField
+    }()
+    
+    let cellId = "cellId"
+    
+
     fileprivate func estimateFrameForText(_ text: String) -> CGRect {
         let size = CGSize(width: 200, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
@@ -196,85 +208,6 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
-    func handleSend() {
-
-        if inputNewContactTextField.text == ""{
-            let alert = UIAlertController(title: "Error", message: "Must enter receive's username!", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
-                alert.dismiss(animated: true, completion: nil)
-            })
-            present(alert, animated: true, completion: nil)
-
-        } else {
-            
-            Database.database().reference().child("user_profile").observeSingleEvent(of: .value, with:{ (snapshot) in
-                
-                var done:Int = 0
-                
-                //go to each user
-                for item in snapshot.children {
-                    let receiveUser = item as! DataSnapshot
-                    let userDict = receiveUser.value as! [String:AnyObject]
-                    
-                    
-                    let _username = userDict["username"] as! String
-                    let url = userDict["profile_pic"]
-                    
-                    if let url = userDict["profile_pic"] {
-                        if let imgUrl =  URL(string: url as! String){
-                            let data = try? Data(contentsOf: imgUrl)
-                            
-                            if let imageData = data {
-                                let profilePic = UIImage(data: data!)
-                                self.avatar = profilePic
-                            }
-                            
-                        }
-                        
-                        
-                    }
-
-
-                    //find user whose username is the input username
-                    if _username.caseInsensitiveCompare(self.inputNewContactTextField.text!) == ComparisonResult.orderedSame{
-                        
-                        //get id of this user
-                        self.id = receiveUser.key as! String
-                        
-                        //send message
-                        self.saveMessage(receiceId: self.id)
-                        
-                        //reload collectionview
-                        self.collectionView?.reloadData()
-                        done = 1
-                    }
-                    
-                }
-                
-                if done == 0{
-                    
-                    var username:String = self.inputNewContactTextField.text!
-                    
-                    let alert = UIAlertController(title: "Error", message: "Username: \(username) is not exist!", preferredStyle: .actionSheet)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
-                        alert.dismiss(animated: true, completion: nil)
-                    })
-                    self.present(alert, animated: true, completion: nil)
-                }
-                self.collectionView?.reloadData()
-                
-            })
-            
-        }
-        
-    }
-    
-    
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        handleSend()
-        return true
-    }
     
     
     override func didReceiveMemoryWarning() {
@@ -282,6 +215,8 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //MARK: -load data
     func loadMessage(){
         
         if let user = Auth.auth().currentUser{
@@ -345,6 +280,88 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         
     }
     
+    //MARK: -handle send message event
+    func handleSend() {
+        
+        if inputNewContactTextField.text == ""{
+            let alert = UIAlertController(title: "Error", message: "Must enter receive's username!", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                alert.dismiss(animated: true, completion: nil)
+            })
+            present(alert, animated: true, completion: nil)
+            
+        } else {
+            
+            Database.database().reference().child("user_profile").observeSingleEvent(of: .value, with:{ (snapshot) in
+                
+                var done:Int = 0
+                
+                //go to each user
+                for item in snapshot.children {
+                    let receiveUser = item as! DataSnapshot
+                    let userDict = receiveUser.value as! [String:AnyObject]
+                    
+                    
+                    let _username = userDict["username"] as! String
+                    let url = userDict["profile_pic"]
+                    
+                    if let url = userDict["profile_pic"] {
+                        if let imgUrl =  URL(string: url as! String){
+                            let data = try? Data(contentsOf: imgUrl)
+                            
+                            if let imageData = data {
+                                let profilePic = UIImage(data: data!)
+                                self.avatar = profilePic
+                            }
+                            
+                        }
+                        
+                        
+                    }
+                    
+                    
+                    //find user whose username is the input username
+                    if _username.caseInsensitiveCompare(self.inputNewContactTextField.text!) == ComparisonResult.orderedSame{
+                        
+                        //get id of this user
+                        self.id = receiveUser.key as! String
+                        
+                        //send message
+                        self.saveMessage(receiceId: self.id)
+                        
+                        //reload collectionview
+                        self.collectionView?.reloadData()
+                        done = 1
+                    }
+                    
+                }
+                
+                if done == 0{
+                    
+                    var username:String = self.inputNewContactTextField.text!
+                    
+                    let alert = UIAlertController(title: "Error", message: "Username: \(username) is not exist!", preferredStyle: .actionSheet)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                        alert.dismiss(animated: true, completion: nil)
+                    })
+                    self.present(alert, animated: true, completion: nil)
+                }
+                self.collectionView?.reloadData()
+                
+            })
+            
+        }
+        
+    }
+    
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handleSend()
+        return true
+    }
+    
+
     
     func saveMessage(receiceId: String){
         
@@ -377,13 +394,7 @@ class CreateMessageController: UICollectionViewController, UITextFieldDelegate, 
         
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.view.endEditing(true)
-
-    }
-    
    
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

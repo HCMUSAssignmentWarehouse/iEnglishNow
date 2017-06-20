@@ -13,7 +13,7 @@ import FirebaseDatabase
 
 class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
-    
+    //MARK: -declare
     @IBOutlet var btnMenu: UIBarButtonItem!
         
     @IBOutlet weak var table: UITableView!
@@ -30,6 +30,7 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
         // Do any additional setup after loading the view.
     }
 
+    //MARK: -hamburger menu
     override func viewDidAppear(_ animated: Bool) {
         
         if  revealViewController() != nil {
@@ -42,12 +43,13 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
-  
+  //MARK: -init to show
     func initShow(){
         table.delegate = self
         table.dataSource = self
     }
     
+    //MARK: -load data
     func loadData(){
             
         let queryRef = Database.database().reference().child("status").observe(.value, with: { (snapshot) -> Void in
@@ -138,6 +140,8 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //MARK: -table datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return statusList.count
     }
@@ -205,6 +209,8 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
         return 1
     }
     
+    
+    //auto size of cell to fit content
     override func viewWillAppear(_ animated: Bool) {
         self.table.estimatedRowHeight = 200
         self.table.rowHeight = UITableViewAutomaticDimension

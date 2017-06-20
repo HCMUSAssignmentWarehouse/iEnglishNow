@@ -490,7 +490,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Send message" id="V3v-a4-38p">
                             <connections>
-                                <action selector="btnSendMessage:" destination="l4f-hQ-Lx7" id="9UB-mr-jec"/>
+                                <action selector="actionSendMessage:" destination="l4f-hQ-Lx7" id="I7y-2F-zpU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -851,7 +851,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axi-7G-BHG">
-                                <rect key="frame" x="0.0" y="20" width="375" height="996"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="952"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eeh-k1-WQ1">
                                         <rect key="frame" x="0.0" y="-64" width="375" height="952"/>
@@ -883,6 +883,7 @@
                     <size key="freeformSize" width="375" height="1016"/>
                     <connections>
                         <outlet property="mainView" destination="Eeh-k1-WQ1" id="c0Q-cj-iVy"/>
+                        <segue destination="l4f-hQ-Lx7" kind="show" identifier="SegueProfile" id="3Wb-00-aBP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rPM-Hj-0le" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1378,10 +1379,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gSf-PI-xLv"/>
-        <segue reference="scf-XQ-Z3w"/>
+        <segue reference="6g4-3m-KpK"/>
+        <segue reference="VBk-PL-vlc"/>
         <segue reference="xq2-7O-fxz"/>
         <segue reference="Eug-0u-lKY"/>
         <segue reference="IWK-Oa-alD"/>
-        <segue reference="VBk-PL-vlc"/>
     </inferredMetricsTieBreakers>
 </document>

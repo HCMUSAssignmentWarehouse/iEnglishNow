@@ -14,6 +14,7 @@ import FirebaseDatabase
 class SignUpVC: UIViewController {
 
     
+    // MARK: -declare
     @IBAction func btnDismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -89,6 +90,7 @@ class SignUpVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    // MARK: -init to show
     func initShow(){
         
         registerView.layer.cornerRadius = 5

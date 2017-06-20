@@ -13,7 +13,8 @@ import FirebaseStorage
 
 class CreateNewPostController: UIViewController , UIImagePickerControllerDelegate , UINavigationControllerDelegate {
 
-    
+
+    //MARK: -declare
     @IBOutlet var avatar: UIImageView!
     
     @IBOutlet var username: UILabel!
@@ -33,6 +34,8 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
 
     var avatarUrl: String?
     
+    
+    //MARK: -handle post event
     @IBAction func btnPost(_ sender: UIBarButtonItem) {
         
         if txtContent.text != ""{
@@ -120,6 +123,8 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
         // Do any additional setup after loading the view.
     }
 
+    
+    //MARK: -init to show
     func initShow(){
                 
         viewInput.layer.borderWidth = 1
@@ -131,7 +136,7 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
 
     }
     
-    
+    //MARK: -tap event
     func setOnAddPhotoTapped(){
         btnAddPhoto.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target:self, action: #selector(tappedAddPhotoImage))
@@ -149,7 +154,7 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
         
     }
 
-    
+    //MARK: -load data
     func initUser(){
         
         let user = Auth.auth().currentUser
@@ -185,6 +190,8 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
         
     }
 
+    
+    //MARK: -imagePickerController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let editedimage = info["UIImagePickerControllerEditedImage"]{
@@ -210,6 +217,9 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
         dismiss(animated: true, completion: nil)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     
     override func didReceiveMemoryWarning() {

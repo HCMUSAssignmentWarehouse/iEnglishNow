@@ -14,6 +14,7 @@ import Firebase
 class LoginPopupVC: UIViewController {
 
     
+    // MARK: -declare and handle click event
     @IBOutlet var txtWelcomeName: UILabel!
     
     @IBAction func btnCancel(_ sender: Any) {
@@ -50,6 +51,7 @@ class LoginPopupVC: UIViewController {
         
     }
 
+    // MARK: -init to show
     func initShowUser(){
         if let user = Auth.auth().currentUser{
             

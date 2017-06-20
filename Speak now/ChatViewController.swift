@@ -13,6 +13,8 @@ import FirebaseStorage
 
 class ChatViewController: UITableViewController {
 
+    
+    // MARK: declare and hanlde click event
     @IBOutlet var btnMenu: UIBarButtonItem!
     
     @IBOutlet var table: UITableView!
@@ -37,6 +39,7 @@ class ChatViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: load data to show on screen
     func loadMessage(){
         
         if let user = Auth.auth().currentUser{
