@@ -595,7 +595,8 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UnZ-LN-lRb">
                                             <rect key="frame" x="14" y="-6" width="59" height="49"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="68" id="HWb-EF-bfr"/>
+                                                <constraint firstAttribute="width" constant="56" id="HWb-EF-bfr"/>
+                                                <constraint firstAttribute="height" constant="56" id="L4K-mP-OZk"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZU-Ol-Wyu">
@@ -617,7 +618,6 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="OZU-Ol-Wyu" secondAttribute="trailing" constant="8" id="5ES-9x-NTN"/>
                                         <constraint firstItem="OZU-Ol-Wyu" firstAttribute="leading" secondItem="UnZ-LN-lRb" secondAttribute="trailing" constant="16" id="95n-pd-QUS"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="UnZ-LN-lRb" secondAttribute="bottom" constant="4" id="SlQ-Va-vqG"/>
                                         <constraint firstItem="LQS-LD-KqS" firstAttribute="leading" secondItem="UnZ-LN-lRb" secondAttribute="trailing" constant="16" id="VJr-rd-VwU"/>
                                         <constraint firstItem="UnZ-LN-lRb" firstAttribute="top" secondItem="aOQ-Qv-Y4h" secondAttribute="topMargin" constant="4" id="eR1-gB-jKF"/>
                                         <constraint firstAttribute="trailing" secondItem="LQS-LD-KqS" secondAttribute="trailing" constant="8" id="gBT-aJ-T9h"/>
@@ -696,8 +696,8 @@
         <scene sceneID="WX5-E8-hzM">
             <objects>
                 <collectionViewController id="0De-eo-9Jk" customClass="DetailChatViewController" customModule="Speak_now" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="wtU-6E-VIc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="wtU-6E-VIc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="86C-UO-EuD">
@@ -1421,11 +1421,11 @@
         <image name="sample.jpg" width="228" height="221"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gSf-PI-xLv"/>
         <segue reference="6g4-3m-KpK"/>
-        <segue reference="VBk-PL-vlc"/>
         <segue reference="xq2-7O-fxz"/>
-        <segue reference="Eug-0u-lKY"/>
+        <segue reference="VBk-PL-vlc"/>
+        <segue reference="aPb-qN-zga"/>
         <segue reference="IWK-Oa-alD"/>
+        <segue reference="Eug-0u-lKY"/>
     </inferredMetricsTieBreakers>
 </document>

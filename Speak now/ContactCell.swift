@@ -25,7 +25,7 @@ class ContactCell: UITableViewCell {
 
     func initShow(){
         avatar.layer.masksToBounds = true
-        avatar.layer.cornerRadius = 34
+        avatar.layer.cornerRadius = 28
         
     }
     
