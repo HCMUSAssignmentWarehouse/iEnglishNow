@@ -52,15 +52,55 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     
     @IBOutlet var tableStatus: UITableView!
     
-    @IBOutlet var btnStar: UIButton!
+    var skills: [Skill] = [Skill]()
+
+    var currentID: String = ""
+
+    @IBAction func actionStar(_ sender: UIButton) {
+        let tag = sender.tag
+        
+        if let user = Auth.auth().currentUser {
+        
+            if currentID.compare(user.uid) == ComparisonResult.orderedSame {
+                for button in btnStars{
+                    if (button.tag <= 5 && tag <= 5){
+                        if button.tag <= tag  {
+                            button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
+                        } else {
+                            button.setTitleColor(UIColor.lightGray, for: .normal)
+                        }
+                        
+                        
+                    }else  if (button.tag <= 10 && button.tag > 5 && tag <= 10 && tag > 5 ){
+                        if button.tag <= tag  {
+                            button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
+                        } else {
+                            button.setTitleColor(UIColor.lightGray, for: .normal)
+                        }
+                        
+
+                    }else if (button.tag <= 15 && button.tag > 10 && tag <= 15 && tag > 10 ){
+                        if button.tag <= tag  {
+                            button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
+                        } else {
+                            button.setTitleColor(UIColor.lightGray, for: .normal)
+                        }
+
+                    }
+                }
+                
+            }
+            
+                     let userRef = Database.database().reference().child("user_profile").child((user.uid)).child("skill").child(skills[(tag - 1) / 5].name).setValue((tag - 1) % 5 + 1)
+        }
+
+    }
     
     @IBOutlet var btnStars: [UIButton]!
     
-    var skills: [Skill] = [Skill]()
     
     let deviceID = UIDevice.current.identifierForVendor?.uuidString
     
-    var currentID: String = ""
     
     var statusList:[Status] = [Status]()
     
@@ -131,7 +171,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
                     
                     var isUserLiked: Bool = false
                     
-                    if status.count == FirebaseUtils.numberChildUserStatus {
+                    if status.index(forKey: "like") != nil{
                         let likes = ((item as! DataSnapshot).childSnapshot(forPath: "like") as! DataSnapshot).value as! [String:AnyObject]
                         
                         if let user = Auth.auth().currentUser{
@@ -224,7 +264,10 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
             let listening = child["listening skill"] as? Int ?? 0
             let speaking = child["speaking skill"] as? Int ?? 0
             let pronunciation = child["pronunciation skill"] as? Int ?? 0
-                    
+            
+            var rating:Float = Float ((listening + speaking + pronunciation) / 3)
+            self.txtYourRating.text = "\(round(10 * rating) / 10)"
+            
             for button in self.btnStars{
                 if (button.tag <= 5 && (button.tag - 1) % 5 < listening){
                     //selected

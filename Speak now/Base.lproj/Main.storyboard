@@ -168,10 +168,6 @@
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgG-8V-jh5">
                                             <rect key="frame" x="82" y="159" width="148" height="49"/>
                                             <color key="backgroundColor" red="0.0" green="0.59215686274509804" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="148" id="Pad-YS-HYC"/>
-                                                <constraint firstAttribute="height" constant="48" id="l85-2N-XIm"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
                                             <state key="normal" title="Find now"/>
                                             <connections>
@@ -181,10 +177,6 @@
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqe-Z5-ys6">
                                             <rect key="frame" x="82" y="225" width="148" height="49"/>
                                             <color key="backgroundColor" red="0.0" green="0.59215686270000001" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="48" id="FhC-wJ-KKr"/>
-                                                <constraint firstAttribute="width" constant="148" id="TuI-8y-pGY"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
                                             <state key="normal" title="Ignore"/>
                                             <connections>
@@ -195,8 +187,12 @@
                                     <color key="backgroundColor" red="1" green="0.90779565937119888" blue="0.70840855837993544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
+                                        <constraint firstItem="Rqe-Z5-ys6" firstAttribute="height" secondItem="QTg-dW-Wno" secondAttribute="height" multiplier="1/6" id="1LT-h6-4f5"/>
+                                        <constraint firstItem="cgG-8V-jh5" firstAttribute="width" secondItem="QTg-dW-Wno" secondAttribute="width" multiplier="3/4" id="Hpj-k9-due"/>
                                         <constraint firstItem="cgG-8V-jh5" firstAttribute="centerX" secondItem="QTg-dW-Wno" secondAttribute="centerX" id="JED-BA-6vD"/>
-                                        <constraint firstItem="Rqe-Z5-ys6" firstAttribute="top" secondItem="cgG-8V-jh5" secondAttribute="bottom" constant="8" id="eX7-Rs-nnB"/>
+                                        <constraint firstItem="Rqe-Z5-ys6" firstAttribute="width" secondItem="QTg-dW-Wno" secondAttribute="width" multiplier="3/4" id="aQp-mA-6SG"/>
+                                        <constraint firstItem="cgG-8V-jh5" firstAttribute="height" secondItem="QTg-dW-Wno" secondAttribute="height" multiplier="1/6" constant="1" id="dtU-zT-Lab"/>
+                                        <constraint firstItem="Rqe-Z5-ys6" firstAttribute="top" secondItem="cgG-8V-jh5" secondAttribute="bottom" constant="16" id="eX7-Rs-nnB"/>
                                         <constraint firstItem="Rqe-Z5-ys6" firstAttribute="centerX" secondItem="QTg-dW-Wno" secondAttribute="centerX" id="xwT-c8-AF7"/>
                                     </constraints>
                                 </view>
@@ -217,11 +213,8 @@
                                         <constraint firstAttribute="trailing" secondItem="tX9-rq-dtZ" secondAttribute="trailing" id="i8f-90-wv6"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7n-Tj-oQE">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hello" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7n-Tj-oQE">
                                     <rect key="frame" x="36" y="234" width="302" height="42"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="42" id="k5F-VJ-tyG"/>
-                                    </constraints>
                                     <fontDescription key="fontDescription" name="Arial-BoldItalicMT" family="Arial" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -240,6 +233,7 @@
                                 <constraint firstItem="8S0-H0-mrq" firstAttribute="top" secondItem="3FN-J9-sAV" secondAttribute="top" id="a9t-mq-DWR"/>
                                 <constraint firstItem="Uyi-60-aa1" firstAttribute="centerX" secondItem="QTg-dW-Wno" secondAttribute="centerX" id="kET-IP-o6M"/>
                                 <constraint firstItem="QTg-dW-Wno" firstAttribute="leading" secondItem="3FN-J9-sAV" secondAttribute="leading" constant="48" id="oie-MF-oAV"/>
+                                <constraint firstItem="Z7n-Tj-oQE" firstAttribute="height" secondItem="QTg-dW-Wno" secondAttribute="height" multiplier="1/6" id="tDQ-O6-2Ez"/>
                                 <constraint firstItem="Z7n-Tj-oQE" firstAttribute="centerX" secondItem="QTg-dW-Wno" secondAttribute="centerX" id="xxb-Sz-MSu"/>
                             </constraints>
                         </view>

@@ -350,6 +350,9 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
         let avatarTapRecognizer = UITapGestureRecognizer(target:self, action: #selector(tappedAvatarImage))
         avatar.addGestureRecognizer(avatarTapRecognizer)
 
+        self.mainView.isUserInteractionEnabled = true
+        let mainViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.mainView.addGestureRecognizer(mainViewTapGesture)
         
         loadComment()
         
@@ -358,6 +361,13 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     
     //MARK: -tap event
+    
+    func handleTap(recognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+
+    
     func tappedAvatarImage(gestureRecognizer: UIGestureRecognizer){
         performSegue(withIdentifier: "SegueProfile", sender: self)
     }
