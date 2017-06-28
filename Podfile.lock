@@ -40,12 +40,18 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.10)
+  - MBProgressHUD (1.0.0)
+  - OpenTok (2.10.2)
+  - SwiftMessages (3.3.4)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - MBProgressHUD (~> 1.0.0)
+  - OpenTok (~> 2.10.0)
+  - SwiftMessages
 
 SPEC CHECKSUMS:
   Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
@@ -57,7 +63,10 @@ SPEC CHECKSUMS:
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  OpenTok: 9f0909068d6ed69acffa77a4610b47924926f79e
+  SwiftMessages: 1172842c4d4af818704f90c50ec8dc597e55c9af
 
-PODFILE CHECKSUM: c6ff329609f4840098d9ef7e9de0227a872fe153
+PODFILE CHECKSUM: d5245a1ded5fd8ee20d1d4111db0811065de5790
 
 COCOAPODS: 1.2.1

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		10B458342B5A9E407E1A5886 /* Pods_Speak_nowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20E8225934024983D42C115 /* Pods_Speak_nowTests.framework */; };
+		C2DA3E921F04006200DA5116 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E911F04006200DA5116 /* Constants.swift */; };
+		C2DA3E941F0402A500DA5116 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E931F0402A500DA5116 /* ProgressHUD.swift */; };
+		C2DA3E961F04057900DA5116 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E951F04057900DA5116 /* MessageBox.swift */; };
+		C2DA3E981F040F6400DA5116 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E971F040F6400DA5116 /* User.swift */; };
 		E59F95D7DACA5D4B8698C4AC /* Pods_Speak_nowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0B7CC1A86265A1F7C575DF /* Pods_Speak_nowUITests.framework */; };
 		E6A006EF797FC5F21ECF7412 /* Pods_Speak_now.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CAC7EEF0D8B2A1E3C5AB16 /* Pods_Speak_now.framework */; };
 		FA040CA41EF624AA00C6DD99 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA040CA31EF624AA00C6DD99 /* SlideMenuViewController.swift */; };
@@ -116,6 +120,10 @@
 		6F4ED61515C9C53E9D7212F0 /* Pods-Speak now.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Speak now.release.xcconfig"; path = "Pods/Target Support Files/Pods-Speak now/Pods-Speak now.release.xcconfig"; sourceTree = "<group>"; };
 		A2CAC7EEF0D8B2A1E3C5AB16 /* Pods_Speak_now.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Speak_now.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1C924DD8B5FDA7E3A6E930 /* Pods-Speak nowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Speak nowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Speak nowUITests/Pods-Speak nowUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C2DA3E911F04006200DA5116 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C2DA3E931F0402A500DA5116 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		C2DA3E951F04057900DA5116 /* MessageBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
+		C2DA3E971F040F6400DA5116 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D20E8225934024983D42C115 /* Pods_Speak_nowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Speak_nowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21CD69DDEC40D86C002731F /* Pods-Speak nowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Speak nowTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Speak nowTests/Pods-Speak nowTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA040CA31EF624AA00C6DD99 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +266,47 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C2DA3E8C1F03FE8C00DA5116 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		C2DA3E8D1F03FEAB00DA5116 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FA2928091EF909EE00D4023C /* FirebaseUtils.swift */,
+				C2DA3E911F04006200DA5116 /* Constants.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		C2DA3E8E1F03FEB600DA5116 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C2DA3E971F040F6400DA5116 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		C2DA3E8F1F03FEC100DA5116 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C2DA3E931F0402A500DA5116 /* ProgressHUD.swift */,
+				C2DA3E951F04057900DA5116 /* MessageBox.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		C2DA3E901F03FED200DA5116 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA12D58A1ED147C7009D1B02 /* FindVC.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		FA0757371ED18C5D006CE695 /* AppIcon.appiconset */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,7 +344,6 @@
 				FA0BB7711ED067A800C6FA1F /* SignUpVC.swift */,
 				FA0BB7731ED09AFC00C6FA1F /* LoginPopupVC.swift */,
 				FA1CD02C1ECE97AF006AF4A6 /* LoginVC.swift */,
-				FA2928091EF909EE00D4023C /* FirebaseUtils.swift */,
 			);
 			name = "Prepare Screen";
 			sourceTree = "<group>";
@@ -405,18 +453,22 @@
 		FA1CD0291ECE97AF006AF4A6 /* Speak now */ = {
 			isa = PBXGroup;
 			children = (
-				FA189FD91EF5797E009DABDE /* SWRevealViewController.h */,
-				FA189FDA1EF5797E009DABDE /* SWRevealViewController.m */,
-				FA0804671EEC1A1900704749 /* GoogleService-Info.plist */,
+				C2DA3E901F03FED200DA5116 /* Controllers */,
+				C2DA3E8F1F03FEC100DA5116 /* Views */,
+				C2DA3E8E1F03FEB600DA5116 /* Models */,
+				C2DA3E8D1F03FEAB00DA5116 /* Utils */,
+				C2DA3E8C1F03FE8C00DA5116 /* Network */,
 				FAF3DA1B1ED2FAB5007B767D /* VideoCall */,
 				FA12D58C1ED168EB009D1B02 /* Prepare Screen */,
 				FA1CD05B1ECE97BE006AF4A6 /* Main Screen */,
 				FA1CD02A1ECE97AF006AF4A6 /* AppDelegate.swift */,
+				FA189FD91EF5797E009DABDE /* SWRevealViewController.h */,
+				FA189FDA1EF5797E009DABDE /* SWRevealViewController.m */,
+				FA0804671EEC1A1900704749 /* GoogleService-Info.plist */,
 				FA1CD0341ECE97AF006AF4A6 /* Assets.xcassets */,
 				FA1CD0361ECE97AF006AF4A6 /* LaunchScreen.storyboard */,
 				FA1CD0391ECE97AF006AF4A6 /* Info.plist */,
 				FA1CD0311ECE97AF006AF4A6 /* Speak_now.xcdatamodeld */,
-				FA12D58A1ED147C7009D1B02 /* FindVC.swift */,
 				FA189FD31EF53FF6009DABDE /* Speak now-Bridging-Header.h */,
 			);
 			path = "Speak now";
@@ -826,6 +878,7 @@
 			files = (
 				FA4BDC011EED937E00D7F03E /* Contact.swift in Sources */,
 				FA1EA44B1EEF9032005357BF /* ChatMessageCell.swift in Sources */,
+				C2DA3E941F0402A500DA5116 /* ProgressHUD.swift in Sources */,
 				FA0BB7721ED067A800C6FA1F /* SignUpVC.swift in Sources */,
 				FA1CD0331ECE97AF006AF4A6 /* Speak_now.xcdatamodeld in Sources */,
 				FA1CD02D1ECE97AF006AF4A6 /* LoginVC.swift in Sources */,
@@ -833,6 +886,7 @@
 				FA161FBE1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift in Sources */,
 				FA040CA61EF68EAB00C6DD99 /* DetailStatusVC.swift in Sources */,
 				FA1EA44D1EEF90A8005357BF /* Message.swift in Sources */,
+				C2DA3E921F04006200DA5116 /* Constants.swift in Sources */,
 				FA29280A1EF909EE00D4023C /* FirebaseUtils.swift in Sources */,
 				FA1B597A1EEF030800AA2173 /* ContactCell.swift in Sources */,
 				FA0BB7741ED09AFC00C6FA1F /* LoginPopupVC.swift in Sources */,
@@ -846,12 +900,14 @@
 				FA1CD02B1ECE97AF006AF4A6 /* AppDelegate.swift in Sources */,
 				FA161FC21ED2AD4500211D89 /* ProfileVC.swift in Sources */,
 				FA0757FB1ED1E21A006CE695 /* CellOfTimeLineVC.swift in Sources */,
+				C2DA3E981F040F6400DA5116 /* User.swift in Sources */,
 				FA1B59761EEED20700AA2173 /* Speaking.swift in Sources */,
 				FA0AB82D1EF8095000161B5F /* CommentCell.swift in Sources */,
 				FA4BDBFE1EED872500D7F03E /* ChatViewController.swift in Sources */,
 				FA29280C1EF9176400D4023C /* Comment.swift in Sources */,
 				FA1B59781EEED22B00AA2173 /* Pronunciation.swift in Sources */,
 				FA12D58B1ED147C7009D1B02 /* FindVC.swift in Sources */,
+				C2DA3E961F04057900DA5116 /* MessageBox.swift in Sources */,
 				FA4BDC031EED97AF00D7F03E /* DetailChatViewController.swift in Sources */,
 				FA06EE0F1EF01FDC002674BC /* CreateMessageController.swift in Sources */,
 			);

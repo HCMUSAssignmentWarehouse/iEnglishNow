@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,30 +24,92 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurCover.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="25d-VJ-Jmw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Finding" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcq-pF-Mn7">
-                                <rect key="frame" x="152" y="282" width="94" height="24"/>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZF-RK-Yhl">
+                                <rect key="frame" x="27" y="49" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="qmE-Um-XYD">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    </imageView>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2j-rp-2XT">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nLD-d9-qaW">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="extraLight"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="GRz-aU-IaU"/>
+                                    <constraint firstAttribute="trailing" secondItem="h2j-rp-2XT" secondAttribute="trailing" id="IEl-B0-zdn"/>
+                                    <constraint firstItem="qmE-Um-XYD" firstAttribute="leading" secondItem="yZF-RK-Yhl" secondAttribute="leading" id="KV7-ds-vOV"/>
+                                    <constraint firstItem="qmE-Um-XYD" firstAttribute="top" secondItem="yZF-RK-Yhl" secondAttribute="top" id="Qtm-wP-QUm"/>
+                                    <constraint firstAttribute="trailing" secondItem="qmE-Um-XYD" secondAttribute="trailing" id="T8y-f2-PjZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="h2j-rp-2XT" secondAttribute="bottom" id="pmc-bZ-MUn"/>
+                                    <constraint firstItem="h2j-rp-2XT" firstAttribute="leading" secondItem="yZF-RK-Yhl" secondAttribute="leading" id="uHx-Aa-tQg"/>
+                                    <constraint firstAttribute="bottom" secondItem="qmE-Um-XYD" secondAttribute="bottom" id="udY-7s-4k9"/>
+                                    <constraint firstItem="h2j-rp-2XT" firstAttribute="top" secondItem="yZF-RK-Yhl" secondAttribute="top" id="ynz-vB-XoT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="25"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LEc-2D-AUY">
+                                <rect key="frame" x="69" y="245" width="237" height="176"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="findBgButton" translatesAutoresizingMaskIntoConstraints="NO" id="aux-SA-57b">
+                                        <rect key="frame" x="43" y="0.0" width="150" height="150"/>
+                                    </imageView>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9D-fL-590">
+                                        <rect key="frame" x="43" y="0.0" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="W9D-fL-590" secondAttribute="height" multiplier="1:1" id="M4l-MV-1cG"/>
+                                            <constraint firstAttribute="width" constant="150" id="mdk-A2-Upb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="24"/>
+                                        <state key="normal" title="Find">
+                                            <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnFindOnTouch:" destination="cAD-xr-hfX" eventType="touchUpInside" id="xch-U3-qTM"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let find a speaker and practice english" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adR-MY-3Cz">
+                                        <rect key="frame" x="10" y="160" width="217" height="16"/>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="adR-MY-3Cz" secondAttribute="trailing" constant="10" id="0e9-vn-Oot"/>
+                                    <constraint firstItem="aux-SA-57b" firstAttribute="leading" secondItem="W9D-fL-590" secondAttribute="leading" id="29g-r0-H2y"/>
+                                    <constraint firstItem="adR-MY-3Cz" firstAttribute="top" secondItem="W9D-fL-590" secondAttribute="bottom" constant="10" id="4v3-1J-dY5"/>
+                                    <constraint firstItem="aux-SA-57b" firstAttribute="trailing" secondItem="W9D-fL-590" secondAttribute="trailing" id="5X5-Bw-f0B"/>
+                                    <constraint firstItem="W9D-fL-590" firstAttribute="centerX" secondItem="LEc-2D-AUY" secondAttribute="centerX" id="QQc-v3-Gf4"/>
+                                    <constraint firstAttribute="bottom" secondItem="adR-MY-3Cz" secondAttribute="bottom" id="UXR-3h-gXl"/>
+                                    <constraint firstItem="W9D-fL-590" firstAttribute="top" secondItem="LEc-2D-AUY" secondAttribute="top" id="V1Q-2M-bq9"/>
+                                    <constraint firstItem="aux-SA-57b" firstAttribute="bottom" secondItem="W9D-fL-590" secondAttribute="bottom" id="dfO-8g-Jdd"/>
+                                    <constraint firstItem="adR-MY-3Cz" firstAttribute="leading" secondItem="LEc-2D-AUY" secondAttribute="leading" constant="10" id="jTd-oS-S0B"/>
+                                    <constraint firstItem="aux-SA-57b" firstAttribute="top" secondItem="W9D-fL-590" secondAttribute="top" id="mAZ-Ik-Hra"/>
+                                    <constraint firstItem="adR-MY-3Cz" firstAttribute="centerX" secondItem="LEc-2D-AUY" secondAttribute="centerX" id="w9Q-EG-W40"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TGx-2B-y0Y" firstAttribute="top" secondItem="25d-VJ-Jmw" secondAttribute="bottom" id="45B-Ei-nmN"/>
-                            <constraint firstItem="25d-VJ-Jmw" firstAttribute="top" secondItem="LIp-TR-661" secondAttribute="top" id="Nnz-Wx-IDq"/>
-                            <constraint firstAttribute="trailing" secondItem="25d-VJ-Jmw" secondAttribute="trailing" id="Ub3-Ph-1Yg"/>
-                            <constraint firstItem="fcq-pF-Mn7" firstAttribute="centerX" secondItem="LIp-TR-661" secondAttribute="centerX" id="g0R-xS-OzP"/>
-                            <constraint firstItem="fcq-pF-Mn7" firstAttribute="centerY" secondItem="LIp-TR-661" secondAttribute="centerY" id="iuX-t4-wv8"/>
-                            <constraint firstItem="25d-VJ-Jmw" firstAttribute="leading" secondItem="LIp-TR-661" secondAttribute="leading" id="yfB-Sr-1Hu"/>
+                            <constraint firstItem="yZF-RK-Yhl" firstAttribute="leading" secondItem="LIp-TR-661" secondAttribute="leadingMargin" constant="11" id="1C3-Dm-Yme"/>
+                            <constraint firstItem="TGx-2B-y0Y" firstAttribute="top" secondItem="yZF-RK-Yhl" secondAttribute="bottom" constant="1" id="F6E-aI-Sat"/>
+                            <constraint firstItem="yZF-RK-Yhl" firstAttribute="centerX" secondItem="LEc-2D-AUY" secondAttribute="centerX" id="PfR-zU-zaA"/>
+                            <constraint firstItem="yZF-RK-Yhl" firstAttribute="centerX" secondItem="LIp-TR-661" secondAttribute="centerX" id="X5Z-oJ-meV"/>
+                            <constraint firstItem="yZF-RK-Yhl" firstAttribute="centerY" secondItem="LIp-TR-661" secondAttribute="centerY" id="iJw-65-yaw"/>
+                            <constraint firstItem="yZF-RK-Yhl" firstAttribute="centerY" secondItem="LEc-2D-AUY" secondAttribute="centerY" id="ujw-dS-J5Z"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Find" image="find.png" id="VZy-UQ-eAv"/>
+                    <connections>
+                        <outlet property="blurView" destination="yZF-RK-Yhl" id="iRV-qr-gO1"/>
+                        <outlet property="btnFind" destination="W9D-fL-590" id="YV5-3h-1zY"/>
+                        <outlet property="btnFindBackground" destination="aux-SA-57b" id="rwM-Y2-JlU"/>
+                        <outlet property="lblSlogan" destination="adR-MY-3Cz" id="j93-dy-40S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KzL-9c-N0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -696,7 +759,7 @@
         <scene sceneID="WX5-E8-hzM">
             <objects>
                 <collectionViewController id="0De-eo-9Jk" customClass="DetailChatViewController" customModule="Speak_now" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="wtU-6E-VIc">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="wtU-6E-VIc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1408,10 +1471,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="16" height="16"/>
         <image name="blurCover.jpg" width="852" height="480"/>
         <image name="chaticon.png" width="29" height="29"/>
         <image name="conversation.png" width="40" height="40"/>
         <image name="find.png" width="40" height="40"/>
+        <image name="findBgButton" width="16" height="16"/>
         <image name="hamburger.png" width="16" height="16"/>
         <image name="hometimelineIcon.png" width="29" height="29"/>
         <image name="iconPhoto.png" width="400" height="400"/>
