@@ -12,6 +12,7 @@ import AFNetworking
 struct URLServer {
     static let base : String = "https://englishnow.herokuapp.com"
     static let createSession : String = "session"
+    static let createRoom: String = "room/"
 }
 
 class SessionSponse {
@@ -54,10 +55,26 @@ class HerokuappClient: AFHTTPSessionManager {
         session.finishTasksAndInvalidate()
     }
     
-    func getSession(complete: @escaping ([String: String]?, Error?) -> Void) {
-        get(URLServer.createSession, parameters: nil, progress: nil, success: { (task, response) in
-            if let dictionary = response as? [String: String] {
-                complete(dictionary, nil)
+    func getSession(roomName: String, complete: @escaping ([String: String]?, Error?) -> Void) {
+        var connectURL : String
+        if roomName.isEmpty {
+            connectURL = URLServer.createSession
+        } else {
+            connectURL = URLServer.createRoom + roomName
+        }
+        get(connectURL, parameters: nil, progress: nil, success: { (task, response) in
+            if let tempDictionary = (response as? [String: String]) {
+                //Get sessionId, apikey and speaker token sucessfully
+                self.get(connectURL, parameters: nil, progress: nil, success: { (task, response) in
+                    if let learnerDict = response as? [String: String] {
+                        //Get sessionId, apikey and speaker token sucessfully
+                        var dictionary : [String: String] = tempDictionary
+                        dictionary["learner_token"] = learnerDict["token"]
+                        complete(dictionary, nil)
+                    }
+                }) { (task, error) in
+                    complete(nil, error)
+                }
             }
         }) { (task, error) in
             complete(nil, error)

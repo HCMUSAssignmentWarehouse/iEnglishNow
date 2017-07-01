@@ -155,6 +155,7 @@ class FirebaseClient {
                         Singleton.sharedInstance.partner.profilePhoto = dictionary["speakerPhoto"] as! String
                         Singleton.sharedInstance.partner.type = UserType.speaker
                         Singleton.sharedInstance.tokBoxSessionId = sessionId
+                        /*
                         HerokuappClient.shared.getSession{(dictionary, error) in
                             if let newDictionary = dictionary {
                                 let newSessionId = newDictionary["sessionId"]!
@@ -165,7 +166,8 @@ class FirebaseClient {
                             }
                         }
                         print("invalid token")
-                        completion(sessionId, dictionary["token"]! as! String)
+                        */
+                        completion(sessionId, dictionary["learner_token"]! as! String)
                     }
                 })
                 self.dataReference.child("available/learners/\(User.current.uid!)").setValue(nil)
@@ -206,15 +208,17 @@ class FirebaseClient {
                 dataReference.child("user_profile/\(Singleton.sharedInstance.partner.uid!)/username").observeSingleEvent(of: .value, with: {snapshot in
                     Singleton.sharedInstance.partner.name = snapshot.value as! String
                 })
-                
-        HerokuappClient.shared.getSession{ (dictionary, error) in
+        var roomName : String = Singleton.sharedInstance.partner.uid //TODO: Try to combine 2 uid also, not just 1 uid
+        HerokuappClient.shared.getSession(roomName: roomName){ (dictionary, error) in
             if let dictionary = dictionary {
                 Singleton.sharedInstance.tokBoxApiKey = dictionary["apiKey"]!
                 let sessionId = dictionary["sessionId"]!
-                let token = dictionary["token"]!
+                let speakerToken = dictionary["token"]!
+                let learnerToken = dictionary["learner_token"]!
                 Singleton.sharedInstance.tokBoxSessionId = sessionId
                 let dictionary = ["session_id" : sessionId,
-                                  "token": token,
+                                  "speaker_token": speakerToken,
+                                  "learner_token": learnerToken,
                                   "learnerUid": Singleton.sharedInstance.partner.uid,
                                   "learnerName": Singleton.sharedInstance.partner.name,
                                   "learnerRating": Singleton.sharedInstance.partner.rating,
@@ -224,7 +228,7 @@ class FirebaseClient {
                                   "speakerPhoto": User.current.profilePhoto] as [String : Any]
                 self.dataReference.child("sessions/\(sessionId)").updateChildValues(dictionary)
                 self.dataReference.child("available/learners/\(Singleton.sharedInstance.partner.uid!)").updateChildValues(["matched": sessionId])
-                completion(sessionId, token)
+                completion(sessionId, speakerToken)
             }
         }
     }
