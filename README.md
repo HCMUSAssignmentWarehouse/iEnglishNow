@@ -19,6 +19,20 @@ The **extended** features are implemented:
 
 The **advance** features are implemented:
 
+## Install libraries with Podfile
+
+Launch terminal, cd to the project's folder and type ``pod install`` to install needed libraries for this app.
+
+## Quick deploy to Heroku
+
+Heroku is a PaaS (Platform as a Service) that can be used to deploy simple and small applications for free. To easily deploy **EnglishNow NodeJS server** repository to Heroku, sign up for a Heroku account and click this button:
+
+<a href="https://heroku.com/deploy?template=https://github.com/opentok/learning-opentok-node/" target="_blank">
+<img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy">
+</a>
+
+Heroku will prompt you to add your OpenTok API key and OpenTok API secret, which you can
+obtain at the [TokBox Dashboard](https://dashboard.tokbox.com/keys).
 
 ## Video Walkthrough
 
