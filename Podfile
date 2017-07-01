@@ -10,20 +10,19 @@ target 'Speak now' do
   # Pods for Speak now
 
 pod 'Firebase/Auth'
-
 pod 'Firebase/Database'
-
 pod 'Firebase/Core'
-
 pod 'Firebase/Storage'
 
 pod 'OpenTok', '~> 2.10.0’
 
 pod 'MBProgressHUD', '~> 1.0.0'
 
+pod 'Cosmos', '~> 7.0'
+
 # Swift 3.0 - Xcode 8
 pod 'SwiftMessages'
-
+pod 'AFNetworking', '~> 3.0'
 
   target 'Speak nowTests' do
     inherit! :search_paths

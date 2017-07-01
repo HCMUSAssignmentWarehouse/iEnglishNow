@@ -39,34 +39,17 @@ class SignUpVC: UIViewController {
             txtError.text = "Cofirm password must be equal to password!"
         }
         else{
-            if let email = txtEmail.text, let password = txtPassword.text{
-                Auth.auth().createUser(withEmail: email,password:password,completion:{user,error in
+            if let email = txtEmail.text, let password = txtPassword.text {
+                ProgressHUD.show(view: view)
+                FirebaseClient.shared.signUp(email: email, password: password, userName: txtUsername.text!, skills: skills, completion: {(user, error) in
                     if let firebaseError = error{
                         print(firebaseError.localizedDescription)
                         self.txtError.text = firebaseError.localizedDescription
                         return
                     }
-                    
-                    let userRef = Database.database().reference().child("user_profile").child((user?.uid)!)
-                    userRef.child("username").setValue(self.txtUsername.text)
-                    userRef.child("email").setValue(self.txtEmail.text)
-                    userRef.child("password").setValue(self.txtPassword.text)
-                    userRef.child("profile_pic").setValue("")
-
-                    
-                    //save stats numbers
-                    userRef.child("drinks").setValue(0)
-                    userRef.child("conversations").setValue(0)
-                    
-                    for item in self.skills{
-                        
-                        userRef.child("skill").child(item.name).setValue(0)
-                    }
-                    
-                    print("Success!")
-                    
-                    self.dismiss(animated: true, completion: nil)
                 })
+                ProgressHUD.hide(view: self.view)
+                self.dismiss(animated: true, completion: nil)
                 
             }
             else {
@@ -75,7 +58,6 @@ class SignUpVC: UIViewController {
             }
 
         }
-        
     }
     
     var skills: [Skill] = [Skill]()

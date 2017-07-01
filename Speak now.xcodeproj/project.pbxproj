@@ -8,10 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		10B458342B5A9E407E1A5886 /* Pods_Speak_nowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20E8225934024983D42C115 /* Pods_Speak_nowTests.framework */; };
+		C26896A81F07A17500888AA6 /* Dialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26896A71F07A17500888AA6 /* Dialog.xib */; };
+		C271522A1F04ECCB003F57FD /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C271522C1F04ECCB003F57FD /* MainScreen.storyboard */; };
+		C2882F031F055195009459F7 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2882F021F055195009459F7 /* MatchViewController.swift */; };
+		C2882F051F05598A009459F7 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2882F041F05598A009459F7 /* Singleton.swift */; };
 		C2DA3E921F04006200DA5116 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E911F04006200DA5116 /* Constants.swift */; };
 		C2DA3E941F0402A500DA5116 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E931F0402A500DA5116 /* ProgressHUD.swift */; };
 		C2DA3E961F04057900DA5116 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E951F04057900DA5116 /* MessageBox.swift */; };
 		C2DA3E981F040F6400DA5116 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E971F040F6400DA5116 /* User.swift */; };
+		C2DA3E9A1F0425ED00DA5116 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E991F0425ED00DA5116 /* Review.swift */; };
+		C2DA3E9C1F0431B800DA5116 /* Gift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E9B1F0431B800DA5116 /* Gift.swift */; };
+		C2DA3E9E1F04322C00DA5116 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E9D1F04322C00DA5116 /* Rating.swift */; };
+		C2DA3EA01F04383A00DA5116 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E9F1F04383A00DA5116 /* FirebaseClient.swift */; };
+		C2DA3EA21F043BB600DA5116 /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3EA11F043BB600DA5116 /* DataUtils.swift */; };
+		C2DA3EA41F043CEB00DA5116 /* HerokuappClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3EA31F043CEB00DA5116 /* HerokuappClient.swift */; };
+		C2EEEA1E1F0789A100517FB9 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EEEA1D1F0789A100517FB9 /* Keys.swift */; };
+		C2EEEA201F078B4F00517FB9 /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EEEA1F1F078B4F00517FB9 /* CallViewController.swift */; };
+		C2EEEA221F078D6A00517FB9 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EEEA211F078D6A00517FB9 /* Dialog.swift */; };
 		E59F95D7DACA5D4B8698C4AC /* Pods_Speak_nowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0B7CC1A86265A1F7C575DF /* Pods_Speak_nowUITests.framework */; };
 		E6A006EF797FC5F21ECF7412 /* Pods_Speak_now.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CAC7EEF0D8B2A1E3C5AB16 /* Pods_Speak_now.framework */; };
 		FA040CA41EF624AA00C6DD99 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA040CA31EF624AA00C6DD99 /* SlideMenuViewController.swift */; };
@@ -46,7 +59,6 @@
 		FA0757ED1ED19B5D006CE695 /* conversation.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0757EC1ED19B5D006CE695 /* conversation.png */; };
 		FA0757EF1ED19E86006CE695 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0757EE1ED19E86006CE695 /* profile.png */; };
 		FA0757F11ED1A179006CE695 /* find.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0757F01ED1A179006CE695 /* find.png */; };
-		FA0757F31ED1B931006CE695 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA0757F21ED1B931006CE695 /* MainScreen.storyboard */; };
 		FA0757F51ED1C7CF006CE695 /* HomeTimeLineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0757F41ED1C7CF006CE695 /* HomeTimeLineVC.swift */; };
 		FA0757F71ED1DF2F006CE695 /* liked.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0757F61ED1DF2F006CE695 /* liked.png */; };
 		FA0757F91ED1DF3A006CE695 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0757F81ED1DF3A006CE695 /* like.png */; };
@@ -95,6 +107,17 @@
 		FAF3DA1D1ED2FAFD007B767D /* VideoCall.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF3DA1C1ED2FAFD007B767D /* VideoCall.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		C20028701F07CD3B002A908C /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		FA1CD03F1ECE97B0006AF4A6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -120,10 +143,23 @@
 		6F4ED61515C9C53E9D7212F0 /* Pods-Speak now.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Speak now.release.xcconfig"; path = "Pods/Target Support Files/Pods-Speak now/Pods-Speak now.release.xcconfig"; sourceTree = "<group>"; };
 		A2CAC7EEF0D8B2A1E3C5AB16 /* Pods_Speak_now.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Speak_now.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1C924DD8B5FDA7E3A6E930 /* Pods-Speak nowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Speak nowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Speak nowUITests/Pods-Speak nowUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C26896A71F07A17500888AA6 /* Dialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Dialog.xib; sourceTree = "<group>"; };
+		C271522B1F04ECCB003F57FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainScreen.storyboard; sourceTree = "<group>"; };
+		C2882F021F055195009459F7 /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		C2882F041F05598A009459F7 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		C2DA3E911F04006200DA5116 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C2DA3E931F0402A500DA5116 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		C2DA3E951F04057900DA5116 /* MessageBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		C2DA3E971F040F6400DA5116 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C2DA3E991F0425ED00DA5116 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		C2DA3E9B1F0431B800DA5116 /* Gift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gift.swift; sourceTree = "<group>"; };
+		C2DA3E9D1F04322C00DA5116 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		C2DA3E9F1F04383A00DA5116 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		C2DA3EA11F043BB600DA5116 /* DataUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
+		C2DA3EA31F043CEB00DA5116 /* HerokuappClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HerokuappClient.swift; sourceTree = "<group>"; };
+		C2EEEA1D1F0789A100517FB9 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		C2EEEA1F1F078B4F00517FB9 /* CallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
+		C2EEEA211F078D6A00517FB9 /* Dialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		D20E8225934024983D42C115 /* Pods_Speak_nowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Speak_nowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21CD69DDEC40D86C002731F /* Pods-Speak nowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Speak nowTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Speak nowTests/Pods-Speak nowTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA040CA31EF624AA00C6DD99 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
@@ -158,7 +194,6 @@
 		FA0757EC1ED19B5D006CE695 /* conversation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conversation.png; sourceTree = "<group>"; };
 		FA0757EE1ED19E86006CE695 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		FA0757F01ED1A179006CE695 /* find.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = find.png; sourceTree = "<group>"; };
-		FA0757F21ED1B931006CE695 /* MainScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		FA0757F41ED1C7CF006CE695 /* HomeTimeLineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTimeLineVC.swift; sourceTree = "<group>"; };
 		FA0757F61ED1DF2F006CE695 /* liked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liked.png; sourceTree = "<group>"; };
 		FA0757F81ED1DF3A006CE695 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
@@ -269,6 +304,8 @@
 		C2DA3E8C1F03FE8C00DA5116 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C2DA3E9F1F04383A00DA5116 /* FirebaseClient.swift */,
+				C2DA3EA31F043CEB00DA5116 /* HerokuappClient.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -278,6 +315,9 @@
 			children = (
 				FA2928091EF909EE00D4023C /* FirebaseUtils.swift */,
 				C2DA3E911F04006200DA5116 /* Constants.swift */,
+				C2DA3EA11F043BB600DA5116 /* DataUtils.swift */,
+				C2882F041F05598A009459F7 /* Singleton.swift */,
+				C2EEEA1D1F0789A100517FB9 /* Keys.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -286,6 +326,9 @@
 			isa = PBXGroup;
 			children = (
 				C2DA3E971F040F6400DA5116 /* User.swift */,
+				C2DA3E991F0425ED00DA5116 /* Review.swift */,
+				C2DA3E9B1F0431B800DA5116 /* Gift.swift */,
+				C2DA3E9D1F04322C00DA5116 /* Rating.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -293,8 +336,10 @@
 		C2DA3E8F1F03FEC100DA5116 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C26896A71F07A17500888AA6 /* Dialog.xib */,
 				C2DA3E931F0402A500DA5116 /* ProgressHUD.swift */,
 				C2DA3E951F04057900DA5116 /* MessageBox.swift */,
+				C2EEEA211F078D6A00517FB9 /* Dialog.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -303,6 +348,8 @@
 			isa = PBXGroup;
 			children = (
 				FA12D58A1ED147C7009D1B02 /* FindVC.swift */,
+				C2882F021F055195009459F7 /* MatchViewController.swift */,
+				C2EEEA1F1F078B4F00517FB9 /* CallViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -340,7 +387,6 @@
 		FA12D58C1ED168EB009D1B02 /* Prepare Screen */ = {
 			isa = PBXGroup;
 			children = (
-				FA1CD02E1ECE97AF006AF4A6 /* Main.storyboard */,
 				FA0BB7711ED067A800C6FA1F /* SignUpVC.swift */,
 				FA0BB7731ED09AFC00C6FA1F /* LoginPopupVC.swift */,
 				FA1CD02C1ECE97AF006AF4A6 /* LoginVC.swift */,
@@ -461,6 +507,9 @@
 				FAF3DA1B1ED2FAB5007B767D /* VideoCall */,
 				FA12D58C1ED168EB009D1B02 /* Prepare Screen */,
 				FA1CD05B1ECE97BE006AF4A6 /* Main Screen */,
+				FA1CD02E1ECE97AF006AF4A6 /* Main.storyboard */,
+				C271522C1F04ECCB003F57FD /* MainScreen.storyboard */,
+				FAF3DA1C1ED2FAFD007B767D /* VideoCall.storyboard */,
 				FA1CD02A1ECE97AF006AF4A6 /* AppDelegate.swift */,
 				FA189FD91EF5797E009DABDE /* SWRevealViewController.h */,
 				FA189FDA1EF5797E009DABDE /* SWRevealViewController.m */,
@@ -495,7 +544,6 @@
 		FA1CD05B1ECE97BE006AF4A6 /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
-				FA0757F21ED1B931006CE695 /* MainScreen.storyboard */,
 				FA4BDBF81EED7ABD00D7F03E /* Chat */,
 				FAF3DA1E1ED2FB23007B767D /* Profile */,
 				FA161FC01ED29E8000211D89 /* Conversation */,
@@ -535,7 +583,6 @@
 		FAF3DA1B1ED2FAB5007B767D /* VideoCall */ = {
 			isa = PBXGroup;
 			children = (
-				FAF3DA1C1ED2FAFD007B767D /* VideoCall.storyboard */,
 			);
 			name = VideoCall;
 			sourceTree = "<group>";
@@ -564,6 +611,7 @@
 				66B91422B27C510A129585D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
+				C20028701F07CD3B002A908C /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -673,11 +721,12 @@
 				FA07575D1ED18C5D006CE695 /* Icon-App-60x60@3x.png in Resources */,
 				FA0757631ED18C5D006CE695 /* Icon-App-83.5x83.5@2x.png in Resources */,
 				FA0757641ED18C5D006CE695 /* Icon-Small-50x50@1x.png in Resources */,
-				FA0757F31ED1B931006CE695 /* MainScreen.storyboard in Resources */,
+				C271522A1F04ECCB003F57FD /* MainScreen.storyboard in Resources */,
 				FA1CD0611ECEBE21006AF4A6 /* iconUser.png in Resources */,
 				FA1CD05F1ECEBE17006AF4A6 /* iconPassword.png in Resources */,
 				FA0757561ED18C5D006CE695 /* Icon-App-40x40@1x.png in Resources */,
 				FA07575C1ED18C5D006CE695 /* Icon-App-60x60@2x.png in Resources */,
+				C26896A81F07A17500888AA6 /* Dialog.xib in Resources */,
 				FA040CA81EF6BD6100C6DD99 /* iconComment.png in Resources */,
 				FA08046A1EEC63D800704749 /* logout.png in Resources */,
 				FA0757571ED18C5D006CE695 /* Icon-App-40x40@2x.png in Resources */,
@@ -877,6 +926,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4BDC011EED937E00D7F03E /* Contact.swift in Sources */,
+				C2882F051F05598A009459F7 /* Singleton.swift in Sources */,
 				FA1EA44B1EEF9032005357BF /* ChatMessageCell.swift in Sources */,
 				C2DA3E941F0402A500DA5116 /* ProgressHUD.swift in Sources */,
 				FA0BB7721ED067A800C6FA1F /* SignUpVC.swift in Sources */,
@@ -886,15 +936,20 @@
 				FA161FBE1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift in Sources */,
 				FA040CA61EF68EAB00C6DD99 /* DetailStatusVC.swift in Sources */,
 				FA1EA44D1EEF90A8005357BF /* Message.swift in Sources */,
+				C2EEEA201F078B4F00517FB9 /* CallViewController.swift in Sources */,
+				C2EEEA1E1F0789A100517FB9 /* Keys.swift in Sources */,
 				C2DA3E921F04006200DA5116 /* Constants.swift in Sources */,
 				FA29280A1EF909EE00D4023C /* FirebaseUtils.swift in Sources */,
 				FA1B597A1EEF030800AA2173 /* ContactCell.swift in Sources */,
 				FA0BB7741ED09AFC00C6FA1F /* LoginPopupVC.swift in Sources */,
 				FA40BC751EF1370100C3EFA0 /* CreateNewPostController.swift in Sources */,
 				FA1B59721EEED09E00AA2173 /* Skill.swift in Sources */,
+				C2882F031F055195009459F7 /* MatchViewController.swift in Sources */,
 				FA40BC781EF143BC00C3EFA0 /* Status.swift in Sources */,
+				C2EEEA221F078D6A00517FB9 /* Dialog.swift in Sources */,
 				FA040CA41EF624AA00C6DD99 /* SlideMenuViewController.swift in Sources */,
 				FA1B59741EEED1B400AA2173 /* Listening.swift in Sources */,
+				C2DA3EA21F043BB600DA5116 /* DataUtils.swift in Sources */,
 				FA0757F51ED1C7CF006CE695 /* HomeTimeLineVC.swift in Sources */,
 				FA0757FD1ED200BF006CE695 /* MyConversationVC.swift in Sources */,
 				FA1CD02B1ECE97AF006AF4A6 /* AppDelegate.swift in Sources */,
@@ -903,12 +958,17 @@
 				C2DA3E981F040F6400DA5116 /* User.swift in Sources */,
 				FA1B59761EEED20700AA2173 /* Speaking.swift in Sources */,
 				FA0AB82D1EF8095000161B5F /* CommentCell.swift in Sources */,
+				C2DA3E9C1F0431B800DA5116 /* Gift.swift in Sources */,
 				FA4BDBFE1EED872500D7F03E /* ChatViewController.swift in Sources */,
+				C2DA3EA01F04383A00DA5116 /* FirebaseClient.swift in Sources */,
 				FA29280C1EF9176400D4023C /* Comment.swift in Sources */,
 				FA1B59781EEED22B00AA2173 /* Pronunciation.swift in Sources */,
+				C2DA3E9A1F0425ED00DA5116 /* Review.swift in Sources */,
+				C2DA3E9E1F04322C00DA5116 /* Rating.swift in Sources */,
 				FA12D58B1ED147C7009D1B02 /* FindVC.swift in Sources */,
 				C2DA3E961F04057900DA5116 /* MessageBox.swift in Sources */,
 				FA4BDC031EED97AF00D7F03E /* DetailChatViewController.swift in Sources */,
+				C2DA3EA41F043CEB00DA5116 /* HerokuappClient.swift in Sources */,
 				FA06EE0F1EF01FDC002674BC /* CreateMessageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -945,6 +1005,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C271522C1F04ECCB003F57FD /* MainScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C271522B1F04ECCB003F57FD /* Base */,
+			);
+			name = MainScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		FA1CD02E1ECE97AF006AF4A6 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

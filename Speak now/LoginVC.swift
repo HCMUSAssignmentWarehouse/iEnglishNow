@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class LoginVC: UIViewController {
 
@@ -26,26 +25,38 @@ class LoginVC: UIViewController {
     
     
     @IBAction func Login(_ sender: UIButton) {
-        //self.performSegue(withIdentifier: "LoginSuccessSegue", sender: self)
-        if let email = txtName.text , let password = txtPassword.text{
-            Auth.auth().signIn(withEmail: email,password:password,completion:{uer,error in
-            if let firebaseError = error{
+        if let email = txtName.text , let password = txtPassword.text {
+            ProgressHUD.show(view: view)
+            
+            FirebaseClient.shared.signIn(email: email, password: password, completion: {(user, error) in
+                
+                if let firebaseError = error {
+                    ProgressHUD.hide(view: self.view)
                     self.txtError.text = firebaseError.localizedDescription
                     return
                 }
-                print("Login Success!")
-                self.performSegue(withIdentifier: "LoginSuccessSegue", sender: self)                
 
+                if user != nil {
+                    Singleton.sharedInstance.partner.type = UserType.learner
+                    DataUtils.saveUser()
+                    FirebaseClient.shared.handleReviews()
+                    print("Login Success!")
+                    ProgressHUD.hide(view: self.view)
+                    self.performSegue(withIdentifier: "LoginSuccessSegue", sender: self)
+            } else {
+                    ProgressHUD.hide(view: self.view)
+                    let alert = UIAlertController(title: "Error", message: "Invalid email or password", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             })
         }
         else {
+            ProgressHUD.hide(view: self.view)
             txtError.text = "Email or password is invalid!"
         }
-
-      
-        
     }
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

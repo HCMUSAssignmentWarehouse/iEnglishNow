@@ -35,17 +35,18 @@ class FindVC: UIViewController {
             fake()
         }
         
-        matchButton.layer.cornerRadius = matchButton.frame.height / 2
+        //btnFind.layer.cornerRadius = btnFind.frame.height / 2
         
         if !User.current.isSpeaker {
-            titleLabel.text = WSString.matchViewLearnerTitle
+            //lblSlogan.text = "WSString.matchViewLearnerTitle"
         } else {
-            titleLabel.text = WSString.matchViewSpeakerTitle
+            //lblSlogan.text = "WSString.matchViewSpeakerTitle"
         }
         
-        Popular()
+        //Popular()
         // Do any additional setup after loading the view.
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,11 +60,7 @@ class FindVC: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.SegueCall {
-            let callViewController = segue.destination as! CallViewController
-            callViewController.sessionId = sessionId
-            callViewController.token = token
-        }
+    
     }
     
     
@@ -72,11 +69,11 @@ class FindVC: UIViewController {
             //            Singleton.fakeData()
             matched = true
             
-            matchButtonBgImageView.image = #imageLiteral(resourceName: "findingBgButton")
+            btnFindBackground.image = #imageLiteral(resourceName: "findingBgButton")
             
             UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
                 self.blurView.alpha = 1
-                self.titleLabel.textColor = #colorLiteral(red: 0.4950980392, green: 0.5, blue: 0.5, alpha: 1)
+                self.lblSlogan.textColor = #colorLiteral(red: 0.4950980392, green: 0.5, blue: 0.5, alpha: 1)
                 
                 self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: (self.tabBarController?.tabBar.frame.origin.x)!, y: (self.tabBarController?.tabBar.frame.height)!)
                 
@@ -87,44 +84,33 @@ class FindVC: UIViewController {
             animation.toValue = CGFloat(M_PI * 2.0)
             animation.duration = 1
             animation.repeatCount = Float.infinity
-            matchButtonBgImageView.layer.add(animation, forKey: "rotate")
+            btnFindBackground.layer.add(animation, forKey: "rotate")
             
-            matchButton.setTitle("Finding", for: .normal)
+            btnFind.setTitle("Finding", for: .normal)
             
-            if User.current.isSpeaker {
-                print("speaker finding")
-                FireBaseClient.shared.onSpeakerMatch(completion: {(session, token) in
-                    self.sessionId = session
-                    self.token = token
-                    self.performSegue(withIdentifier: SegueIdentifier.SegueCall, sender: nil)
-                })
-            } else {
-                FireBaseClient.shared.onLearnerMatch(completion: { (session, token) in
-                    print(session)
-                    print(token)
-                    self.sessionId = session
-                    self.token = token
-                    self.performSegue(withIdentifier: SegueIdentifier.SegueCall, sender: nil)
-                })
-            }
+            FirebaseClient.shared.onMatch(completion: {(session, token) in
+                self.sessionId = session
+                self.token = token
+                //self.performSegue(withIdentifier: SegueIdentifier.SegueCall, sender: nil)
+            })
         } else {
             matched = false
             
             if User.current.isSpeaker {
-                FireBaseClient.shared.removeHandleLearnerAvailable()
+                FirebaseClient.shared.removeHandleLearnerAvailable()
             } else {
-                FireBaseClient.shared.removeHandleSpeakerAvailable()
+                FirebaseClient.shared.removeHandleSpeakerAvailable()
             }
             
-            matchButtonBgImageView.image = #imageLiteral(resourceName: "findBgButton")
+            btnFindBackground.image = #imageLiteral(resourceName: "findBgButton")
             
             UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
                 self.blurView.alpha = 0
-                self.titleLabel.textColor = #colorLiteral(red: 0.7233663201, green: 0.7233663201, blue: 0.7233663201, alpha: 1)
+                self.lblSlogan.textColor = #colorLiteral(red: 0.7233663201, green: 0.7233663201, blue: 0.7233663201, alpha: 1)
                 self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: (self.tabBarController?.tabBar.frame.origin.x)!, y: 0)
             }, completion: nil)
             
-            matchButton.setTitle("Find", for: .normal)
+            btnFind.setTitle("Find", for: .normal)
         }
     }
 
@@ -218,7 +204,7 @@ class FindVC: UIViewController {
     
     
     func loadDB(){
-        let user_type = UserDefaults.standard.string(forKey: Keys.type)
+        let user_type = UserDefaults.standard.string(forKey: "Keys.type")
         if user_type != nil{
             //            let objects = try! realm.objects(User.self)
             //            if objects.count > 0{
@@ -239,35 +225,35 @@ class FindVC: UIViewController {
     }
     
     func fake() {
-        let stats1 = Stats()
+        let stats1 = Rating()
         stats1.listening = 4
         stats1.pronounciation = 3
         stats1.fluency = 3
         stats1.vocabulary = 3
         let review1 = Review()
-        review1.stats = stats1
+        review1.ratings = stats1
         review1.partner = "Keny N"
         review1.photoPartner = "https://firebasestorage.googleapis.com/v0/b/shareandlearn-17cc0.appspot.com/o/avatar2.png?alt=media&token=0f8e2df3-440d-4e21-b66b-dc639675c5cc"
         review1.comment = "You have good listening skill, it will perfect if you foncus on your pronounciation."
         
-        let stats2 = Stats()
+        let stats2 = Rating()
         stats2.listening = 3
         stats2.pronounciation = 3
         stats2.fluency = 3
         stats2.vocabulary = 3
         let review2 = Review()
-        review2.stats = stats2
+        review2.ratings = stats2
         review2.partner = "Linda"
         review2.photoPartner = "https://firebasestorage.googleapis.com/v0/b/shareandlearn-17cc0.appspot.com/o/avatar1.png?alt=media&token=f061c825-2c70-4942-bcf0-054932ef3c32"
         review2.comment = "Your english speaking is good, you know alot of idoms. Hope to see you!"
         
-        let stats3 = Stats()
+        let stats3 = Rating()
         stats3.listening = 4
         stats3.pronounciation = 1
         stats3.fluency = 4
         stats3.vocabulary = 4
         let review3 = Review()
-        review3.stats = stats3
+        review3.ratings = stats3
         review3.partner = "YoMi"
         review3.photoPartner = "https://firebasestorage.googleapis.com/v0/b/shareandlearn-17cc0.appspot.com/o/avatar3.png?alt=media&token=e845ae6d-3909-4025-b0ef-16c9892775e7"
         review3.comment = "Your english skill is good. You should spend more time."
