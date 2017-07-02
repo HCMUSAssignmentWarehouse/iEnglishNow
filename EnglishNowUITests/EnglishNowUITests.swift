@@ -1,14 +1,14 @@
 //
-//  Speak_nowUITests.swift
-//  EnglishNowUITests
+//  EnglishNowUITests.swift
+//  EnglishNow
 //
-//  Created by IceTeaViet on 5/18/17.
+//  Created by GeniusDoan on 7/3/17.
 //  Copyright © 2017 IceTeaViet. All rights reserved.
 //
 
 import XCTest
 
-class Speak_nowUITests: XCTestCase {
+class EnglishNowUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
