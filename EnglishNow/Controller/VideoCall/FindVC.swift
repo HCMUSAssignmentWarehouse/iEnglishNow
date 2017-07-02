@@ -2,7 +2,7 @@
 //  FindVC.swift
 //  EnglishNow
 //
-//  Created by IceTeaViet on 5/20/17.
+//  Created by Nha T.Tran on 5/20/17.
 //  Copyright © 2017 IceTeaViet. All rights reserved.
 //
 

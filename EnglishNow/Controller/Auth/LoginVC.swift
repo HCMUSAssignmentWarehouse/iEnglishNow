@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  EnglishNow
 //
-//  Created by IceTeaViet on 5/18/17.
+//  Created by Nha T.Tran on 5/18/17.
 //  Copyright © 2017 IceTeaViet. All rights reserved.
 //
 
