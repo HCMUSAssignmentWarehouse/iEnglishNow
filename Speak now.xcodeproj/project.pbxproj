@@ -162,10 +162,10 @@
 		C2EEEA211F078D6A00517FB9 /* Dialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		D20E8225934024983D42C115 /* Pods_Speak_nowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Speak_nowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21CD69DDEC40D86C002731F /* Pods-Speak nowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Speak nowTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Speak nowTests/Pods-Speak nowTests.release.xcconfig"; sourceTree = "<group>"; };
-		FA040CA31EF624AA00C6DD99 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
-		FA040CA51EF68EAB00C6DD99 /* DetailStatusVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailStatusVC.swift; sourceTree = "<group>"; };
+		FA040CA31EF624AA00C6DD99 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuViewController.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
+		FA040CA51EF68EAB00C6DD99 /* DetailStatusVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailStatusVC.swift; path = DetailStatusVC.swift; sourceTree = "<group>"; };
 		FA040CA71EF6BD6100C6DD99 /* iconComment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconComment.png; sourceTree = "<group>"; };
-		FA06EE0E1EF01FDC002674BC /* CreateMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageController.swift; sourceTree = "<group>"; };
+		FA06EE0E1EF01FDC002674BC /* CreateMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateMessageController.swift; path = CreateMessageController.swift; sourceTree = "<group>"; };
 		FA0757381ED18C5D006CE695 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		FA0757391ED18C5D006CE695 /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
 		FA07573A1ED18C5D006CE695 /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
@@ -194,34 +194,34 @@
 		FA0757EC1ED19B5D006CE695 /* conversation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conversation.png; sourceTree = "<group>"; };
 		FA0757EE1ED19E86006CE695 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		FA0757F01ED1A179006CE695 /* find.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = find.png; sourceTree = "<group>"; };
-		FA0757F41ED1C7CF006CE695 /* HomeTimeLineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTimeLineVC.swift; sourceTree = "<group>"; };
+		FA0757F41ED1C7CF006CE695 /* HomeTimeLineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTimeLineVC.swift; path = HomeTimeLineVC.swift; sourceTree = "<group>"; };
 		FA0757F61ED1DF2F006CE695 /* liked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liked.png; sourceTree = "<group>"; };
 		FA0757F81ED1DF3A006CE695 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
-		FA0757FA1ED1E21A006CE695 /* CellOfTimeLineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellOfTimeLineVC.swift; sourceTree = "<group>"; };
-		FA0757FC1ED200BF006CE695 /* MyConversationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyConversationVC.swift; sourceTree = "<group>"; };
+		FA0757FA1ED1E21A006CE695 /* CellOfTimeLineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellOfTimeLineVC.swift; path = CellOfTimeLineVC.swift; sourceTree = "<group>"; };
+		FA0757FC1ED200BF006CE695 /* MyConversationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyConversationVC.swift; path = MyConversationVC.swift; sourceTree = "<group>"; };
 		FA0804671EEC1A1900704749 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA0804691EEC63D800704749 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
-		FA0AB82C1EF8095000161B5F /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
-		FA0BB7711ED067A800C6FA1F /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
-		FA0BB7731ED09AFC00C6FA1F /* LoginPopupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopupVC.swift; sourceTree = "<group>"; };
+		FA0AB82C1EF8095000161B5F /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentCell.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		FA0BB7711ED067A800C6FA1F /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		FA0BB7731ED09AFC00C6FA1F /* LoginPopupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPopupVC.swift; path = LoginPopupVC.swift; sourceTree = "<group>"; };
 		FA0BB7751ED0AABA00C6FA1F /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 		FA0BB7771ED0B88900C6FA1F /* blurCover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blurCover.jpg; sourceTree = "<group>"; };
 		FA12D58A1ED147C7009D1B02 /* FindVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindVC.swift; sourceTree = "<group>"; };
 		FA12D58D1ED16AF3009D1B02 /* launchIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launchIcon.jpg; sourceTree = "<group>"; };
-		FA161FBD1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCellVCTableViewCell.swift; sourceTree = "<group>"; };
-		FA161FC11ED2AD4500211D89 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		FA189FD31EF53FF6009DABDE /* Speak now-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Speak now-Bridging-Header.h"; sourceTree = "<group>"; };
-		FA189FD91EF5797E009DABDE /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		FA189FDA1EF5797E009DABDE /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		FA161FBD1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationCellVCTableViewCell.swift; path = ConversationCellVCTableViewCell.swift; sourceTree = "<group>"; };
+		FA161FC11ED2AD4500211D89 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVC.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		FA189FD31EF53FF6009DABDE /* Speak now-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Speak now-Bridging-Header.h"; path = "Speak now-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA189FD91EF5797E009DABDE /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		FA189FDA1EF5797E009DABDE /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		FA18A01F1EF58BE3009DABDE /* hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburger.png; sourceTree = "<group>"; };
-		FA1B59711EEED09E00AA2173 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
-		FA1B59731EEED1B400AA2173 /* Listening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listening.swift; sourceTree = "<group>"; };
-		FA1B59751EEED20700AA2173 /* Speaking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaking.swift; sourceTree = "<group>"; };
-		FA1B59771EEED22B00AA2173 /* Pronunciation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pronunciation.swift; sourceTree = "<group>"; };
-		FA1B59791EEF030800AA2173 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		FA1B59711EEED09E00AA2173 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Skill.swift; path = Skill.swift; sourceTree = "<group>"; };
+		FA1B59731EEED1B400AA2173 /* Listening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Listening.swift; path = Listening.swift; sourceTree = "<group>"; };
+		FA1B59751EEED20700AA2173 /* Speaking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Speaking.swift; path = Speaking.swift; sourceTree = "<group>"; };
+		FA1B59771EEED22B00AA2173 /* Pronunciation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pronunciation.swift; path = Pronunciation.swift; sourceTree = "<group>"; };
+		FA1B59791EEF030800AA2173 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactCell.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		FA1CD0271ECE97AF006AF4A6 /* Speak now.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Speak now.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1CD02A1ECE97AF006AF4A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA1CD02C1ECE97AF006AF4A6 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		FA1CD02C1ECE97AF006AF4A6 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		FA1CD02F1ECE97AF006AF4A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA1CD0321ECE97AF006AF4A6 /* Speak_now.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Speak_now.xcdatamodel; sourceTree = "<group>"; };
 		FA1CD0341ECE97AF006AF4A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -235,19 +235,19 @@
 		FA1CD04F1ECE97B0006AF4A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA1CD05E1ECEBE17006AF4A6 /* iconPassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconPassword.png; sourceTree = "<group>"; };
 		FA1CD0601ECEBE21006AF4A6 /* iconUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconUser.png; sourceTree = "<group>"; };
-		FA1EA44A1EEF9032005357BF /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
-		FA1EA44C1EEF90A8005357BF /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		FA1EA44A1EEF9032005357BF /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatMessageCell.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		FA1EA44C1EEF90A8005357BF /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Message.swift; sourceTree = "<group>"; };
 		FA2928091EF909EE00D4023C /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
-		FA29280B1EF9176400D4023C /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		FA29280B1EF9176400D4023C /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Comment.swift; sourceTree = "<group>"; };
 		FA40BC701EF1261500C3EFA0 /* IconEdit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconEdit.png; sourceTree = "<group>"; };
 		FA40BC721EF1300200C3EFA0 /* iconPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconPhoto.png; sourceTree = "<group>"; };
-		FA40BC741EF1370100C3EFA0 /* CreateNewPostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewPostController.swift; sourceTree = "<group>"; };
-		FA40BC771EF143BC00C3EFA0 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		FA40BC741EF1370100C3EFA0 /* CreateNewPostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateNewPostController.swift; path = CreateNewPostController.swift; sourceTree = "<group>"; };
+		FA40BC771EF143BC00C3EFA0 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Status.swift; path = Status.swift; sourceTree = "<group>"; };
 		FA4BDBF61EED788200D7F03E /* chaticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chaticon.png; sourceTree = "<group>"; };
-		FA4BDBFD1EED872500D7F03E /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		FA4BDC001EED937E00D7F03E /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		FA4BDC021EED97AF00D7F03E /* DetailChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailChatViewController.swift; sourceTree = "<group>"; };
-		FAF3DA1C1ED2FAFD007B767D /* VideoCall.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoCall.storyboard; sourceTree = "<group>"; };
+		FA4BDBFD1EED872500D7F03E /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		FA4BDC001EED937E00D7F03E /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = Contact.swift; sourceTree = "<group>"; };
+		FA4BDC021EED97AF00D7F03E /* DetailChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailChatViewController.swift; path = DetailChatViewController.swift; sourceTree = "<group>"; };
+		FAF3DA1C1ED2FAFD007B767D /* VideoCall.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = VideoCall.storyboard; path = VideoCall.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,57 +301,228 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C2DA3E8C1F03FE8C00DA5116 /* Network */ = {
+		C27F8DE01F08E08900371F0D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FA1CD0311ECE97AF006AF4A6 /* Speak_now.xcdatamodeld */,
+			);
+			name = CoreData;
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C27F8DE11F08E0CD00371F0D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extension;
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C27F8DE21F08E18400371F0D /* Nib */ = {
+			isa = PBXGroup;
+			children = (
+				C26896A71F07A17500888AA6 /* Dialog.xib */,
+			);
+			name = Nib;
+			path = Nib;
+			sourceTree = "<group>";
+		};
+		C27F8DE31F08E1F200371F0D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				FA0BB7731ED09AFC00C6FA1F /* LoginPopupVC.swift */,
+				FA1CD02C1ECE97AF006AF4A6 /* LoginVC.swift */,
+				FA0BB7711ED067A800C6FA1F /* SignUpVC.swift */,
+			);
+			name = Auth;
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C27F8DE41F08E22C00371F0D /* VideoCall */ = {
+			isa = PBXGroup;
+			children = (
+				C2EEEA1F1F078B4F00517FB9 /* CallViewController.swift */,
+				FA12D58A1ED147C7009D1B02 /* FindVC.swift */,
+				C2882F021F055195009459F7 /* MatchViewController.swift */,
+			);
+			name = VideoCall;
+			path = VideoCall;
+			sourceTree = "<group>";
+		};
+		C27F8DE51F08E28900371F0D /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				FA4BDBFD1EED872500D7F03E /* ChatViewController.swift */,
+				FA06EE0E1EF01FDC002674BC /* CreateMessageController.swift */,
+				FA4BDC021EED97AF00D7F03E /* DetailChatViewController.swift */,
+			);
+			name = Chat;
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		C27F8DE61F08E2AD00371F0D /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				FA4BDC001EED937E00D7F03E /* Contact.swift */,
+				FA1EA44C1EEF90A8005357BF /* Message.swift */,
+			);
+			name = Chat;
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		C27F8DE71F08E30300371F0D /* HomeTimeline */ = {
+			isa = PBXGroup;
+			children = (
+				FA40BC741EF1370100C3EFA0 /* CreateNewPostController.swift */,
+				FA040CA51EF68EAB00C6DD99 /* DetailStatusVC.swift */,
+				FA0757F41ED1C7CF006CE695 /* HomeTimeLineVC.swift */,
+			);
+			name = HomeTimeline;
+			path = HomeTimeline;
+			sourceTree = "<group>";
+		};
+		C27F8DE81F08E37400371F0D /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				FA0757FC1ED200BF006CE695 /* MyConversationVC.swift */,
+			);
+			name = Conversation;
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		C27F8DE91F08E39200371F0D /* HomeTimeline */ = {
+			isa = PBXGroup;
+			children = (
+				FA29280B1EF9176400D4023C /* Comment.swift */,
+				FA40BC771EF143BC00C3EFA0 /* Status.swift */,
+			);
+			name = HomeTimeline;
+			path = HomeTimeline;
+			sourceTree = "<group>";
+		};
+		C27F8DEA1F08E3CE00371F0D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FA161FC11ED2AD4500211D89 /* ProfileVC.swift */,
+			);
+			name = Profile;
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C27F8DEB1F08E3E200371F0D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C2DA3E9B1F0431B800DA5116 /* Gift.swift */,
+				FA1B59731EEED1B400AA2173 /* Listening.swift */,
+				FA1B59771EEED22B00AA2173 /* Pronunciation.swift */,
+				C2DA3E9D1F04322C00DA5116 /* Rating.swift */,
+				C2DA3E991F0425ED00DA5116 /* Review.swift */,
+				FA1B59711EEED09E00AA2173 /* Skill.swift */,
+				FA1B59751EEED20700AA2173 /* Speaking.swift */,
+				C2DA3E971F040F6400DA5116 /* User.swift */,
+			);
+			name = Profile;
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C27F8DEC1F08E66200371F0D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FA0757FA1ED1E21A006CE695 /* CellOfTimeLineVC.swift */,
+				FA1EA44A1EEF9032005357BF /* ChatMessageCell.swift */,
+				FA0AB82C1EF8095000161B5F /* CommentCell.swift */,
+				FA1B59791EEF030800AA2173 /* ContactCell.swift */,
+				FA161FBD1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift */,
+			);
+			name = Cell;
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C27F8DED1F08E84C00371F0D /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				FA189FD91EF5797E009DABDE /* SWRevealViewController.h */,
+				FA189FDA1EF5797E009DABDE /* SWRevealViewController.m */,
+				FA189FD31EF53FF6009DABDE /* Speak now-Bridging-Header.h */,
+			);
+			name = ThirdParty;
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		C27F8DEE1F08E8A500371F0D /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				C2EEEA211F078D6A00517FB9 /* Dialog.swift */,
+				C2DA3E951F04057900DA5116 /* MessageBox.swift */,
+				C2DA3E931F0402A500DA5116 /* ProgressHUD.swift */,
+			);
+			name = Custom;
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		C2DA3E8C1F03FE8C00DA5116 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				C2DA3E9F1F04383A00DA5116 /* FirebaseClient.swift */,
 				C2DA3EA31F043CEB00DA5116 /* HerokuappClient.swift */,
 			);
-			name = Network;
+			name = Services;
+			path = Services;
 			sourceTree = "<group>";
 		};
-		C2DA3E8D1F03FEAB00DA5116 /* Utils */ = {
+		C2DA3E8D1F03FEAB00DA5116 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				FA2928091EF909EE00D4023C /* FirebaseUtils.swift */,
+				C27F8DED1F08E84C00371F0D /* ThirdParty */,
 				C2DA3E911F04006200DA5116 /* Constants.swift */,
 				C2DA3EA11F043BB600DA5116 /* DataUtils.swift */,
-				C2882F041F05598A009459F7 /* Singleton.swift */,
+				FA2928091EF909EE00D4023C /* FirebaseUtils.swift */,
 				C2EEEA1D1F0789A100517FB9 /* Keys.swift */,
+				C2882F041F05598A009459F7 /* Singleton.swift */,
 			);
-			name = Utils;
+			name = Helper;
+			path = Helper;
 			sourceTree = "<group>";
 		};
-		C2DA3E8E1F03FEB600DA5116 /* Models */ = {
+		C2DA3E8E1F03FEB600DA5116 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C2DA3E971F040F6400DA5116 /* User.swift */,
-				C2DA3E991F0425ED00DA5116 /* Review.swift */,
-				C2DA3E9B1F0431B800DA5116 /* Gift.swift */,
-				C2DA3E9D1F04322C00DA5116 /* Rating.swift */,
+				C27F8DE61F08E2AD00371F0D /* Chat */,
+				C27F8DE91F08E39200371F0D /* HomeTimeline */,
+				C27F8DEB1F08E3E200371F0D /* Profile */,
 			);
-			name = Models;
+			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		C2DA3E8F1F03FEC100DA5116 /* Views */ = {
+		C2DA3E8F1F03FEC100DA5116 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C26896A71F07A17500888AA6 /* Dialog.xib */,
-				C2DA3E931F0402A500DA5116 /* ProgressHUD.swift */,
-				C2DA3E951F04057900DA5116 /* MessageBox.swift */,
-				C2EEEA211F078D6A00517FB9 /* Dialog.swift */,
+				C27F8DEC1F08E66200371F0D /* Cell */,
+				C27F8DEE1F08E8A500371F0D /* Custom */,
+				C27F8DE21F08E18400371F0D /* Nib */,
+				FA1CD0361ECE97AF006AF4A6 /* LaunchScreen.storyboard */,
+				FA1CD02E1ECE97AF006AF4A6 /* Main.storyboard */,
+				C271522C1F04ECCB003F57FD /* MainScreen.storyboard */,
+				FAF3DA1C1ED2FAFD007B767D /* VideoCall.storyboard */,
 			);
-			name = Views;
+			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
-		C2DA3E901F03FED200DA5116 /* Controllers */ = {
+		C2DA3E901F03FED200DA5116 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FA12D58A1ED147C7009D1B02 /* FindVC.swift */,
-				C2882F021F055195009459F7 /* MatchViewController.swift */,
-				C2EEEA1F1F078B4F00517FB9 /* CallViewController.swift */,
+				C27F8DE31F08E1F200371F0D /* Auth */,
+				C27F8DE51F08E28900371F0D /* Chat */,
+				C27F8DE81F08E37400371F0D /* Conversation */,
+				C27F8DE71F08E30300371F0D /* HomeTimeline */,
+				C27F8DEA1F08E3CE00371F0D /* Profile */,
+				C27F8DE41F08E22C00371F0D /* VideoCall */,
+				FA040CA31EF624AA00C6DD99 /* SlideMenuViewController.swift */,
 			);
-			name = Controllers;
+			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		FA0757371ED18C5D006CE695 /* AppIcon.appiconset */ = {
@@ -384,105 +555,34 @@
 			path = AppIcon.appiconset;
 			sourceTree = "<group>";
 		};
-		FA12D58C1ED168EB009D1B02 /* Prepare Screen */ = {
-			isa = PBXGroup;
-			children = (
-				FA0BB7711ED067A800C6FA1F /* SignUpVC.swift */,
-				FA0BB7731ED09AFC00C6FA1F /* LoginPopupVC.swift */,
-				FA1CD02C1ECE97AF006AF4A6 /* LoginVC.swift */,
-			);
-			name = "Prepare Screen";
-			sourceTree = "<group>";
-		};
-		FA161FBF1ED29E7200211D89 /* HomeTimeLine */ = {
-			isa = PBXGroup;
-			children = (
-				FA189FD21EF4D8FF009DABDE /* controller */,
-				FA40BC761EF1439500C3EFA0 /* model */,
-			);
-			name = HomeTimeLine;
-			sourceTree = "<group>";
-		};
-		FA161FC01ED29E8000211D89 /* Conversation */ = {
-			isa = PBXGroup;
-			children = (
-				FA0757FC1ED200BF006CE695 /* MyConversationVC.swift */,
-				FA161FBD1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift */,
-			);
-			name = Conversation;
-			sourceTree = "<group>";
-		};
-		FA189FD01EF4D8BE009DABDE /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				FA4BDBFD1EED872500D7F03E /* ChatViewController.swift */,
-				FA4BDC021EED97AF00D7F03E /* DetailChatViewController.swift */,
-				FA1B59791EEF030800AA2173 /* ContactCell.swift */,
-				FA06EE0E1EF01FDC002674BC /* CreateMessageController.swift */,
-				FA1EA44A1EEF9032005357BF /* ChatMessageCell.swift */,
-			);
-			name = controller;
-			sourceTree = "<group>";
-		};
-		FA189FD11EF4D8E4009DABDE /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				FA161FC11ED2AD4500211D89 /* ProfileVC.swift */,
-			);
-			name = controller;
-			sourceTree = "<group>";
-		};
-		FA189FD21EF4D8FF009DABDE /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				FA0757F41ED1C7CF006CE695 /* HomeTimeLineVC.swift */,
-				FA0757FA1ED1E21A006CE695 /* CellOfTimeLineVC.swift */,
-				FA40BC741EF1370100C3EFA0 /* CreateNewPostController.swift */,
-				FA040CA51EF68EAB00C6DD99 /* DetailStatusVC.swift */,
-				FA0AB82C1EF8095000161B5F /* CommentCell.swift */,
-			);
-			name = controller;
-			sourceTree = "<group>";
-		};
-		FA1B59701EEECF8C00AA2173 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				FA1B59711EEED09E00AA2173 /* Skill.swift */,
-				FA1B59731EEED1B400AA2173 /* Listening.swift */,
-				FA1B59751EEED20700AA2173 /* Speaking.swift */,
-				FA1B59771EEED22B00AA2173 /* Pronunciation.swift */,
-			);
-			name = model;
-			sourceTree = "<group>";
-		};
 		FA1CD01E1ECE97AE006AF4A6 = {
 			isa = PBXGroup;
 			children = (
-				FA040CA71EF6BD6100C6DD99 /* iconComment.png */,
-				FA18A01F1EF58BE3009DABDE /* hamburger.png */,
-				FA40BC721EF1300200C3EFA0 /* iconPhoto.png */,
-				FA40BC701EF1261500C3EFA0 /* IconEdit.png */,
-				FA4BDBF61EED788200D7F03E /* chaticon.png */,
-				FA0804691EEC63D800704749 /* logout.png */,
-				FA0757F81ED1DF3A006CE695 /* like.png */,
-				FA0757F61ED1DF2F006CE695 /* liked.png */,
-				FA0757F01ED1A179006CE695 /* find.png */,
-				FA0757EE1ED19E86006CE695 /* profile.png */,
-				FA0757EC1ED19B5D006CE695 /* conversation.png */,
-				FA0757E91ED19ACC006CE695 /* hometimelineIcon.png */,
-				FA0757E01ED193C5006CE695 /* clockIcon.png */,
 				FA0757371ED18C5D006CE695 /* AppIcon.appiconset */,
-				FA12D58D1ED16AF3009D1B02 /* launchIcon.jpg */,
-				FA0BB7771ED0B88900C6FA1F /* blurCover.jpg */,
-				FA0BB7751ED0AABA00C6FA1F /* sample.jpg */,
-				FA1CD0601ECEBE21006AF4A6 /* iconUser.png */,
-				FA1CD05E1ECEBE17006AF4A6 /* iconPassword.png */,
+				10FED54BB3A36163B95BEB22 /* Frameworks */,
+				6844395D93D19F18B5F23DA4 /* Pods */,
+				FA1CD0281ECE97AF006AF4A6 /* Products */,
 				FA1CD0291ECE97AF006AF4A6 /* Speak now */,
 				FA1CD0411ECE97B0006AF4A6 /* Speak nowTests */,
 				FA1CD04C1ECE97B0006AF4A6 /* Speak nowUITests */,
-				FA1CD0281ECE97AF006AF4A6 /* Products */,
-				6844395D93D19F18B5F23DA4 /* Pods */,
-				10FED54BB3A36163B95BEB22 /* Frameworks */,
+				FA40BC701EF1261500C3EFA0 /* IconEdit.png */,
+				FA0BB7771ED0B88900C6FA1F /* blurCover.jpg */,
+				FA4BDBF61EED788200D7F03E /* chaticon.png */,
+				FA0757E01ED193C5006CE695 /* clockIcon.png */,
+				FA0757EC1ED19B5D006CE695 /* conversation.png */,
+				FA0757F01ED1A179006CE695 /* find.png */,
+				FA18A01F1EF58BE3009DABDE /* hamburger.png */,
+				FA0757E91ED19ACC006CE695 /* hometimelineIcon.png */,
+				FA040CA71EF6BD6100C6DD99 /* iconComment.png */,
+				FA1CD05E1ECEBE17006AF4A6 /* iconPassword.png */,
+				FA40BC721EF1300200C3EFA0 /* iconPhoto.png */,
+				FA1CD0601ECEBE21006AF4A6 /* iconUser.png */,
+				FA12D58D1ED16AF3009D1B02 /* launchIcon.jpg */,
+				FA0757F81ED1DF3A006CE695 /* like.png */,
+				FA0757F61ED1DF2F006CE695 /* liked.png */,
+				FA0804691EEC63D800704749 /* logout.png */,
+				FA0757EE1ED19E86006CE695 /* profile.png */,
+				FA0BB7751ED0AABA00C6FA1F /* sample.jpg */,
 			);
 			sourceTree = "<group>";
 		};
@@ -499,26 +599,17 @@
 		FA1CD0291ECE97AF006AF4A6 /* Speak now */ = {
 			isa = PBXGroup;
 			children = (
-				C2DA3E901F03FED200DA5116 /* Controllers */,
-				C2DA3E8F1F03FEC100DA5116 /* Views */,
-				C2DA3E8E1F03FEB600DA5116 /* Models */,
-				C2DA3E8D1F03FEAB00DA5116 /* Utils */,
-				C2DA3E8C1F03FE8C00DA5116 /* Network */,
-				FAF3DA1B1ED2FAB5007B767D /* VideoCall */,
-				FA12D58C1ED168EB009D1B02 /* Prepare Screen */,
-				FA1CD05B1ECE97BE006AF4A6 /* Main Screen */,
-				FA1CD02E1ECE97AF006AF4A6 /* Main.storyboard */,
-				C271522C1F04ECCB003F57FD /* MainScreen.storyboard */,
-				FAF3DA1C1ED2FAFD007B767D /* VideoCall.storyboard */,
+				C2DA3E901F03FED200DA5116 /* Controller */,
+				C27F8DE01F08E08900371F0D /* CoreData */,
+				C27F8DE11F08E0CD00371F0D /* Extension */,
+				C2DA3E8D1F03FEAB00DA5116 /* Helper */,
+				C2DA3E8E1F03FEB600DA5116 /* Model */,
+				C2DA3E8C1F03FE8C00DA5116 /* Services */,
+				C2DA3E8F1F03FEC100DA5116 /* View */,
 				FA1CD02A1ECE97AF006AF4A6 /* AppDelegate.swift */,
-				FA189FD91EF5797E009DABDE /* SWRevealViewController.h */,
-				FA189FDA1EF5797E009DABDE /* SWRevealViewController.m */,
-				FA0804671EEC1A1900704749 /* GoogleService-Info.plist */,
 				FA1CD0341ECE97AF006AF4A6 /* Assets.xcassets */,
-				FA1CD0361ECE97AF006AF4A6 /* LaunchScreen.storyboard */,
+				FA0804671EEC1A1900704749 /* GoogleService-Info.plist */,
 				FA1CD0391ECE97AF006AF4A6 /* Info.plist */,
-				FA1CD0311ECE97AF006AF4A6 /* Speak_now.xcdatamodeld */,
-				FA189FD31EF53FF6009DABDE /* Speak now-Bridging-Header.h */,
 			);
 			path = "Speak now";
 			sourceTree = "<group>";
@@ -526,8 +617,8 @@
 		FA1CD0411ECE97B0006AF4A6 /* Speak nowTests */ = {
 			isa = PBXGroup;
 			children = (
-				FA1CD0421ECE97B0006AF4A6 /* Speak_nowTests.swift */,
 				FA1CD0441ECE97B0006AF4A6 /* Info.plist */,
+				FA1CD0421ECE97B0006AF4A6 /* Speak_nowTests.swift */,
 			);
 			path = "Speak nowTests";
 			sourceTree = "<group>";
@@ -535,65 +626,10 @@
 		FA1CD04C1ECE97B0006AF4A6 /* Speak nowUITests */ = {
 			isa = PBXGroup;
 			children = (
-				FA1CD04D1ECE97B0006AF4A6 /* Speak_nowUITests.swift */,
 				FA1CD04F1ECE97B0006AF4A6 /* Info.plist */,
+				FA1CD04D1ECE97B0006AF4A6 /* Speak_nowUITests.swift */,
 			);
 			path = "Speak nowUITests";
-			sourceTree = "<group>";
-		};
-		FA1CD05B1ECE97BE006AF4A6 /* Main Screen */ = {
-			isa = PBXGroup;
-			children = (
-				FA4BDBF81EED7ABD00D7F03E /* Chat */,
-				FAF3DA1E1ED2FB23007B767D /* Profile */,
-				FA161FC01ED29E8000211D89 /* Conversation */,
-				FA161FBF1ED29E7200211D89 /* HomeTimeLine */,
-				FA040CA31EF624AA00C6DD99 /* SlideMenuViewController.swift */,
-			);
-			name = "Main Screen";
-			sourceTree = "<group>";
-		};
-		FA40BC761EF1439500C3EFA0 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				FA40BC771EF143BC00C3EFA0 /* Status.swift */,
-				FA29280B1EF9176400D4023C /* Comment.swift */,
-			);
-			name = model;
-			sourceTree = "<group>";
-		};
-		FA4BDBF81EED7ABD00D7F03E /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				FA189FD01EF4D8BE009DABDE /* controller */,
-				FA4BDBFF1EED937000D7F03E /* model */,
-			);
-			name = Chat;
-			sourceTree = "<group>";
-		};
-		FA4BDBFF1EED937000D7F03E /* model */ = {
-			isa = PBXGroup;
-			children = (
-				FA4BDC001EED937E00D7F03E /* Contact.swift */,
-				FA1EA44C1EEF90A8005357BF /* Message.swift */,
-			);
-			name = model;
-			sourceTree = "<group>";
-		};
-		FAF3DA1B1ED2FAB5007B767D /* VideoCall */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = VideoCall;
-			sourceTree = "<group>";
-		};
-		FAF3DA1E1ED2FB23007B767D /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				FA189FD11EF4D8E4009DABDE /* controller */,
-				FA1B59701EEECF8C00AA2173 /* model */,
-			);
-			name = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1011,6 +1047,7 @@
 				C271522B1F04ECCB003F57FD /* Base */,
 			);
 			name = MainScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		FA1CD02E1ECE97AF006AF4A6 /* Main.storyboard */ = {
@@ -1019,6 +1056,7 @@
 				FA1CD02F1ECE97AF006AF4A6 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		FA1CD0361ECE97AF006AF4A6 /* LaunchScreen.storyboard */ = {
@@ -1027,6 +1065,7 @@
 				FA1CD0371ECE97AF006AF4A6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
