@@ -99,7 +99,7 @@ class CallViewController: UIViewController {
     @IBAction func onTouchHangUpButton(_ sender: UIButton) {
         session.disconnect(nil)
         //TODO: Show review dialog
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: SegueIdentifier.SegueReview, sender: nil)
     }
     @IBAction func onMicrophoneButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
@@ -124,7 +124,7 @@ extension CallViewController: OTSessionDelegate {
         //Record.shared.stop()
         
         //TODO: Show review dialog
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: SegueIdentifier.SegueReview, sender: nil)
     }
     
     func session(_ session: OTSession!, didFailWithError error: OTError!) {

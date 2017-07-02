@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TipCell" customModule="WeSpeak" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give him a drink" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyA-q0-iVo">
+                    <rect key="frame" x="139" y="10" width="116.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Udu-Ns-xiw">
+                    <rect key="frame" x="22" y="39.5" width="350" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="RzK-Ul-2ET"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Coke"/>
+                        <segment title="Beer"/>
+                        <segment title="No drink"/>
+                    </segments>
+                    <color key="tintColor" red="0.054901960784313725" green="0.62745098039215685" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="tipSegmentedChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="kXg-ni-7mD"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cyA-q0-iVo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7BU-kP-IdT"/>
+                <constraint firstItem="Udu-Ns-xiw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="DVB-Fa-oSD"/>
+                <constraint firstItem="Udu-Ns-xiw" firstAttribute="top" secondItem="cyA-q0-iVo" secondAttribute="bottom" constant="10" id="f71-3s-7LY"/>
+                <constraint firstAttribute="trailing" secondItem="Udu-Ns-xiw" secondAttribute="trailing" constant="22" id="nia-Kc-wpZ"/>
+                <constraint firstItem="cyA-q0-iVo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="zQy-QH-KI7"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tipSegmented" destination="Udu-Ns-xiw" id="Ov1-R3-Vy6"/>
+                <outlet property="tipTitleLabel" destination="cyA-q0-iVo" id="7c6-h6-BJM"/>
+            </connections>
+            <point key="canvasLocation" x="151" y="409"/>
+        </view>
+    </objects>
+</document>

@@ -13,6 +13,7 @@ struct SegueIdentifier{
     static let SegueDetail = "SegueDetail"
     static let SegueCall = "SegueCall"
     static let SegueMatch = "SegueMatch"
+    static let SegueReview = "SegueReview"
 }
 
 struct CellIdentifier{

@@ -16,6 +16,18 @@
 		C28C12571F09652A0013B836 /* EnglishNowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C12561F09652A0013B836 /* EnglishNowUITests.swift */; };
 		C28C12591F0965390013B836 /* EnglishNowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C12581F0965390013B836 /* EnglishNowTests.swift */; };
 		C28C125A1F0965CC0013B836 /* Pods_EnglishNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D13D78BEE6D49AAA887A370 /* Pods_EnglishNow.framework */; };
+		C28C125C1F0979CB0013B836 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C125B1F0979CB0013B836 /* RatingViewController.swift */; };
+		C28C125E1F097A8B0013B836 /* TipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C125D1F097A8B0013B836 /* TipCell.swift */; };
+		C28C12601F097AD90013B836 /* SubmitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C125F1F097AD90013B836 /* SubmitCell.swift */; };
+		C28C12621F097B3B0013B836 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C12611F097B3B0013B836 /* InfoCell.swift */; };
+		C28C12641F097B870013B836 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C12631F097B870013B836 /* QuestionCell.swift */; };
+		C28C12661F097CAF0013B836 /* SubmitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28C12651F097CAF0013B836 /* SubmitCell.xib */; };
+		C28C126C1F097CC70013B836 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28C12671F097CC70013B836 /* QuestionCell.xib */; };
+		C28C126D1F097CC70013B836 /* TipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28C12681F097CC70013B836 /* TipCell.xib */; };
+		C28C126E1F097CC70013B836 /* ReviewCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28C12691F097CC70013B836 /* ReviewCommentCell.xib */; };
+		C28C126F1F097CC70013B836 /* InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28C126A1F097CC70013B836 /* InfoCell.xib */; };
+		C28C12701F097CC70013B836 /* RatingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28C126B1F097CC70013B836 /* RatingCell.xib */; };
+		C28C12721F097FB20013B836 /* ReviewCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C12711F097FB20013B836 /* ReviewCommentCell.swift */; };
 		C2DA3E921F04006200DA5116 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E911F04006200DA5116 /* Constants.swift */; };
 		C2DA3E941F0402A500DA5116 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E931F0402A500DA5116 /* ProgressHUD.swift */; };
 		C2DA3E961F04057900DA5116 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E951F04057900DA5116 /* MessageBox.swift */; };
@@ -154,6 +166,18 @@
 		C2882F041F05598A009459F7 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		C28C12561F09652A0013B836 /* EnglishNowUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishNowUITests.swift; sourceTree = "<group>"; };
 		C28C12581F0965390013B836 /* EnglishNowTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishNowTests.swift; sourceTree = "<group>"; };
+		C28C125B1F0979CB0013B836 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		C28C125D1F097A8B0013B836 /* TipCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCell.swift; sourceTree = "<group>"; };
+		C28C125F1F097AD90013B836 /* SubmitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitCell.swift; sourceTree = "<group>"; };
+		C28C12611F097B3B0013B836 /* InfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		C28C12631F097B870013B836 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
+		C28C12651F097CAF0013B836 /* SubmitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubmitCell.xib; sourceTree = "<group>"; };
+		C28C12671F097CC70013B836 /* QuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
+		C28C12681F097CC70013B836 /* TipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipCell.xib; sourceTree = "<group>"; };
+		C28C12691F097CC70013B836 /* ReviewCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewCommentCell.xib; sourceTree = "<group>"; };
+		C28C126A1F097CC70013B836 /* InfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoCell.xib; sourceTree = "<group>"; };
+		C28C126B1F097CC70013B836 /* RatingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingCell.xib; sourceTree = "<group>"; };
+		C28C12711F097FB20013B836 /* ReviewCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCommentCell.swift; sourceTree = "<group>"; };
 		C2DA3E911F04006200DA5116 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C2DA3E931F0402A500DA5116 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		C2DA3E951F04057900DA5116 /* MessageBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
@@ -335,6 +359,12 @@
 		C27F8DE21F08E18400371F0D /* Nib */ = {
 			isa = PBXGroup;
 			children = (
+				C28C12671F097CC70013B836 /* QuestionCell.xib */,
+				C28C12681F097CC70013B836 /* TipCell.xib */,
+				C28C12691F097CC70013B836 /* ReviewCommentCell.xib */,
+				C28C126A1F097CC70013B836 /* InfoCell.xib */,
+				C28C126B1F097CC70013B836 /* RatingCell.xib */,
+				C28C12651F097CAF0013B836 /* SubmitCell.xib */,
 				C26896A71F07A17500888AA6 /* Dialog.xib */,
 			);
 			path = Nib;
@@ -355,6 +385,7 @@
 			children = (
 				C2EEEA1F1F078B4F00517FB9 /* CallViewController.swift */,
 				C2882F021F055195009459F7 /* MatchViewController.swift */,
+				C28C125B1F0979CB0013B836 /* RatingViewController.swift */,
 			);
 			path = VideoCall;
 			sourceTree = "<group>";
@@ -436,6 +467,11 @@
 				FA0AB82C1EF8095000161B5F /* CommentCell.swift */,
 				FA1B59791EEF030800AA2173 /* ContactCell.swift */,
 				FA161FBD1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift */,
+				C28C125D1F097A8B0013B836 /* TipCell.swift */,
+				C28C125F1F097AD90013B836 /* SubmitCell.swift */,
+				C28C12611F097B3B0013B836 /* InfoCell.swift */,
+				C28C12631F097B870013B836 /* QuestionCell.swift */,
+				C28C12711F097FB20013B836 /* ReviewCommentCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -758,9 +794,12 @@
 				FA1CD05F1ECEBE17006AF4A6 /* iconPassword.png in Resources */,
 				FA0757561ED18C5D006CE695 /* Icon-App-40x40@1x.png in Resources */,
 				FA07575C1ED18C5D006CE695 /* Icon-App-60x60@2x.png in Resources */,
+				C28C126E1F097CC70013B836 /* ReviewCommentCell.xib in Resources */,
 				C26896A81F07A17500888AA6 /* Dialog.xib in Resources */,
+				C28C12661F097CAF0013B836 /* SubmitCell.xib in Resources */,
 				FA040CA81EF6BD6100C6DD99 /* iconComment.png in Resources */,
 				FA08046A1EEC63D800704749 /* logout.png in Resources */,
+				C28C12701F097CC70013B836 /* RatingCell.xib in Resources */,
 				FA0757571ED18C5D006CE695 /* Icon-App-40x40@2x.png in Resources */,
 				FA07575B1ED18C5D006CE695 /* Icon-App-60x60@1x.png in Resources */,
 				FA0757F11ED1A179006CE695 /* find.png in Resources */,
@@ -773,6 +812,7 @@
 				FA0757651ED18C5D006CE695 /* Icon-Small-50x50@2x.png in Resources */,
 				FA0757ED1ED19B5D006CE695 /* conversation.png in Resources */,
 				FA40BC731EF1300200C3EFA0 /* iconPhoto.png in Resources */,
+				C28C126C1F097CC70013B836 /* QuestionCell.xib in Resources */,
 				FA0757531ED18C5D006CE695 /* Icon-App-29x29@1x.png in Resources */,
 				FA18A0201EF58BE3009DABDE /* hamburger.png in Resources */,
 				FA0757F91ED1DF3A006CE695 /* like.png in Resources */,
@@ -786,9 +826,11 @@
 				FAF3DA1D1ED2FAFD007B767D /* VideoCall.storyboard in Resources */,
 				FA12D58E1ED16AF3009D1B02 /* launchIcon.jpg in Resources */,
 				FA0757581ED18C5D006CE695 /* Icon-App-40x40@3x.png in Resources */,
+				C28C126D1F097CC70013B836 /* TipCell.xib in Resources */,
 				FA0BB7761ED0AABA00C6FA1F /* sample.jpg in Resources */,
 				FA4BDBF71EED788200D7F03E /* chaticon.png in Resources */,
 				C27F8DF01F08F99B00371F0D /* GoogleService-Info.plist in Resources */,
+				C28C126F1F097CC70013B836 /* InfoCell.xib in Resources */,
 				FA0757611ED18C5D006CE695 /* Icon-App-76x76@2x.png in Resources */,
 				FA0757EF1ED19E86006CE695 /* profile.png in Resources */,
 				FA0757591ED18C5D006CE695 /* Icon-App-57x57@1x.png in Resources */,
@@ -962,7 +1004,9 @@
 				FA1EA44B1EEF9032005357BF /* ChatMessageCell.swift in Sources */,
 				C2DA3E941F0402A500DA5116 /* ProgressHUD.swift in Sources */,
 				FA0BB7721ED067A800C6FA1F /* SignUpVC.swift in Sources */,
+				C28C12621F097B3B0013B836 /* InfoCell.swift in Sources */,
 				FA1CD0331ECE97AF006AF4A6 /* EnglishNow.xcdatamodeld in Sources */,
+				C28C125C1F0979CB0013B836 /* RatingViewController.swift in Sources */,
 				FA1CD02D1ECE97AF006AF4A6 /* LoginVC.swift in Sources */,
 				FA189FDB1EF5797E009DABDE /* SWRevealViewController.m in Sources */,
 				FA161FBE1ED297FA00211D89 /* ConversationCellVCTableViewCell.swift in Sources */,
@@ -970,9 +1014,11 @@
 				FA1EA44D1EEF90A8005357BF /* Message.swift in Sources */,
 				C2EEEA201F078B4F00517FB9 /* CallViewController.swift in Sources */,
 				C2EEEA1E1F0789A100517FB9 /* Keys.swift in Sources */,
+				C28C12721F097FB20013B836 /* ReviewCommentCell.swift in Sources */,
 				C2DA3E921F04006200DA5116 /* Constants.swift in Sources */,
 				FA29280A1EF909EE00D4023C /* FirebaseUtils.swift in Sources */,
 				FA1B597A1EEF030800AA2173 /* ContactCell.swift in Sources */,
+				C28C125E1F097A8B0013B836 /* TipCell.swift in Sources */,
 				FA0BB7741ED09AFC00C6FA1F /* LoginPopupVC.swift in Sources */,
 				FA40BC751EF1370100C3EFA0 /* CreateNewPostController.swift in Sources */,
 				FA1B59721EEED09E00AA2173 /* Skill.swift in Sources */,
@@ -985,6 +1031,8 @@
 				FA0757F51ED1C7CF006CE695 /* HomeTimeLineVC.swift in Sources */,
 				FA0757FD1ED200BF006CE695 /* MyConversationVC.swift in Sources */,
 				FA1CD02B1ECE97AF006AF4A6 /* AppDelegate.swift in Sources */,
+				C28C12641F097B870013B836 /* QuestionCell.swift in Sources */,
+				C28C12601F097AD90013B836 /* SubmitCell.swift in Sources */,
 				FA161FC21ED2AD4500211D89 /* ProfileVC.swift in Sources */,
 				FA0757FB1ED1E21A006CE695 /* CellOfTimeLineVC.swift in Sources */,
 				C2DA3E981F040F6400DA5116 /* User.swift in Sources */,

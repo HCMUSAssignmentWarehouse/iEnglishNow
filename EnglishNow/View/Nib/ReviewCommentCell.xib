@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ReviewCommentCell" customModule="EnglishNow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xph-Vt-zDA">
+                    <rect key="frame" x="152" y="10" width="71" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OM9-DX-KjU">
+                    <rect key="frame" x="22" y="40" width="331" height="67"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OM9-DX-KjU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="0UY-GC-RiC"/>
+                <constraint firstItem="Xph-Vt-zDA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CC0-4t-ZC5"/>
+                <constraint firstItem="Xph-Vt-zDA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="E1m-8n-Dkt"/>
+                <constraint firstAttribute="bottom" secondItem="OM9-DX-KjU" secondAttribute="bottom" constant="10" id="GaI-je-8ie"/>
+                <constraint firstAttribute="trailing" secondItem="OM9-DX-KjU" secondAttribute="trailing" constant="22" id="PyE-GB-0up"/>
+                <constraint firstItem="OM9-DX-KjU" firstAttribute="top" secondItem="Xph-Vt-zDA" secondAttribute="bottom" constant="10" id="dJL-wX-ByE"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="commentTextView" destination="OM9-DX-KjU" id="kmq-3A-sVv"/>
+            </connections>
+            <point key="canvasLocation" x="32.5" y="327.5"/>
+        </view>
+    </objects>
+</document>
