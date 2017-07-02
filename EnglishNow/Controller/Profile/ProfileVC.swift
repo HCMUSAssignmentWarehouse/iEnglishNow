@@ -61,7 +61,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         
         if let user = Auth.auth().currentUser {
         
-            if currentID.compare(user.uid) == ComparisonResult.orderedSame {
+            if currentID.compare(user.uid) != ComparisonResult.orderedSame && currentID.compare("") != ComparisonResult.orderedSame{
                 for button in btnStars{
                     if (button.tag <= 5 && tag <= 5){
                         if button.tag <= tag  {
@@ -88,10 +88,11 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
 
                     }
                 }
+                let userRef = Database.database().reference().child("user_profile").child((currentID)).child("skill").child(skills[(tag - 1) / 5].name).setValue((tag - 1) % 5 + 1)
                 
             }
             
-                     let userRef = Database.database().reference().child("user_profile").child((user.uid)).child("skill").child(skills[(tag - 1) / 5].name).setValue((tag - 1) % 5 + 1)
+            
         }
 
     }
