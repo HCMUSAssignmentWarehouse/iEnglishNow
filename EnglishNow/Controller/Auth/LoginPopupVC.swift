@@ -25,7 +25,6 @@ class LoginPopupVC: UIViewController {
     
     @IBAction func btnDismiss(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-        
     }
     
     @IBOutlet weak var LoginSuccessView: UIView!
@@ -35,9 +34,9 @@ class LoginPopupVC: UIViewController {
     @IBOutlet weak var avatar: UIImageView!
     
     @IBAction func btnFind(_ sender: Any) {
-        
-        self.performSegue(withIdentifier: "SegueFind", sender: self)
-        
+        var storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "MatchViewController") as UIViewController
+        self.present(controller, animated: true, completion: nil)
     }
     
    

@@ -61,9 +61,37 @@ class MatchViewController: UIViewController {
     var matched = false
     @IBAction func onMatchButton(_ sender: UIButton) {
         if !matched {
-            //            Singleton.fakeData()
+            //Singleton.fakeData()
             matched = true
+            doAnimate(isMatching: matched)
             
+            FirebaseClient.shared.onMatch(completion: {(session, token) in
+                self.sessionId = session
+                self.token = token
+                print(session)
+                print(token)
+                self.doAnimate(isMatching: false) //TODO: Remove this when change to show review screen when end call
+                self.performSegue(withIdentifier: SegueIdentifier.SegueCall, sender: nil)
+            })
+        } else {
+            matched = false
+            doAnimate(isMatching: matched)
+        }
+    }
+    
+    var sessionId: String!
+    var token: String!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.SegueCall {
+            let callViewController = segue.destination as! CallViewController
+            callViewController.sessionId = sessionId
+            callViewController.token = token
+        }
+    }
+    
+    func doAnimate(isMatching: Bool) {
+        if isMatching {
             matchButtonBgImageView.image = #imageLiteral(resourceName: "findingBgButton")
             
             UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
@@ -82,17 +110,8 @@ class MatchViewController: UIViewController {
             matchButtonBgImageView.layer.add(animation, forKey: "rotate")
             
             matchButton.setTitle("Finding", for: .normal)
-            
-            FirebaseClient.shared.onMatch(completion: {(session, token) in
-                self.sessionId = session
-                self.token = token
-                print(session)
-                print(token)
-                self.performSegue(withIdentifier: SegueIdentifier.SegueCall, sender: nil)
-            })
-        } else {
-            matched = false
-            
+        }
+        else {
             if User.current.isSpeaker {
                 FirebaseClient.shared.removeHandleLearnerAvailable()
             } else {
@@ -108,17 +127,6 @@ class MatchViewController: UIViewController {
             }, completion: nil)
             
             matchButton.setTitle("Find", for: .normal)
-        }
-    }
-    
-    var sessionId: String!
-    var token: String!
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.SegueCall {
-            let callViewController = segue.destination as! CallViewController
-            callViewController.sessionId = sessionId
-            callViewController.token = token
         }
     }
     

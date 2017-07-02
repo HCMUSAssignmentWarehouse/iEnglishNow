@@ -54,11 +54,6 @@ class CallViewController: UIViewController {
         doConnect()
     }
     
-    @IBAction func onHangUpButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Second", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController()! as UIViewController
-        self.present(controller, animated: true, completion: nil)
-    }
     
     override func viewDidAppear(_ animated: Bool) {
     }
@@ -103,6 +98,8 @@ class CallViewController: UIViewController {
     
     @IBAction func onTouchHangUpButton(_ sender: UIButton) {
         session.disconnect(nil)
+        //TODO: Show review dialog
+        dismiss(animated: true, completion: nil)
     }
     @IBAction func onMicrophoneButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
@@ -126,12 +123,8 @@ extension CallViewController: OTSessionDelegate {
         //TODO stop recoding
         //Record.shared.stop()
         
-        //Show review dialog
-        /*
-        let storyboard = UIStoryboard(name: "Second", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "RatingViewController") as! RatingViewController
-        present(vc, animated: true, completion: nil)
-        */
+        //TODO: Show review dialog
+        dismiss(animated: true, completion: nil)
     }
     
     func session(_ session: OTSession!, didFailWithError error: OTError!) {
