@@ -4,10 +4,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 # platform :ios, '9.3'
 use_frameworks!
-target 'Speak now' do
+target 'EnglishNow' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  # Pods for Speak now
+  # Pods for EnglishNow
 
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
@@ -24,12 +24,12 @@ pod 'Cosmos', '~> 7.0'
 pod 'SwiftMessages'
 pod 'AFNetworking', '~> 3.0'
 
-  target 'Speak nowTests' do
+  target 'EnglishNowTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'Speak nowUITests' do
+  target 'EnglishNowUITests' do
     inherit! :search_paths
     # Pods for testing
   end
