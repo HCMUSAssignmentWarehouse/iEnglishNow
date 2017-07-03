@@ -131,6 +131,6 @@ extension RatingViewController: UITableViewDelegate, UITableViewDataSource{
         Singleton.sharedInstance.partner.review.photoPartner = User.current.profilePhoto
         Singleton.sharedInstance.partner.review.recordFileName = Singleton.sharedInstance.tokBoxSessionId
         FirebaseClient.shared.commitReview(review: Singleton.sharedInstance.partner.review!)
-        dismiss(animated: true, completion: nil)
+        present(Singleton.getTabbar(), animated: true, completion: nil)
     }
 }

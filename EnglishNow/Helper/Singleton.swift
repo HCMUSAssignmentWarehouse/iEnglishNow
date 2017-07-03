@@ -14,8 +14,10 @@ class Singleton{
     var tabBarController:UITabBarController!
     var tokBoxSessionId: String!
     var tokBoxApiKey: String! = "45900432"
-    //var historyViewController: HistoryViewController?
-    //var profileViewController: GProfileViewController?
+    var conversationViewController: MyConversationVC?
+    var chatViewController: ChatViewController?
+    var matchViewController: MatchViewController?
+    var timelineViewController: HomeTimeLineVC?
     
     /*
     func reloadProfileHistory() {
@@ -31,58 +33,31 @@ class Singleton{
     
     fileprivate init(){
         partner = User()
-        //createTabbar()
+        createTabbar()
     }
     
     static let skills:[String] = ["Listening", "Pronounciation", "Fluency", "Vocabulary"]
     
-    /*
+    
     fileprivate func createTabbar(){
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondStoryboard = UIStoryboard(name: "Second", bundle: nil)
+        let mainStoryboard = UIStoryboard(name: "MainScreen", bundle: nil)
         
-        let matchVC = mainStoryboard.instantiateViewController(withIdentifier: "MatchVC") as! MatchViewController
+        matchViewController = mainStoryboard.instantiateViewController(withIdentifier: "MatchViewController") as! MatchViewController
         
-        //nowPlayingViewController.API_URL = URLs.NOWPLAYING_URL
-        matchVC.tabBarItem.title = "Find"
-        matchVC.tabBarItem.image = UIImage(named: "search")
+        chatViewController = mainStoryboard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
         
-        let historyVC = secondStoryboard.instantiateViewController(withIdentifier: "HistoryVC") as! HistoryViewController
-        historyVC.tabBarItem.title = "My Conversations"
-        historyVC.tabBarItem.image = UIImage(named: "history")
+        timelineViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomeTimeLine") as! HomeTimeLineVC
         
-        let profileVC = secondStoryboard.instantiateViewController(withIdentifier: "ProfileVC") as! GProfileViewController
-        profileVC.tabBarItem.title = "Profile"
-        profileVC.tabBarItem.image = UIImage(named: "profile")
+        conversationViewController = mainStoryboard.instantiateViewController(withIdentifier: "ConversationViewController") as! MyConversationVC
         
         
         tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBar") as!UITabBarController
-        tabBarController.viewControllers = [matchVC, historyVC, profileVC]
     }
     
     static func getTabbar() -> UITabBarController{
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondStoryboard = UIStoryboard(name: "Second", bundle: nil)
-        
-        let matchVC = mainStoryboard.instantiateViewController(withIdentifier: "MatchVC") as! MatchViewController
-        
-        //nowPlayingViewController.API_URL = URLs.NOWPLAYING_URL
-        matchVC.tabBarItem.title = "Find"
-        matchVC.tabBarItem.image = UIImage(named: "search")
-        
-        let historyVC = secondStoryboard.instantiateViewController(withIdentifier: "HistoryVC") as! HistoryViewController
-        historyVC.tabBarItem.title = "My Conversations"
-        historyVC.tabBarItem.image = UIImage(named: "history")
-        
-        let profileVC = secondStoryboard.instantiateViewController(withIdentifier: "ProfileVC") as! GProfileViewController
-        profileVC.tabBarItem.title = "Profile"
-        profileVC.tabBarItem.image = UIImage(named: "profile")
-        
-        
-        let tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBar") as!UITabBarController
-        tabBarController.tabBar.tintColor = UIColor(colorLiteralRed: 14/255, green: 160/255, blue: 147/255, alpha: 1)
-        tabBarController.viewControllers = [matchVC, historyVC, profileVC]
-        return tabBarController
+        if sharedInstance.tabBarController == nil {
+            sharedInstance.createTabbar()
+        }
+        return sharedInstance.tabBarController
     }
-     */
 }
