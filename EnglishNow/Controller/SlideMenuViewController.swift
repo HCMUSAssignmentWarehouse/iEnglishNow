@@ -31,11 +31,11 @@ class SlideMenuViewController: UIViewController {
             let user = Auth.auth().currentUser
             
             var storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "PrepareStoryboard") as UIViewController
+            let controller = storyboard.instantiateViewController(withIdentifier: "LoginVC") as UIViewController
             self.present(controller, animated: true, completion: nil)
             
         } catch {
-            print("there was an rror when logout!")
+            print("there was an error when logout!")
         }
     }
     
@@ -91,7 +91,4 @@ class SlideMenuViewController: UIViewController {
         }
         
     }
-
-    
-
 }

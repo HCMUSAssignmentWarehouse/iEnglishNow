@@ -26,7 +26,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     @IBOutlet var btnSendMessage: UIBarButtonItem!
     
     @IBAction func actionSendMessage(_ sender: Any) {
-    performSegue(withIdentifier: "SegueSendMessage", sender: nil)
+        performSegue(withIdentifier: SegueIdentifier.SegueSendMessage, sender: nil)
     }
     
     
@@ -459,7 +459,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
             let user = Auth.auth().currentUser
             
             var storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "PrepareStoryboard") as UIViewController
+                let controller = storyboard.instantiateViewController(withIdentifier: "LoginVC") as UIViewController
                 self.present(controller, animated: true, completion: nil)
             
         } catch {
@@ -592,7 +592,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = statusList.count - 1 - indexPath.row
-        performSegue(withIdentifier: "SegueUserDetailStatus", sender: self)
+        performSegue(withIdentifier: SegueIdentifier.SegueUserDetailStatus, sender: self)
     }
     
     //auto cell size to fit content
@@ -602,12 +602,12 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SegueSendMessage" {
+        if segue.identifier == SegueIdentifier.SegueSendMessage {
             let des = segue.destination as! DetailChatViewController
             des.currentContact = contact
         }
         
-        else if segue.identifier == "SegueUserDetailStatus" {
+        else if segue.identifier == SegueIdentifier.SegueUserDetailStatus {
             let des = segue.destination as! DetailStatusVC
             des.status = statusList[selectedIndex]
         }

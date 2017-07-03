@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9uR-lw-jB3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,7 @@
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="PrepareStoryboard" id="BYZ-38-t0r" customClass="LoginVC" customModule="EnglishNow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginVC" customModule="EnglishNow" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -244,52 +244,11 @@
                         <outlet property="LoginSuccessView" destination="QTg-dW-Wno" id="hJ9-49-eIL"/>
                         <outlet property="avatar" destination="tX9-rq-dtZ" id="bJr-zU-UVa"/>
                         <outlet property="txtWelcomeName" destination="Z7n-Tj-oQE" id="lX1-Zj-ZRS"/>
-                        <segue destination="qkx-VF-aok" kind="show" identifier="SegueFind" action="showDetailViewController:sender:" id="bA3-8p-RN7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TPr-6p-y0N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="864.79999999999995" y="-307.1964017991005"/>
-        </scene>
-        <!--FindVC-->
-        <scene sceneID="vUI-Gh-Lls">
-            <objects>
-                <viewController id="qkx-VF-aok" customClass="FindVC" customModule="EnglishNow" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="h3d-ga-vYg"/>
-                        <viewControllerLayoutGuide type="bottom" id="YwO-KZ-i4A"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hLB-yD-pdX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="blurCover.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cYl-61-YDX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Finding" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="va5-4m-P0Z">
-                                <rect key="frame" x="152" y="350" width="90" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="8kt-wp-Nfe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="25"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="cYl-61-YDX" firstAttribute="top" secondItem="hLB-yD-pdX" secondAttribute="top" id="AU0-gb-AK9"/>
-                            <constraint firstAttribute="trailing" secondItem="cYl-61-YDX" secondAttribute="trailing" id="M5U-oY-bgA"/>
-                            <constraint firstItem="va5-4m-P0Z" firstAttribute="centerX" secondItem="hLB-yD-pdX" secondAttribute="centerX" id="f8n-Sw-wRC"/>
-                            <constraint firstAttribute="bottom" secondItem="cYl-61-YDX" secondAttribute="bottom" id="o8W-dh-AIi"/>
-                            <constraint firstItem="cYl-61-YDX" firstAttribute="leading" secondItem="hLB-yD-pdX" secondAttribute="leading" id="rJ4-zi-lSI"/>
-                            <constraint firstItem="va5-4m-P0Z" firstAttribute="centerY" secondItem="hLB-yD-pdX" secondAttribute="centerY" id="wSD-tt-Yne"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="blT-P9-Gt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1592.8" y="-817.24137931034488"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="jo6-0E-YmQ">
@@ -415,11 +374,66 @@
             </objects>
             <point key="canvasLocation" x="900" y="384.55772113943033"/>
         </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="Vqr-DM-pdp">
+            <objects>
+                <viewController id="9uR-lw-jB3" customClass="LoadingViewController" customModule="EnglishNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oST-3D-C1h"/>
+                        <viewControllerLayoutGuide type="bottom" id="ep0-My-oTi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lvQ-E2-hEr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="km8-Sm-cEo">
+                                <rect key="frame" x="34.5" y="282" width="306" height="63"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="53"/>
+                                <color key="textColor" red="0.054901960780000002" green="0.62745098040000002" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn English anytime from anywhere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqJ-Bn-23I">
+                                <rect key="frame" x="45.5" y="345" width="286" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VKf-Tr-9wu">
+                                <rect key="frame" x="167.5" y="336" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6h7-w1-qRe"/>
+                                    <constraint firstAttribute="width" constant="40" id="GJi-YS-PfV"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VKf-Tr-9wu" firstAttribute="centerX" secondItem="km8-Sm-cEo" secondAttribute="centerX" id="PbI-eh-6a8"/>
+                            <constraint firstItem="km8-Sm-cEo" firstAttribute="centerX" secondItem="lvQ-E2-hEr" secondAttribute="centerX" id="T6M-7s-rnk"/>
+                            <constraint firstItem="GqJ-Bn-23I" firstAttribute="top" secondItem="km8-Sm-cEo" secondAttribute="bottom" id="bQX-tZ-9gG"/>
+                            <constraint firstItem="GqJ-Bn-23I" firstAttribute="centerX" secondItem="km8-Sm-cEo" secondAttribute="centerX" id="jTg-7a-zqU"/>
+                            <constraint firstItem="km8-Sm-cEo" firstAttribute="centerY" secondItem="lvQ-E2-hEr" secondAttribute="centerY" constant="-20" id="pA9-aJ-TIw"/>
+                            <constraint firstItem="VKf-Tr-9wu" firstAttribute="top" secondItem="GqJ-Bn-23I" secondAttribute="bottom" constant="-30" id="yhx-do-bb9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="VKf-Tr-9wu" id="qAh-Uy-fG3"/>
+                        <outlet property="logoLabel" destination="km8-Sm-cEo" id="UIR-lb-pAX"/>
+                        <outlet property="sloganLabel" destination="GqJ-Bn-23I" id="Gdz-WM-hkv"/>
+                        <segue destination="peh-Yl-gss" kind="show" identifier="SegueLoadToLoginPopup" id="vpn-jC-n4s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mf6-s4-Oi0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1625" y="-25"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="blurCover.jpg" width="852" height="480"/>
         <image name="iconPassword.png" width="128" height="128"/>
         <image name="iconUser.png" width="192" height="192"/>
         <image name="sample.jpg" width="228" height="221"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YZz-TU-ZNh"/>
+    </inferredMetricsTieBreakers>
 </document>

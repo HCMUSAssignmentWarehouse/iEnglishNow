@@ -14,6 +14,9 @@ struct SegueIdentifier{
     static let SegueCall = "SegueCall"
     static let SegueMatch = "SegueMatch"
     static let SegueReview = "SegueReview"
+    static let SegueLoadToLoginPopup = "SegueLoadToLoginPopup"
+    static let SegueUserDetailStatus = "SegueUserDetailStatus"
+    static let SegueSendMessage = "SegueSendMessage"
 }
 
 struct CellIdentifier{

@@ -38,6 +38,7 @@
 		C2DA3EA01F04383A00DA5116 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E9F1F04383A00DA5116 /* FirebaseClient.swift */; };
 		C2DA3EA21F043BB600DA5116 /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3EA11F043BB600DA5116 /* DataUtils.swift */; };
 		C2DA3EA41F043CEB00DA5116 /* HerokuappClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3EA31F043CEB00DA5116 /* HerokuappClient.swift */; };
+		C2EE10E41F0A828F0063E9C8 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EE10E31F0A828F0063E9C8 /* LoadingViewController.swift */; };
 		C2EEEA1E1F0789A100517FB9 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EEEA1D1F0789A100517FB9 /* Keys.swift */; };
 		C2EEEA201F078B4F00517FB9 /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EEEA1F1F078B4F00517FB9 /* CallViewController.swift */; };
 		C2EEEA221F078D6A00517FB9 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EEEA211F078D6A00517FB9 /* Dialog.swift */; };
@@ -170,6 +171,7 @@
 		C2DA3E9F1F04383A00DA5116 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		C2DA3EA11F043BB600DA5116 /* DataUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
 		C2DA3EA31F043CEB00DA5116 /* HerokuappClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HerokuappClient.swift; sourceTree = "<group>"; };
+		C2EE10E31F0A828F0063E9C8 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		C2EEEA1D1F0789A100517FB9 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		C2EEEA1F1F078B4F00517FB9 /* CallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
 		C2EEEA211F078D6A00517FB9 /* Dialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				FA0BB7731ED09AFC00C6FA1F /* LoginPopupVC.swift */,
 				FA1CD02C1ECE97AF006AF4A6 /* LoginVC.swift */,
 				FA0BB7711ED067A800C6FA1F /* SignUpVC.swift */,
+				C2EE10E31F0A828F0063E9C8 /* LoadingViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -929,6 +932,7 @@
 			files = (
 				FA4BDC011EED937E00D7F03E /* Contact.swift in Sources */,
 				C2882F051F05598A009459F7 /* Singleton.swift in Sources */,
+				C2EE10E41F0A828F0063E9C8 /* LoadingViewController.swift in Sources */,
 				FA1EA44B1EEF9032005357BF /* ChatMessageCell.swift in Sources */,
 				C2DA3E941F0402A500DA5116 /* ProgressHUD.swift in Sources */,
 				FA0BB7721ED067A800C6FA1F /* SignUpVC.swift in Sources */,
