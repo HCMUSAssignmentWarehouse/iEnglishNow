@@ -52,6 +52,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     
     @IBOutlet var tableStatus: UITableView!
     
+    
     var skills: [Skill] = [Skill]()
     var skillRating:[Float] = [Float]()
     var skillNumberRating:[Int] = [Int]()
@@ -282,10 +283,18 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
             let listening = (snapshot.childSnapshot(forPath: "listening skill") as! DataSnapshot).value as! [String:Any]
             let speaking = (snapshot.childSnapshot(forPath: "speaking skill") as! DataSnapshot).value as! [String:AnyObject]
             let pronunciation = (snapshot.childSnapshot(forPath: "pronunciation skill") as! DataSnapshot).value as! [String:AnyObject]
+            var listeningRating:Float = listening["rate_value"] as! Float
+            var speakingRating: Float = speaking["rate_value"] as! Float
+            var pronunciationRating: Float = pronunciation["rate_value"] as! Float
+            self.skillRating.append(listeningRating)
+            self.skillRating.append(speakingRating)
+            self.skillRating.append(pronunciationRating)
             
-            self.skillRating.append(listening["rate_value"] as! Float)
-            self.skillRating.append(speaking["rate_value"] as! Float)
-            self.skillRating.append(pronunciation["rate_value"] as! Float)
+            var final_rating: Float = (listeningRating + speakingRating + pronunciationRating) / 3
+            
+            self.txtYourRating.text = String(format: "%.1f", final_rating)
+            
+            //set rating of each skill label here
             
             if ((listening.index(forKey: "rate_list")) != nil){
                 let listeningNumberRating = ((snapshot.childSnapshot(forPath: "listening skill") as! DataSnapshot).childSnapshot(forPath: "rate_list") as! DataSnapshot)
