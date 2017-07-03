@@ -53,7 +53,9 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     @IBOutlet var tableStatus: UITableView!
     
     var skills: [Skill] = [Skill]()
-
+    var skillRating:[Float] = [Float]()
+    var skillNumberRating:[Int] = [Int]()
+    
     var currentID: String = ""
 
     @IBAction func actionStar(_ sender: UIButton) {
@@ -88,7 +90,14 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
 
                     }
                 }
-                let userRef = Database.database().reference().child("user_profile").child((currentID)).child("skill").child(skills[(tag - 1) / 5].name).setValue((tag - 1) % 5 + 1)
+                
+                var totalRating = (Float((tag - 1) % 5 + 1)) + skillRating[(tag - 1) / 5] * Float(skillNumberRating[(tag - 1) / 5])
+                
+                var rate_value = (totalRating) / Float((skillNumberRating[(tag - 1) / 5] + 1))
+                
+                print("rate_value: \(rate_value)")
+                Database.database().reference().child("user_profile").child((currentID)).child("skill").child(skills[(tag - 1) / 5].name).child("rate_value").setValue(rate_value)
+                Database.database().reference().child("user_profile").child((currentID)).child("skill").child(skills[(tag - 1) / 5].name).child("rate_list").child(user.uid).setValue((tag - 1) % 5 + 1)
                 
             }
             
@@ -113,6 +122,10 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         skills.append(Listening())
         skills.append(Speaking())
         skills.append(Pronunciation())
+        
+        skillNumberRating.append(0)
+        skillNumberRating.append(0)
+        skillNumberRating.append(0)
 
         initShow()
 
@@ -128,7 +141,11 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
             
         } else {
             imgLogout.isHidden = true
-            loadProfile(userid: "")
+            
+            if let user = Auth.auth().currentUser{
+                loadProfile(userid: ((user.uid) as? String)!)
+            }
+            
         }
         
     }
@@ -261,28 +278,62 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         //load data of level
         Database.database().reference().child("user_profile/\(currentID)").child("skill").observe(.value, with: { (snapshot) -> Void in
             
-            let child = snapshot.value as! [String:Any]
-            let listening = child["listening skill"] as? Int ?? 0
-            let speaking = child["speaking skill"] as? Int ?? 0
-            let pronunciation = child["pronunciation skill"] as? Int ?? 0
+            let child = snapshot.value as! [String:AnyObject]
+            let listening = (snapshot.childSnapshot(forPath: "listening skill") as! DataSnapshot).value as! [String:Any]
+            let speaking = (snapshot.childSnapshot(forPath: "speaking skill") as! DataSnapshot).value as! [String:AnyObject]
+            let pronunciation = (snapshot.childSnapshot(forPath: "pronunciation skill") as! DataSnapshot).value as! [String:AnyObject]
             
-            var rating:Float = Float ((listening + speaking + pronunciation) / 3)
-            self.txtYourRating.text = "\(round(10 * rating) / 10)"
+            self.skillRating.append(listening["rate_value"] as! Float)
+            self.skillRating.append(speaking["rate_value"] as! Float)
+            self.skillRating.append(pronunciation["rate_value"] as! Float)
             
-            for button in self.btnStars{
-                if (button.tag <= 5 && (button.tag - 1) % 5 < listening){
-                    //selected
-                    button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
-                }else  if (button.tag <= 10 && button.tag > 5 && (button.tag - 1) % 5 < speaking){
-                    button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
-                }else if (button.tag <= 15 && button.tag > 10 && (button.tag - 1) % 5 < pronunciation){
-                    button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
-                }else{
-                    //not selected
-                    button.setTitleColor(UIColor.lightGray, for: .normal)
+            if ((listening.index(forKey: "rate_list")) != nil){
+                let listeningNumberRating = ((snapshot.childSnapshot(forPath: "listening skill") as! DataSnapshot).childSnapshot(forPath: "rate_list") as! DataSnapshot)
+                self.skillNumberRating[0]  = Int(listeningNumberRating.childrenCount)
+                
+                let listeningRatingOfUser = (listeningNumberRating.value as! [String:Any])[userid] as! Int
+                
+                
+                for button in self.btnStars{
+                    if (button.tag <= 5 && (button.tag - 1) % 5 < listeningRatingOfUser){
+                        //selected
+                        button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
+                    }
+                }
+               
+            }
+            if ((speaking.index(forKey: "rate_list")) != nil){
+                let speakNumberRating = ((snapshot.childSnapshot(forPath: "speaking skill") as! DataSnapshot).childSnapshot(forPath: "rate_list") as! DataSnapshot)
+                self.skillNumberRating[1] = Int(speakNumberRating.childrenCount)
+                
+                let speakingRatingOfUser = (speakNumberRating.value as! [String:Any])[userid] as! Int
+                
+                for button in self.btnStars{
+                    if (button.tag <= 10 && button.tag > 5 && (button.tag - 1) % 5 < speakingRatingOfUser){
+                        //selected
+                        button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
+                    }
                 }
             }
-              
+            if ((pronunciation.index(forKey: "rate_list")) != nil){
+                let pronunciationNumberRating = ((snapshot.childSnapshot(forPath: "pronunciation skill") as! DataSnapshot).childSnapshot(forPath: "rate_list") as! DataSnapshot)
+                
+                self.skillNumberRating[2] = Int(pronunciationNumberRating.childrenCount)
+                
+                let pronunciationRatingOfUser = (pronunciationNumberRating.value as! [String:Any])[userid] as! Int
+
+                for button in self.btnStars{
+                    if (button.tag <= 15 && button.tag > 10 && (button.tag - 1) % 5 < pronunciationRatingOfUser){
+                        //selected
+                        button.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
+                    }
+                }
+                
+            }
+            
+          
+            
+            
         })
         
     }

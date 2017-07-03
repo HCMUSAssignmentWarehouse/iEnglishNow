@@ -107,7 +107,7 @@ class FirebaseClient {
                 userRef.child("conversations").setValue(0)
                 
                 for item in skills {
-                    userRef.child("skill").child(item.name).setValue(0)
+                    userRef.child("skill").child(item.name).child("rate_value").setValue(0)
                 }
                 
                 print("Success!")
