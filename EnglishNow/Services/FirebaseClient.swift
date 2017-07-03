@@ -47,11 +47,11 @@ class FirebaseClient {
             if !exist {
                 completion(false)
             } else {
-                self.dataReference.child("speakers/\(User.current.uid!)").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.dataReference.child("user_profile/\(User.current.uid!)").observeSingleEvent(of: .value, with: {(snapshot) in
                     if let dictionary = snapshot.value as? NSDictionary {
                         
-                        User.current.name = dictionary["name"] as! String
-                        User.current.profilePhoto = dictionary["photo"] as! String
+                        User.current.name = dictionary["username"] as! String
+                        User.current.profilePhoto = dictionary["profile_pic"] as! String
                         print(User.current.profilePhoto)
                         completion(true)
                     }
@@ -61,6 +61,7 @@ class FirebaseClient {
     }
     
     func signIn(completion: @escaping (Firebase.User?, Error?) -> Void) {
+        //TODO: Support anonymously sign in
         Auth.auth().signInAnonymously(completion: { (user, error) in
             if let user = user {
                 self.dataReference.child("learners/\(user.uid)").observeSingleEvent(of: .value, with: { snapshot in
@@ -176,10 +177,6 @@ class FirebaseClient {
         })
     }
     
-    func removeHandleSpeakerAvailable() {
-        dataReference.child("available/learners").child(User.current.uid).removeAllObservers()
-        dataReference.child("available/learners").child(User.current.uid).setValue(nil)
-    }
     
     func handleLearnerAvailable(completion: @escaping (_ session: String, _ token: String) -> Void) {
         print("in handle")
@@ -199,6 +196,12 @@ class FirebaseClient {
             }
         })
     }
+    
+    func removeHandleSpeakerAvailable() {
+        dataReference.child("available/learners").child(User.current.uid).removeAllObservers()
+        dataReference.child("available/learners").child(User.current.uid).setValue(nil)
+    }
+    
     
     func removeHandleLearnerAvailable() {
         dataReference.child("available/learners").removeAllObservers()
