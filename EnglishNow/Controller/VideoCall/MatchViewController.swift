@@ -138,8 +138,8 @@ class MatchViewController: UIViewController {
         stats1.vocabulary = 3
         let review1 = Review()
         review1.ratings = stats1
-        review1.partner = "Keny N"
-        review1.photoPartner = "https://firebasestorage.googleapis.com/v0/b/shareandlearn-17cc0.appspot.com/o/avatar2.png?alt=media&token=0f8e2df3-440d-4e21-b66b-dc639675c5cc"
+        review1.partner = "Wonder woman"
+        review1.photoPartner = "https://firebasestorage.googleapis.com/v0/b/chat-app-d989a.appspot.com/o/sample%2Fwonderwoman-1280-9amembargo-1488818748850_1280w.jpg?alt=media&token=2920dcff-af19-49cd-9321-4142cca59ae8"
         review1.comment = "You have good listening skill, it will perfect if you foncus on your pronounciation."
         
         let stats2 = Rating()
@@ -149,8 +149,8 @@ class MatchViewController: UIViewController {
         stats2.vocabulary = 3
         let review2 = Review()
         review2.ratings = stats2
-        review2.partner = "Linda"
-        review2.photoPartner = "https://firebasestorage.googleapis.com/v0/b/shareandlearn-17cc0.appspot.com/o/avatar1.png?alt=media&token=f061c825-2c70-4942-bcf0-054932ef3c32"
+        review2.partner = "Jack"
+        review2.photoPartner = "https://firebasestorage.googleapis.com/v0/b/chat-app-d989a.appspot.com/o/sample%2Fpirates-of-the-caribbean_640x480_41447300092.jpg?alt=media&token=b240b121-084b-4fc8-b5cf-212c66e47ee2"
         review2.comment = "Your english speaking is good, you know alot of idoms. Hope to see you!"
         
         let stats3 = Rating()
@@ -160,8 +160,8 @@ class MatchViewController: UIViewController {
         stats3.vocabulary = 4
         let review3 = Review()
         review3.ratings = stats3
-        review3.partner = "YoMi"
-        review3.photoPartner = "https://firebasestorage.googleapis.com/v0/b/shareandlearn-17cc0.appspot.com/o/avatar3.png?alt=media&token=e845ae6d-3909-4025-b0ef-16c9892775e7"
+        review3.partner = "King Arthur"
+        review3.photoPartner = "https://firebasestorage.googleapis.com/v0/b/chat-app-d989a.appspot.com/o/%25252Fsample%25252F%2F368AC57500000578-3705178-image-m-14_1469315018652.jpg?alt=media&token=2d8d2ba3-f1f0-430c-bbbd-0c6c217c6b03"
         review3.comment = "Your english skill is good. You should spend more time."
         
         User.current.reviews.append(review3)

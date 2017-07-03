@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PlayRecordCell" customModule="WeSpeak" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="141"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0Y-xN-6pt">
+                    <rect key="frame" x="144.5" y="10" width="86.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7d-JC-1Fr">
+                    <rect key="frame" x="153.5" y="40.5" width="69.5" height="69.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="t7d-JC-1Fr" secondAttribute="height" multiplier="1:1" id="You-7p-fqN"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="play"/>
+                    <state key="selected" backgroundImage="pause"/>
+                    <connections>
+                        <action selector="onRecordButtonTouch:" destination="iN0-l3-epB" eventType="touchUpInside" id="Efn-8W-q9t"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcf-jb-TAr">
+                    <rect key="frame" x="174" y="115" width="27.5" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Z0Y-xN-6pt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="0St-G8-OkW"/>
+                <constraint firstItem="Qcf-jb-TAr" firstAttribute="centerX" secondItem="t7d-JC-1Fr" secondAttribute="centerX" id="DsI-wd-ZIF"/>
+                <constraint firstItem="t7d-JC-1Fr" firstAttribute="centerX" secondItem="Z0Y-xN-6pt" secondAttribute="centerX" id="GF6-tk-TqF"/>
+                <constraint firstItem="Z0Y-xN-6pt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ydg-km-Kdg"/>
+                <constraint firstItem="Qcf-jb-TAr" firstAttribute="top" secondItem="t7d-JC-1Fr" secondAttribute="bottom" constant="5" id="hAi-Cq-0g9"/>
+                <constraint firstAttribute="bottom" secondItem="Qcf-jb-TAr" secondAttribute="bottom" constant="10" id="kDl-vG-bpm"/>
+                <constraint firstItem="t7d-JC-1Fr" firstAttribute="top" secondItem="Z0Y-xN-6pt" secondAttribute="bottom" constant="10" id="qnJ-fk-uTl"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="playButton" destination="t7d-JC-1Fr" id="iPP-Ky-uqL"/>
+            </connections>
+            <point key="canvasLocation" x="38.5" y="273.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pause" width="32" height="32"/>
+        <image name="play" width="32" height="32"/>
+    </resources>
+</document>
