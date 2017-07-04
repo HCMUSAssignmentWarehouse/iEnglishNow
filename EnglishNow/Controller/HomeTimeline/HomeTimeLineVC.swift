@@ -80,54 +80,93 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
                             let profilePic = UIImage(data: data!)
                             photo = profilePic
                         }
-                                
-                    }
-                }
-                        
-                if let url = status["avatar"] {
-                    if let imgUrl =  URL(string: url as! String){
-                        let data = try? Data(contentsOf: imgUrl)
-                                
-                        if let imageData = data {
-                            let profilePic = UIImage(data: data!)
-                            avatar = profilePic
-                        }
-                                
                     }
                 }
                 
-                //if no avatar -> set default avatar
-                if avatar == nil{
-                    avatar = UIImage(named: "sample.jpg")
-                }
-                
-                var isUserLiked: Bool = false
-                
-                if (status.index(forKey: "like") != nil) {
-                    let likes = ((item as! DataSnapshot).childSnapshot(forPath: "like") as! DataSnapshot).value as! [String:AnyObject]
+                let queryRef = Database.database().reference().child("user_profile/\(user)").observe(.value, with: { (snapshot) -> Void in
                     
-                    if let user = Auth.auth().currentUser{
-                        if (likes.index(forKey: user.uid) != nil) {
-                            let isLiked = likes[user.uid]as! Bool
-                            if isLiked == true {
-                                isUserLiked = true
+                    if let dictionary = snapshot.value as? [String:Any] {
+                        
+                        if let url = dictionary["profile_pic"] {
+                            if let imgUrl =  URL(string: url as! String){
+                                let data = try? Data(contentsOf: imgUrl)
+                                
+                                if let imageData = data {
+                                    let profilePic = UIImage(data: data!)
+                                    avatar = profilePic
+                                }
+                                
                             }
                         }
                     }
-
-                }
-                
-                if photo == nil{
                     
-                    //if photo is nil -> can't constructure with a nil param -> call constructure without photo
-                    self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: user ,username: username, avatar: avatar!, content: content, time: time, likeNumber: likeNumber , isUserLiked: isUserLiked))
-                } else {
+                    //if no avatar -> set default avatar
+                    if avatar == nil{
+                        avatar = UIImage(named: "sample.jpg")
+                    }
                     
-                    //call constructure with photo
-                    self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: user , username: username, avatar: avatar! , content: content, time: time, photo: photo!, likeNumber: likeNumber , isUserLiked: isUserLiked))
-                }
+                    var isUserLiked: Bool = false
+                    
+                    if (status.index(forKey: "like") != nil) {
+                        let likes = ((item as! DataSnapshot).childSnapshot(forPath: "like") as! DataSnapshot).value as! [String:AnyObject]
                         
-                self.table.reloadData()
+                        if let user = Auth.auth().currentUser{
+                            if (likes.index(forKey: user.uid) != nil) {
+                                let isLiked = likes[user.uid]as! Bool
+                                if isLiked == true {
+                                    isUserLiked = true
+                                }
+                            }
+                        }
+                    }
+                    
+                    if photo == nil{
+                        //if photo is nil -> can't constructure with a nil param -> call constructure without photo
+
+                        var count = 0
+                        var check = 0
+                        for status in self.statusList{
+                            if status.statusId == (item as! DataSnapshot).key {
+                                check = 1
+                                self.statusList.remove(at: count)
+                                self.statusList.insert(Status(statusId: (item as! DataSnapshot).key , user: user ,username: username, avatar: avatar!, content: content, time: time, likeNumber: likeNumber , isUserLiked: isUserLiked), at: count)
+                            }
+                            
+                            count += 1
+                        }
+                        
+                        if (check == 0){
+                            self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: user ,username: username, avatar: avatar!, content: content, time: time, likeNumber: likeNumber , isUserLiked: isUserLiked))
+                        }
+                        
+                        
+                    } else {
+                        
+                        //call constructure with photo
+                        var count = 0
+                        var check = 0
+                        for status in self.statusList{
+                            if status.statusId == (item as! DataSnapshot).key {
+                                check = 1
+                                self.statusList.remove(at: count)
+                                self.statusList.insert(Status(statusId: (item as! DataSnapshot).key , user: user , username: username, avatar: avatar! , content: content, time: time, photo: photo!, likeNumber: likeNumber , isUserLiked: isUserLiked), at: count)
+                            }
+                            
+                            count += 1
+                        }
+                        
+                        if check == 0{
+                            self.statusList.append(Status(statusId: (item as! DataSnapshot).key , user: user , username: username, avatar: avatar! , content: content, time: time, photo: photo!, likeNumber: likeNumber , isUserLiked: isUserLiked))
+                        }
+            
+                    }
+                    
+                    self.table.reloadData()
+                })
+                
+                
+                
+                
                         
             }
                     
