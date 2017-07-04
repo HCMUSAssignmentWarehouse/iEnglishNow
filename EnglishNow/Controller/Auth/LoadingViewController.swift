@@ -62,6 +62,7 @@ class LoadingViewController: UIViewController {
             }
         })
         
+        FirebaseClient.shared.handleReviews()
         var storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "MainScreenVC") as UIViewController
         self.present(controller, animated: true, completion: nil)

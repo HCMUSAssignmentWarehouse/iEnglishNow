@@ -211,7 +211,7 @@ class FirebaseClient {
                 dataReference.child("user_profile/\(Singleton.sharedInstance.partner.uid!)/username").observeSingleEvent(of: .value, with: {snapshot in
                     Singleton.sharedInstance.partner.name = snapshot.value as! String
                 })
-        var roomName : String = Singleton.sharedInstance.partner.uid //TODO: Try to combine 2 uid also, not just 1 uid
+        var roomName : String = Singleton.sharedInstance.partner.uid + User.current.uid
         HerokuappClient.shared.getSession(roomName: roomName){ (dictionary, error) in
             if let dictionary = dictionary {
                 Singleton.sharedInstance.tokBoxApiKey = dictionary["apiKey"]!

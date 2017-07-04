@@ -44,7 +44,7 @@ class Gift: NSObject, NSCoding {
     }
     
     func dictionary() -> [String: AnyObject] {
-        return ["bear": beer as AnyObject,
+        return ["beer": beer as AnyObject,
                 "coke": coke as AnyObject]
     }
 }
