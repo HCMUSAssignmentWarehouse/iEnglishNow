@@ -646,7 +646,8 @@
                         <outlet property="numberView" destination="0i3-qo-33o" id="0DR-0l-mvm"/>
                         <outlet property="tableStatus" destination="52e-LS-7fD" id="gCE-4n-ySO"/>
                         <outlet property="titleStats" destination="Kh9-Uz-9cV" id="DQc-Hs-Zbk"/>
-                        <outlet property="txtConversationsNumber" destination="ubO-CS-8ua" id="gwa-tK-NHt"/>
+                        <outlet property="txtBeersNumber" destination="eob-ne-K6w" id="eZe-LD-pGd"/>
+                        <outlet property="txtConversationsNumber" destination="ubO-CS-8ua" id="VvF-kf-dag"/>
                         <outlet property="txtDrinksNumber" destination="rCm-kI-Nxm" id="Jo1-ne-j3W"/>
                         <outlet property="txtListeningRating" destination="a2D-dC-vuL" id="OVg-eh-CjG"/>
                         <outlet property="txtPronunciationRating" destination="M5t-xQ-x1q" id="A5c-cD-IIb"/>
@@ -991,7 +992,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axi-7G-BHG">
-                                <rect key="frame" x="0.0" y="64" width="375" height="952"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="996"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eeh-k1-WQ1">
                                         <rect key="frame" x="0.0" y="-64" width="375" height="952"/>
@@ -1791,8 +1792,8 @@
         <segue reference="VBk-PL-vlc"/>
         <segue reference="aeV-sY-fDI"/>
         <segue reference="IWK-Oa-alD"/>
-        <segue reference="jCh-0p-EZx"/>
         <segue reference="gSf-PI-xLv"/>
         <segue reference="scf-XQ-Z3w"/>
+        <segue reference="xq2-7O-fxz"/>
     </inferredMetricsTieBreakers>
 </document>

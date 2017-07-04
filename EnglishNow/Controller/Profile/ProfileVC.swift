@@ -48,6 +48,8 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     
     @IBOutlet var txtDrinksNumber: UILabel!
    
+    @IBOutlet weak var txtBeersNumber: UILabel!
+    
     @IBOutlet var txtConversationsNumber: UILabel!
     
     @IBOutlet var tableStatus: UITableView!
@@ -246,11 +248,22 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         let queryRef = Database.database().reference().child("user_profile/\(currentID)").observe(.value, with: { (snapshot) -> Void in
                 
             if let dictionary = snapshot.value as? [String:Any] {
-                let drinks = dictionary["drinks"] as? Int ?? 0
-                let conversations = dictionary["conversations"] as? Int ?? 0
+                //TODO: ReCheck the stats
+                var drinks = dictionary["drinks"] as? Int ?? 0
+                if drinks == 0 {
+                    drinks = User.current.review.gift.getDrinks()
+                }
+                
+                var conversations = dictionary["conversations"] as? Int ?? 0
+                if conversations == 0 {
+                    conversations = User.current.conversations
+                }
+                
+                let beers : Int = User.current.review.gift.beer
 
                 self.txtDrinksNumber.text = "\(drinks)"
                 self.txtConversationsNumber.text = "\(conversations)"
+                self.txtBeersNumber.text = "\(beers)"
                 
                 let username = dictionary["username"] as? String ?? ""
                 self.username.text = username

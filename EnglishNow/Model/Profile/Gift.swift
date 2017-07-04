@@ -12,6 +12,7 @@ class Gift: NSObject, NSCoding {
     var beer:Int!
     var coke:Int!
     
+    
     override init() {
         super.init()
         
@@ -46,5 +47,9 @@ class Gift: NSObject, NSCoding {
     func dictionary() -> [String: AnyObject] {
         return ["beer": beer as AnyObject,
                 "coke": coke as AnyObject]
+    }
+    
+    func getDrinks() -> Int {
+        return self.beer + self.coke
     }
 }
