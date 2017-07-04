@@ -28,11 +28,11 @@ class PlayRecordCell: UITableViewCell {
     @IBAction func onRecordButtonTouch(_ sender: AnyObject) {
         print("record button")
         if isPlaying {
-            //Record.shared.pause()
+            Recorder.shared.pause()
             playButton.setBackgroundImage(#imageLiteral(resourceName: "play"), for: .normal)
             print("stop")
         } else {
-            //Record.shared.play(nameFile: fileName)
+            Recorder.shared.play(nameFile: fileName)
             playButton.setBackgroundImage(#imageLiteral(resourceName: "pause"), for: .normal)
             print("play")
         }

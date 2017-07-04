@@ -38,6 +38,7 @@
 		C2DA3EA01F04383A00DA5116 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3E9F1F04383A00DA5116 /* FirebaseClient.swift */; };
 		C2DA3EA21F043BB600DA5116 /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3EA11F043BB600DA5116 /* DataUtils.swift */; };
 		C2DA3EA41F043CEB00DA5116 /* HerokuappClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA3EA31F043CEB00DA5116 /* HerokuappClient.swift */; };
+		C2E9DC9D1F0BE3C000E9C61C /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9DC9C1F0BE3C000E9C61C /* Recorder.swift */; };
 		C2EE10E41F0A828F0063E9C8 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EE10E31F0A828F0063E9C8 /* LoadingViewController.swift */; };
 		C2EE10E61F0A9E050063E9C8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EE10E51F0A9E050063E9C8 /* DetailViewController.swift */; };
 		C2EE10E81F0A9F230063E9C8 /* PlayRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EE10E71F0A9F230063E9C8 /* PlayRecordCell.swift */; };
@@ -179,6 +180,7 @@
 		C2DA3E9F1F04383A00DA5116 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		C2DA3EA11F043BB600DA5116 /* DataUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
 		C2DA3EA31F043CEB00DA5116 /* HerokuappClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HerokuappClient.swift; sourceTree = "<group>"; };
+		C2E9DC9C1F0BE3C000E9C61C /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		C2EE10E31F0A828F0063E9C8 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		C2EE10E51F0A9E050063E9C8 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C2EE10E71F0A9F230063E9C8 /* PlayRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayRecordCell.swift; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 				FA2928091EF909EE00D4023C /* FirebaseUtils.swift */,
 				C2EEEA1D1F0789A100517FB9 /* Keys.swift */,
 				C2882F041F05598A009459F7 /* Singleton.swift */,
+				C2E9DC9C1F0BE3C000E9C61C /* Recorder.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -996,6 +999,7 @@
 				FA1CD02B1ECE97AF006AF4A6 /* AppDelegate.swift in Sources */,
 				C28C12641F097B870013B836 /* QuestionCell.swift in Sources */,
 				C28C12601F097AD90013B836 /* SubmitCell.swift in Sources */,
+				C2E9DC9D1F0BE3C000E9C61C /* Recorder.swift in Sources */,
 				FA161FC21ED2AD4500211D89 /* ProfileVC.swift in Sources */,
 				FA0757FB1ED1E21A006CE695 /* CellOfTimeLineVC.swift in Sources */,
 				C2DA3E981F040F6400DA5116 /* User.swift in Sources */,

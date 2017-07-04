@@ -120,10 +120,7 @@ extension CallViewController: OTSessionDelegate {
     
     func sessionDidDisconnect(_ session: OTSession!) {
         print("session disconnect")
-        //TODO stop recoding
-        //Record.shared.stop()
-        
-        //TODO: Show review dialog
+        Recorder.shared.stop()
         performSegue(withIdentifier: SegueIdentifier.SegueReview, sender: nil)
     }
     

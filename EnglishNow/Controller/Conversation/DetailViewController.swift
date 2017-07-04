@@ -35,7 +35,7 @@ class DetailViewController: UIViewController {
         
     }
     @IBAction func onBackButton(_ sender: UIBarButtonItem) {
-        //Record.shared.pause()
+        Recorder.shared.pause()
         dismiss(animated: true, completion: nil)
     }
 }
