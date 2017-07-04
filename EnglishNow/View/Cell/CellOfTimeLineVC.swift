@@ -14,7 +14,7 @@ class CellOfTimeLineVC: UITableViewCell {
     
     let avatar: UIImageView = {
         let imageview = UIImageView()
-        imageview.image = UIImage(named:"sample.jpg")
+        imageview.image = UIImage(named: ResourceName.avatarPlaceholder)
         imageview.translatesAutoresizingMaskIntoConstraints = false
         imageview.layer.cornerRadius = 16
         imageview.layer.masksToBounds = true
@@ -25,7 +25,7 @@ class CellOfTimeLineVC: UITableViewCell {
     
     let photo: UIImageView = {
         let imageview = UIImageView()
-        imageview.image = UIImage(named:"sample.jpg")
+        imageview.image = UIImage(named: ResourceName.avatarPlaceholder)
         imageview.translatesAutoresizingMaskIntoConstraints = false
         imageview.layer.cornerRadius = 16
         imageview.layer.masksToBounds = true

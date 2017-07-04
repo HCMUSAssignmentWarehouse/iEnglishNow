@@ -69,7 +69,7 @@ extension MyConversationVC: UITableViewDelegate, UITableViewDataSource {
         cell.nameLabel?.text = User.current.reviews[indexPath.row].partner
         var profileImg: String = User.current.reviews[indexPath.row].photoPartner
         if profileImg.isEmpty {
-            cell.profileImageView?.image = UIImage(named: "avatar_placeholder")
+            cell.profileImageView?.image = UIImage(named: ResourceName.coverPlaceholder)
         }
         else {
             cell.profileImageView?.image = UIImage(named: profileImg)

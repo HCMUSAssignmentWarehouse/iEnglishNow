@@ -23,7 +23,7 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
     //MARK: -setup view
     let avatar: UIImageView = {
         let imageview = UIImageView()
-        imageview.image = UIImage(named:"sample.jpg")
+        imageview.image = UIImage(named: ResourceName.avatarPlaceholder)
         imageview.translatesAutoresizingMaskIntoConstraints = false
         imageview.layer.cornerRadius = 16
         imageview.layer.masksToBounds = true
@@ -34,7 +34,7 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     let photo: UIImageView = {
         let imageview = UIImageView()
-        imageview.image = UIImage(named:"sample.jpg")
+        imageview.image = UIImage(named: ResourceName.avatarPlaceholder)
         imageview.translatesAutoresizingMaskIntoConstraints = false
         imageview.layer.cornerRadius = 16
         imageview.layer.masksToBounds = true
@@ -449,7 +449,7 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
                         let username = dictionary["username"] as? String ?? ""
                         
                         var useravatarUrl: String = ""
-                        var userAvatar:UIImage = UIImage(named:"sample.jpg")!
+                        var userAvatar:UIImage = UIImage(named: ResourceName.avatarPlaceholder)!
 
                         if dictionary.index(forKey: "profile_pic") != nil {
                             useravatarUrl = dictionary["profile_pic"] as! String
@@ -516,7 +516,7 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
                         let content = dictionary["content"] as! String
                         let time = dictionary["time"] as! TimeInterval
                         let commentId = (item as! DataSnapshot).key as! String
-                        var userAvatar: UIImage = UIImage(named: "sample.jpg")!
+                        var userAvatar: UIImage = UIImage(named: ResourceName.avatarPlaceholder)!
                         if let url = dictionary["avatar"] {
                             if let imgUrl =  URL(string: url as! String){
                                 let data = try? Data(contentsOf: imgUrl)

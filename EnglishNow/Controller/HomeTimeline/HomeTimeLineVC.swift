@@ -105,7 +105,7 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
                     
                     //if no avatar -> set default avatar
                     if avatar == nil{
-                        avatar = UIImage(named: "sample.jpg")
+                        avatar = UIImage(named: ResourceName.avatarPlaceholder)
                     }
                     
                     var isUserLiked: Bool = false

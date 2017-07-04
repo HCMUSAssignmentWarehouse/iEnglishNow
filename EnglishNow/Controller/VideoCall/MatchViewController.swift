@@ -28,9 +28,9 @@ class MatchViewController: UIViewController {
         //        matchButtonBgImageView.layer.cornerRadius = matchButtonBgImageView.frame.height / 2
         // set title
         if !User.current.isSpeaker {
-            titleLabel.text = "WSString.matchViewLearnerTitle"
+            titleLabel.text = WSString.matchViewLearnerTitle
         } else {
-            titleLabel.text = "WSString.matchViewSpeakerTitle"
+            titleLabel.text = WSString.matchViewSpeakerTitle
         }
     }
     

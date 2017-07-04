@@ -9,8 +9,6 @@
 import UIKit
 
 class ChatMessageCell: UICollectionViewCell {
-    
-    
     let textView: UITextView = {
         let tv = UITextView()
         tv.text = "SAMPLE TEXT FOR NOW"
@@ -32,7 +30,7 @@ class ChatMessageCell: UICollectionViewCell {
     
     let profileImageView: UIImageView = {
         let imageview = UIImageView()
-        imageview.image = UIImage(named:"sample.jpg")
+        imageview.image = UIImage(named: ResourceName.avatarPlaceholder)
         imageview.translatesAutoresizingMaskIntoConstraints = false
         imageview.layer.cornerRadius = 16
         imageview.layer.masksToBounds = true

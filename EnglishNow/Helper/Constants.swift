@@ -16,3 +16,9 @@ struct WSString {
 struct Constants {
     
 }
+
+struct ResourceName {
+    static let avatarPlaceholder = "avatar_placeholder.png"
+    static let coverPlaceholder = "cover_placeholder.png"
+    static let partnerAvatarPlaceholder = "partner_avatar_placeholder.png"
+}

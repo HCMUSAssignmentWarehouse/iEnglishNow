@@ -12,7 +12,7 @@ class CommentCell: UITableViewCell {
 
     let avatar: UIImageView = {
         let imageview = UIImageView()
-        imageview.image = UIImage(named:"sample.jpg")
+        imageview.image = UIImage(named: ResourceName.partnerAvatarPlaceholder)
         imageview.frame = CGRect(x: 4, y: 4, width: 36, height: 36)
         //imageview.translatesAutoresizingMaskIntoConstraints = false
         imageview.layer.masksToBounds = true

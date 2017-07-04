@@ -199,7 +199,7 @@
                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uyi-60-aa1">
                                     <rect key="frame" x="136" y="110" width="103" height="96"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sample.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="tX9-rq-dtZ">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="avatar_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tX9-rq-dtZ">
                                             <rect key="frame" x="-7" y="-6" width="118" height="102"/>
                                         </imageView>
                                     </subviews>
@@ -387,19 +387,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="km8-Sm-cEo">
-                                <rect key="frame" x="34.5" y="282" width="306" height="63"/>
+                                <rect key="frame" x="35" y="282" width="306" height="64"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="53"/>
                                 <color key="textColor" red="0.054901960780000002" green="0.62745098040000002" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn English anytime from anywhere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqJ-Bn-23I">
-                                <rect key="frame" x="45.5" y="345" width="286" height="21"/>
+                                <rect key="frame" x="45" y="346" width="286" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VKf-Tr-9wu">
-                                <rect key="frame" x="167.5" y="336" width="40" height="40"/>
+                                <rect key="frame" x="168" y="337" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6h7-w1-qRe"/>
                                     <constraint firstAttribute="width" constant="40" id="GJi-YS-PfV"/>
@@ -429,9 +429,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="avatar_placeholder" width="200" height="200"/>
         <image name="iconPassword.png" width="128" height="128"/>
         <image name="iconUser.png" width="192" height="192"/>
-        <image name="sample.jpg" width="228" height="221"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YZz-TU-ZNh"/>

@@ -112,7 +112,7 @@ class ChatViewController: UITableViewController {
                     }else{
                         
                         //set default image for avatar
-                        let avatar = UIImage(named:"sample.jpg")
+                        let avatar = UIImage(named: ResourceName.avatarPlaceholder)
                         if self.checkExist(id: id) == false{
                             self.contactList.append(Contact(name:username,id: uid,avatar: avatar! , lastestText: lastestText))
                         }
@@ -122,7 +122,7 @@ class ChatViewController: UITableViewController {
                     
                 }
                 else {
-                    let avatar = UIImage(named:"sample.jpg")
+                    let avatar = UIImage(named: ResourceName.avatarPlaceholder)
                     if self.checkExist(id: id) == false{
                         self.contactList.append(Contact(name:username,id: uid,avatar: avatar! , lastestText: lastestText))
                     }

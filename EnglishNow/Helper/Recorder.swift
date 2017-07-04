@@ -15,10 +15,12 @@ class Recorder {
     //    var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var player: AVAudioPlayer!
+    var playButton: UIButton? = nil
+    var isPlaying: Bool = false
     
     init() {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        documentsDirectory = paths[0]
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            documentsDirectory = paths[0]
     }
     
     func start(nameFile: String) {
@@ -45,16 +47,20 @@ class Recorder {
         if audioRecorder != nil {
             audioRecorder.stop()
             audioRecorder = nil
+            isPlaying = false
         }
     }
     
-    func play(nameFile: String) {
+    func play(nameFile: String, playButton: UIButton) {
+        self.playButton = playButton
         let audioFilename = documentsDirectory.appendingPathComponent("\(nameFile).m4a")
         do {
             player = try AVAudioPlayer(contentsOf: audioFilename)
+        NotificationCenter.default.addObserver(self,selector:Selector("playerDidFinishPlaying"), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player)
             
             player.prepareToPlay()
             player.play()
+            isPlaying = true
         } catch let error {
             print(error.localizedDescription)
         }
@@ -64,6 +70,14 @@ class Recorder {
         if player != nil {
             player.stop()
             player = nil
+            isPlaying = false
+        }
+    }
+    
+    func playerDidFinishPlaying(sender: Notification) {
+        // Do Something
+        if playButton != nil {
+            playButton?.setBackgroundImage(#imageLiteral(resourceName: "play"), for: .normal)
         }
     }
 }
