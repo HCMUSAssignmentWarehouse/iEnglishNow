@@ -18,6 +18,9 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
     @IBOutlet weak var table: UITableView!
     
+    
+    @IBOutlet var txtNoStatusNotify: UILabel!
+    
     var statusList: [Status] = [Status]()
     
     override func viewDidLoad() {
@@ -58,8 +61,8 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
             
             //go to each status
             for item in snapshot.children {
+            self.txtNoStatusNotify.isHidden = true
             let status = (item as! DataSnapshot).value as! [String:AnyObject]
-                
                 
             // if status have enough child (it means no error appear)
             if status.count >= FirebaseUtils.numberChildStatus - 1{
