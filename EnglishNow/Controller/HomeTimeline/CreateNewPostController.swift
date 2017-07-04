@@ -61,7 +61,6 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
                             statusRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
                             statusRef.child("like_number").setValue(0)
                             statusRef.child("username").setValue(self.username.text)
-                            statusRef.child("avatar").setValue(self.avatarUrl)
                             //save to user_root
                             let userRef = databaseRef.child("user_profile").child((currentUser?.uid)!).child("status").childByAutoId()
                             userRef.child("photo").setValue(downloadUrl?.absoluteString)
@@ -88,7 +87,6 @@ class CreateNewPostController: UIViewController , UIImagePickerControllerDelegat
                 statusRef.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
                 statusRef.child("like_number").setValue(0)
                 statusRef.child("username").setValue(username.text)
-                statusRef.child("avatar").setValue(avatarUrl)
                 
                 let x = statusRef.key
                 
