@@ -468,7 +468,6 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
                         let ref = Database.database().reference().child("status").child((self.status?.statusId)!).child("comment").childByAutoId()
                         ref.child("userId").setValue(user.uid)
                         ref.child("username").setValue(username)
-                        ref.child("avatar").setValue(useravatarUrl)
                         ref.child("content").setValue(self.txtInputComment.text)
                         ref.child("time").setValue(Date.timeIntervalBetween1970AndReferenceDate)
                         
@@ -517,21 +516,30 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
                         let time = dictionary["time"] as! TimeInterval
                         let commentId = (item as! DataSnapshot).key as! String
                         var userAvatar: UIImage = UIImage(named: ResourceName.avatarPlaceholder)!
-                        if let url = dictionary["avatar"] {
-                            if let imgUrl =  URL(string: url as! String){
-                                let data = try? Data(contentsOf: imgUrl)
                         
-                                if let imageData = data {
-                                    let profilePic = UIImage(data: data!)
-                                    userAvatar = profilePic!
+                        let queryRef = Database.database().reference().child("user_profile/\(userId)").observe(.value, with: { (snapshot) -> Void in
+                            
+                            if let dictionary = snapshot.value as? [String:Any] {
+                                
+                                if let url = dictionary["profile_pic"] {
+                                    if let imgUrl =  URL(string: url as! String){
+                                        let data = try? Data(contentsOf: imgUrl)
+                                        
+                                        if let imageData = data {
+                                            let profilePic = UIImage(data: data!)
+                                            userAvatar = profilePic!
+                                        }
+                                        
+                                    }
                                 }
-                        
                             }
-                        }
-
+                        
                         self.commentList.append(Comment(userId: userId, username: username,avatar: userAvatar,content:content, commentId: commentId,time: time))
                         self.commentTable.reloadData()
+                            
+                        })
                     }
+                    
                 }
             }
         })
