@@ -43,7 +43,8 @@ class SignUpVC: UIViewController {
             if let email = txtEmail.text, let password = txtPassword.text {
                 FirebaseClient.shared.signUp(email: email, password: password, userName: txtUsername.text!, skills: skills, completion: {(user, error) in
                     if let firebaseError = error{
-                        MessageBox.warning(body: firebaseError.localizedDescription) 
+                        MessageBox.warning(body: firebaseError.localizedDescription)
+                        ProgressHUD.hide(view: self.view)
                         return
                     }
                     if let user = user {
