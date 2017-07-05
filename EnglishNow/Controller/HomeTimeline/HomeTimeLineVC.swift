@@ -191,9 +191,15 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath ) as! CellOfTimeLineVC
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
-        cell.layer.cornerRadius = 15
+        //cell.layer.borderWidth = 1
+        //cell.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
+        
+        
+        cell.layer.masksToBounds = false
+        cell.layer.shadowColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
+        cell.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
+        cell.layer.shadowOpacity = 1.0
+        cell.layer.shadowRadius = 0.0
         
         let status = statusList[statusList.count - 1 - indexPath.row]
         

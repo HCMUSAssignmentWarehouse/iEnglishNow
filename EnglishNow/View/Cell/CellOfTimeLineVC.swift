@@ -141,13 +141,13 @@ class CellOfTimeLineVC: UITableViewCell {
         photo.widthAnchor.constraint(equalToConstant: 150).isActive = true
         photo.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
         
-        btnLike.topAnchor.constraint(equalTo: self.topAnchor, constant: 4).isActive = true
-        btnLike.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -4).isActive =  true
+        btnLike.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
+        btnLike.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive =  true
         btnLike.widthAnchor.constraint(equalToConstant: 24).isActive = true
         btnLike.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         txtNumberOfLike.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
-        txtNumberOfLike.rightAnchor.constraint(equalTo: btnLike.leftAnchor, constant: -4).isActive = true
+        txtNumberOfLike.rightAnchor.constraint(equalTo: btnLike.leftAnchor, constant: -8).isActive = true
         txtNumberOfLike.widthAnchor.constraint(equalToConstant: 76).isActive = true
         txtNumberOfLike.heightAnchor.constraint(equalToConstant: 20).isActive = true
         

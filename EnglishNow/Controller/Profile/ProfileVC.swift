@@ -573,9 +573,8 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath ) as! CellOfTimeLineVC
-        cell.layer.borderWidth = 1
+        cell.layer.borderWidth = 0.5
         cell.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
-        cell.layer.cornerRadius = 15
         
         if statusList.count > 0 {
             let status = statusList[statusList.count - 1 - indexPath.row]
