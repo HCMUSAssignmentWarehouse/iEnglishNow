@@ -179,11 +179,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
                     let alertController = UIAlertController(title: "Question", message: "Are you sure delete this status?", preferredStyle: .alert)
                     let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
                         
-                        
-                        
-                            
-                           
-                            
                             Database.database().reference().child("user_profile/\(user.uid)").child("status").observe(.value, with: { (snapshot) -> Void in
                                 
                                 //go  to each status
