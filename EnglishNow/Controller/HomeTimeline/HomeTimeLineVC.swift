@@ -30,6 +30,7 @@ class HomeTimeLineVC: UIViewController, UITableViewDataSource, UITableViewDelega
         initShow()
         loadData()
         
+            
         // Do any additional setup after loading the view.
     }
 

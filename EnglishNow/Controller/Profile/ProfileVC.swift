@@ -157,8 +157,83 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
             
         }
         
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressGesture.minimumPressDuration = 1.0 // 1 second press
+        longPressGesture.delegate = self as? UIGestureRecognizerDelegate
+        tableStatus.addGestureRecognizer(longPressGesture)
+        
     }
 
+    func handleLongPress(gesture: UILongPressGestureRecognizer){
+        if gesture.state == UIGestureRecognizerState.began {
+            print("tapped!")
+            let touchPoint = gesture.location(in: tableStatus)
+            if let indexPath = tableStatus.indexPathForRow(at: touchPoint) {
+                print(indexPath.row)
+                
+                if let user = Auth.auth().currentUser {
+                
+                if (indexPath.row > -1 && indexPath.row < self.statusList.count && user.uid.compare(self.currentID) == ComparisonResult.orderedSame){
+                    let id = self.statusList[indexPath.row].statusId
+                    
+                    let alertController = UIAlertController(title: "Question", message: "Are you sure delete this status?", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                        
+                        
+                        
+                            
+                           
+                            
+                            Database.database().reference().child("user_profile/\(user.uid)").child("status").observe(.value, with: { (snapshot) -> Void in
+                                
+                                //go  to each status
+                                for item in snapshot.children {
+                                    
+                                    let status = (item as! DataSnapshot).value as! [String:AnyObject]
+                                    if (item as! DataSnapshot).key == id {
+                                        (item as AnyObject).ref.child((item as AnyObject).key!).parent?.removeValue()
+                                        print("success!")
+                                    }
+                                }
+                            })
+                            
+                            Database.database().reference().child("status").observe(.value, with: { (snapshot) -> Void in
+                                
+                                //go  to each status
+                                for item in snapshot.children {
+                                    
+                                    let status = (item as! DataSnapshot).value as! [String:AnyObject]
+                                    if (item as! DataSnapshot).key == id {
+                                        (item as AnyObject).ref.child((item as AnyObject).key!).parent?.removeValue()
+                                        print("success!")
+                                    }
+                                }
+                            })
+                            
+                            
+                            self.statusList.remove(at: indexPath.row)
+                        
+
+                        
+                    }
+                    
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+                    }
+
+                    alertController.addAction(OKAction)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    
+                    
+                    
+                }}
+                
+                }
+        }
+    }
+    
+    
     // MARK: -load data
     func loadStatus(userid: String,  username: String, avatar: UIImage){
         
