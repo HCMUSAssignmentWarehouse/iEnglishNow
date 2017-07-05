@@ -2,7 +2,7 @@
 
 **English Now** is an awesome iOS app create from Swift 3.0, OpenTok client sdk and NodeJS server, it allows a users to practice speaking, writing, chatting in English. By the time using this app, English level of users will be improved.
 
-Time spent: **80** hours spent in total
+Time spent: **90** hours spent in total
 
 ## User Stories
 
@@ -15,13 +15,17 @@ The basic **required** functionality:
 
 The **extended** features are implemented:
 
-* [x] User can connect and share post/status with other social network.
+* [ ] User can connect and share post/status with other social network.
 
 The **advance** features are implemented:
+
+* [ ] Improve UI/UX
+
 
 ## Install libraries with Podfile
 
 Launch terminal, cd to the project's folder and type ``pod install`` to install needed libraries for this app.
+Then close XCode and open EnglishNow.xcodeworkspace to open it.
 
 ## Quick deploy to Heroku
 
@@ -38,10 +42,12 @@ obtain at the [TokBox Dashboard](https://dashboard.tokbox.com/keys).
 
 Here's a walkthrough of implemented user stories:
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Sw4Gj1eF8is/0.jpg)](https://www.youtube.com/watch?v=Sw4Gj1eF8is)
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+This project use localdb combine with Firebase and NodeJS server, so it cannot provide any method to import data by Firebase JSON files. 
+Tester **MUST** sign up and sign in in-app.
 
 ## Open-source libraries used
 
