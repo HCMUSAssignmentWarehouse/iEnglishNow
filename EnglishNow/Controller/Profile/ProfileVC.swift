@@ -596,24 +596,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
                     let downloadUrl = metadata?.downloadURL()
                     databaseRef.child("user_profile").child((currentUser?.uid)!).child("profile_pic").setValue(downloadUrl?.absoluteString)
                     
-                    let queryRef = Database.database().reference().child("status").observe(.value, with: { (snapshot) -> Void in
-                        
-                        self.statusList.removeAll()
-                        
-                        //go to each status
-                        for item in snapshot.children {
-                            let status = (item as! DataSnapshot).value as! [String:AnyObject]
-                            
-                            
-                            // if status have enough child (it means no error appear)
-                            if status.count >= FirebaseUtils.numberChildStatus - 1{
-                                let user = status["user"] as! String
-                                if user == currentUser?.uid{
-                                    Database.database().reference().child("status").child((item as! DataSnapshot).key).child("avatar").setValue(downloadUrl?.absoluteString)
-                                }
-                            }
-                        }
-                    })
+                    
                     print("upload image success!")
                 }else{
                     print(error?.localizedDescription)
