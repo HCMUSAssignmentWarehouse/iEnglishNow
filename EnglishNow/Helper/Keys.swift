@@ -9,11 +9,13 @@
 import Foundation
 
 struct SegueIdentifier{
+    static let SegueProfile = "SegueProfile"
     static let SegueHistory = "SegueHistory"
     static let SegueDetail = "SegueDetail"
     static let SegueCall = "SegueCall"
     static let SegueMatch = "SegueMatch"
     static let SegueReview = "SegueReview"
+    static let SegueLoginSuccess = "LoginSuccessSegue"
     static let SegueLoadToLoginPopup = "SegueLoadToLoginPopup"
     static let SegueUserDetailStatus = "SegueUserDetailStatus"
     static let SegueSendMessage = "SegueSendMessage"

@@ -32,7 +32,7 @@ class LoginVC: UIViewController {
                 
                 if let firebaseError = error {
                     ProgressHUD.hide(view: self.view)
-                    self.txtError.text = firebaseError.localizedDescription
+                    MessageBox.error(body: firebaseError.localizedDescription)
                     return
                 }
 
@@ -42,10 +42,10 @@ class LoginVC: UIViewController {
                     FirebaseClient.shared.handleReviews()
                     print("Login Success!")
                     ProgressHUD.hide(view: self.view)
-                    self.performSegue(withIdentifier: "LoginSuccessSegue", sender: self)
+                    self.performSegue(withIdentifier: SegueIdentifier.SegueLoginSuccess, sender: self)
             } else {
                     ProgressHUD.hide(view: self.view)
-                    let alert = UIAlertController(title: "Error", message: "Invalid email or password", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error", message: WSString.wrongEmailPassword, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -53,7 +53,8 @@ class LoginVC: UIViewController {
         }
         else {
             ProgressHUD.hide(view: self.view)
-            txtError.text = "Email or password is invalid!"
+            txtError.text = WSString.invalidEmailPassword
+            MessageBox.error(body: WSString.invalidEmailPassword)
         }
     }
 

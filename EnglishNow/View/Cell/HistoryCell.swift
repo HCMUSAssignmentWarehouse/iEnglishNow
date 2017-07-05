@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import Cosmos
 
 class HistoryCell: UITableViewCell {
     @IBOutlet weak var wrapperCell: UIView!
     @IBOutlet weak var containerCell: UIView!
+    @IBOutlet weak var cosmos: CosmosView!
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

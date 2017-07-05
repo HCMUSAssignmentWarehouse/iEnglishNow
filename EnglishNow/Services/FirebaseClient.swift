@@ -276,7 +276,7 @@ class FirebaseClient {
                     User.current.conversations = User.current.conversations + 1
                 }
                 //                completion(reviews)
-                SystemMessage.show(body: "You have new review.")
+                MessageBox.show(body: "You have new review.")
                 self.saveUserData()
             } else {
                 //                completion(nil)

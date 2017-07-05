@@ -11,6 +11,9 @@ import Foundation
 struct WSString {
     static let matchViewLearnerTitle = "Let find a speaker and practice speaking English"
     static let matchViewSpeakerTitle = "Let help learners practice speaking English"
+    static let invalidEmailPassword = "Email or password is invalid!"
+    static let wrongEmailPassword = "Email or password is incorrect!"
+    static let passwordNotMatch = "Password and confirmation do not match!"
 }
 
 struct Constants {

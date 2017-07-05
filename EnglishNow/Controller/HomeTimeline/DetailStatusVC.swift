@@ -369,7 +369,7 @@ class DetailStatusVC: UIViewController , UITableViewDelegate, UITableViewDataSou
 
     
     func tappedAvatarImage(gestureRecognizer: UIGestureRecognizer){
-        performSegue(withIdentifier: "SegueProfile", sender: self)
+        performSegue(withIdentifier: SegueIdentifier.SegueProfile, sender: self)
     }
     
     func onClickBtnLike (){

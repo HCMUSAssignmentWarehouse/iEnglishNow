@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import Cosmos
 
 class MyConversationVC: UIViewController {
     @IBOutlet weak var table: UITableView!
     
     @IBOutlet var btnMenu: UIBarButtonItem!
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         initShow()
@@ -66,16 +66,22 @@ extension MyConversationVC: UITableViewDelegate, UITableViewDataSource {
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor(red: 213/255,green: 216/255,blue: 220/255,alpha: 1.0).cgColor
         cell.layer.cornerRadius = 15
+        
+        var rating: Double = User.current.reviews[indexPath.row].rating
+        if rating == 0 {
+            rating = Double(arc4random_uniform(5) + 1)
+            User.current.reviews[indexPath.row].rating = rating
+        }
+        cell.cosmos.rating = rating
         cell.nameLabel?.text = User.current.reviews[indexPath.row].partner
         var profileImg: String = User.current.reviews[indexPath.row].photoPartner
         if profileImg.isEmpty {
             cell.profileImageView?.image = UIImage(named: ResourceName.coverPlaceholder)
         }
         else {
-            cell.profileImageView?.image = UIImage(named: profileImg)
+            cell.profileImageView.setImageWith(URL(string: profileImg)!)
         }
         return cell
-        
     }
     
     

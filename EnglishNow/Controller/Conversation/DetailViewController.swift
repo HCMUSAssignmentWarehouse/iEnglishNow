@@ -75,15 +75,27 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.RatingCell) as! RatingCell
                 cell.skillLabel.text = Singleton.skills[indexPath.row]
-                switch indexPath.row{
+                switch indexPath.row {
                 case 0:
-                    cell.ratingControl.rating = (review?.ratings?.listening)!
+                    var listenRate: Double = (review?.ratings?.listening)!
+                    if listenRate != 0 {
+                        cell.ratingControl.rating = listenRate
+                    }
                 case 1:
-                    cell.ratingControl.rating = (review?.ratings?.pronounciation)!
+                    var pronounciationRate: Double = (review?.ratings?.pronounciation)!
+                    if pronounciationRate != 0 {
+                        cell.ratingControl.rating = pronounciationRate
+                    }
                 case 2:
-                    cell.ratingControl.rating = (review?.ratings?.fluency)!
+                    var fluencyRate: Double = (review?.ratings?.fluency)!
+                    if fluencyRate != 0 {
+                        cell.ratingControl.rating = fluencyRate
+                    }
                 case 3:
-                    cell.ratingControl.rating = (review?.ratings?.vocabulary)!
+                    var vocabularyRate: Double = (review?.ratings?.vocabulary)!
+                    if vocabularyRate != 0 {
+                        cell.ratingControl.rating = vocabularyRate
+                    }
                 default:
                     break
                 }

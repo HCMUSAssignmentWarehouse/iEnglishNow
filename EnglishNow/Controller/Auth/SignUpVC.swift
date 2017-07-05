@@ -34,27 +34,28 @@ class SignUpVC: UIViewController {
     @IBOutlet var btnSignUp: UIButton!
     
     @IBAction func btnSignUp(_ sender: Any) {
-        
+        ProgressHUD.show(view: view)
         if txtPassword.text != txtConfirmPassword.text{
-            txtError.text = "Cofirm password must be equal to password!"
+            txtError.text = WSString.passwordNotMatch
+            ProgressHUD.hide(view: self.view)
         }
         else{
             if let email = txtEmail.text, let password = txtPassword.text {
-                ProgressHUD.show(view: view)
                 FirebaseClient.shared.signUp(email: email, password: password, userName: txtUsername.text!, skills: skills, completion: {(user, error) in
                     if let firebaseError = error{
-                        print(firebaseError.localizedDescription)
-                        self.txtError.text = firebaseError.localizedDescription
+                        MessageBox.warning(body: firebaseError.localizedDescription) 
                         return
                     }
+                    if let user = user {
+                        ProgressHUD.hide(view: self.view)
+                        MessageBox.show(body: "Sign Up successfully!")
+                        self.dismiss(animated: true, completion: nil)
+                    }
                 })
-                ProgressHUD.hide(view: self.view)
-                self.dismiss(animated: true, completion: nil)
-                
             }
             else {
-                print("Email or password is invalid!")
-                self.txtError.text = "Email or password is invalid!"
+                self.txtError.text = WSString.invalidEmailPassword
+                ProgressHUD.hide(view: self.view)
             }
 
         }

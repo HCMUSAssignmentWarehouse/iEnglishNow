@@ -17,6 +17,7 @@ class RatingCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         ratingControl.settings.updateOnTouch = false
+        ratingControl.rating = Double(arc4random_uniform(5) + 1)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
