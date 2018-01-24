@@ -42,6 +42,7 @@ obtain at the [TokBox Dashboard](https://dashboard.tokbox.com/keys).
 
 Here's a walkthrough of implemented user stories:
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a39a45a7f459486ba164a986b9163809)](https://www.codacy.com/app/nhoxbypass/EnglishNow?utm_source=github.com&utm_medium=referral&utm_content=HCMUS-AssignmentWarehouse/EnglishNow&utm_campaign=badger)
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Sw4Gj1eF8is/0.jpg)](https://www.youtube.com/watch?v=Sw4Gj1eF8is)
 
 ## Notes
