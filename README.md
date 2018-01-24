@@ -1,5 +1,8 @@
 # Final Project - *English Now*
 
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f73a48f33e314c88abef8b7a4dae85df)](https://www.codacy.com/app/nhoxbypass/EnglishNow?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HCMUS-AssignmentWarehouse/EnglishNow&amp;utm_campaign=Badge_Grade)
+
 **English Now** is an awesome iOS app create from Swift 3.0, OpenTok client sdk and NodeJS server, it allows a users to practice speaking, writing, chatting in English. By the time using this app, English level of users will be improved.
 
 Time spent: **90** hours spent in total
